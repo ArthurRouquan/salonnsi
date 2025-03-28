@@ -7,6 +7,8 @@ theme:
   favicon: assets/salon-lion-favicon-block.png
   language: fr
   name: material
+  font:
+    code: Roboto Mono
 
   palette:
     # Palette toggle for light mode
