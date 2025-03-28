@@ -74,9 +74,7 @@ extra_css:
   - https://unpkg.com/katex@0/dist/katex.min.css
 
 nav:
-  - "Acceuil":
-      - index.md
+  - "Acceuil": index.md
   - "Annales":
       - annales/index.md
-  - "Exposition":
-      - showcase/index.md
+  - "Exposition": showcase/index.md
