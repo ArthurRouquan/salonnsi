@@ -1,0 +1,80 @@
+site_name: Salon NSI
+
+# site_url: https://example.com
+
+theme:
+  logo: assets/salon-lion.png
+  favicon: assets/salon-lion-favicon-block.png
+  language: fr
+  name: material
+
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: black
+      toggle:
+        icon: material/weather-night 
+        name: Mode sombre
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: black
+      toggle:
+        icon: material/weather-sunny
+        name: Mode clair
+
+
+  icon:
+    tag:
+      html: fontawesome/brands/html5
+
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.indexes
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+
+plugins:
+  - open-in-new-tab
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - tables
+  - pymdownx.details
+  - pymdownx.keys
+  - footnotes
+
+extra_javascript:
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+
+extra_css:
+  - stylesheets/extra.css
+  - https://unpkg.com/katex@0/dist/katex.min.css
+
+nav:
+  - "Acceuil":
+      - index.md
+  - "Annales":
+      - annales/index.md
+  - "Exposition":
+      - showcase/index.md

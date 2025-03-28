@@ -1,0 +1,259 @@
+.rounded {
+    border-radius: 0.3rem;
+}
+
+.center-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center-table {
+    text-align: center;
+}
+
+.md-typeset .center-table :is(td, th):not([align]) {
+    text-align: initial;
+}
+
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+    padding: .2rem .6rem;
+}
+
+.tags-container {
+    display: flex;
+    gap: .3rem;
+    flex-wrap: wrap;
+}
+
+[data-md-color-scheme="default"] .invert-rev {
+    filter: invert(100%);
+}
+
+[data-md-color-scheme="slate"] .invert-rev {
+    filter: invert(0%);
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--md-code-bg-color);
+    color: var(--md-code-fg-color);
+    padding: 0.0rem 0.2rem;
+    /* Adjust padding for better appearance */
+    border-radius: .1rem;
+    /* Ensures rounded shape */
+    font-weight: bold;
+}
+
+.md-header__topic {
+    font-family: var(--md-code-font);
+    text-transform: uppercase;
+}
+
+/* Regular version */
+@font-face {
+    font-family: "BerkeleyMono";
+    src: url("/assets/fonts/BerkeleyMono-Regular.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Bold version */
+@font-face {
+    font-family: "BerkeleyMono";
+    src: url("/assets/fonts/BerkeleyMono-Bold.ttf") format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Italic version */
+@font-face {
+    font-family: "BerkeleyMono";
+    src: url("/assets/fonts/BerkeleyMono-Italic.ttf") format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* Bold Italic version */
+@font-face {
+    font-family: "BerkeleyMono";
+    src: url("/assets/fonts/BerkeleyMono-BoldItalic.ttf") format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+:root {
+    --md-code-font: "BerkeleyMono";
+}
+
+.pixelart {
+    image-rendering: crisp-edges;
+}
+
+/* .center img {
+    display: block;
+    margin: 0 auto;
+} */
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+    height: 1.5rem;
+    width: auto;
+    image-rendering: crisp-edges;
+}
+
+.md-nav__title .md-nav__button.md-logo img,
+.md-nav__title .md-nav__button.md-logo svg {
+    image-rendering: crisp-edges;
+}
+
+/* 
+.highlight .k {
+    font-weight: bold;
+}
+
+.highlight .ow {
+    font-weight: bold;
+    color: var(--md-code-hl-keyword-color);
+}
+
+.highlight .sd {
+    font-style: italic;
+}
+
+.highlight .c1 {
+    font-style: italic;
+} */
+
+
+.circle-ol ol {
+    list-style: none;
+    counter-reset: my-counter;
+    padding-left: 0;
+    margin-left: -0.6rem !important;
+}
+
+.circle-ol ol>li {
+    counter-increment: my-counter;
+    position: relative;
+    padding-left: 1.5rem;
+    /* Adds space for the number */
+}
+
+.circle-ol ol>li::before {
+    content: counter(my-counter);
+    background-color: var(--md-accent-fg-color);
+    color: white;
+    border-radius: 100%;
+    font-size: 0.6rem;
+    font-weight: bold;
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+}
+
+.card-flip {
+    width: 100%;
+    max-width: 250px;
+    height: 250px;
+    perspective: 1000px;
+    cursor: pointer;
+
+}
+
+
+.card-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s;
+    transform-style: preserve-3d;
+    border-radius: 0.2rem;
+
+}
+
+.card-flip:hover .card-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.card-flip-front,
+.card-flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    /* align-items: flex-start; */
+    justify-content: flex-start;
+    border-radius: 0.2rem;
+}
+
+.card-flip-front img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.2rem;
+}
+
+.card-flip-front {
+    background-size: cover;
+    background-position: center;
+}
+
+.card-flip-back {
+    background: var(--md-code-bg-color);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.8rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.card-flip-back>h2 {
+    font-size: 1rem !important;
+    margin: 0.0rem !important;
+    font-weight: bold !important;
+    font-family: var(--md-code-font);
+}
+
+
+.card-flip-back>h3 {
+    font-size: 0.6rem !important;
+    margin: 0.0rem !important;
+    color: var(--md-default-fg-color--light);
+}
+
+.card-flip-back>p {
+    font-size: 0.6rem;
+}
+
+.card-links {
+    margin-top: auto;
+    font-size: 0.6rem !important;
+    text-align: right;
+}
+
+.card-links>a {
+    display: block;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    gap: 0.8rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
