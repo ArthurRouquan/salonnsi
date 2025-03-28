@@ -1,4 +1,4 @@
-import pyxel as px  # un alias plus concis !
+import pyxel as px
 from time import time
 import random
 
@@ -6,7 +6,7 @@ import random
 
 FICHIER_RESSOURCE = 'demineur.pyxres'
 
-# construction d'un dictionnaire IMAGES pour nommer les différentes images (sprites) du jeu
+# construction d'un dictionnaire IMAGES pour nommer les différents sprites du jeu
 POSITION = {
     'curseur': (0, 8),
     'horloge': (0, 16), 'mine-bleu': (8, 16), 'drapeau-bleu': (16, 16),
@@ -18,8 +18,9 @@ POSITION = {
 VOISINS = {i: (8 * i, 0) for i in range(9)}
 POSITION.update(VOISINS)
 IMAGES = {name: (0, *p, 8, 8, 4) for name, p in POSITION.items()}  # px.blt(x, y, *IMAGES['...']) est plus lisible !
-#
+
 VOISINAGE = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+DUREE_CLIC_LONG = 20
 
 # valeurs symboliques pour différencier les différentes phases du jeu
 DEBUT, EN_COURS, DEFAITE, VICTOIRE = 0, 1, 2, 3
@@ -30,7 +31,7 @@ class Demineur:
         self.largeur, self.hauteur = largeur, hauteur
         self.nb_mines = nb_mines
         self.reset()
-        px.init(self.largeur * 7, (self.hauteur + 1) * 7, 'Démineur', fps=60)
+        px.init(self.largeur * 7, (self.hauteur + 1) * 7, 'Démineur', fps=60, capture_scale=10, capture_sec=100)
         px.load(FICHIER_RESSOURCE)
         px.run(self.update, self.draw)
 
@@ -43,7 +44,7 @@ class Demineur:
         return ((i, j) for i in range(self.largeur) for j in range(self.hauteur))
 
     def indices_voisins(self, i, j):
-        """ Renvoie les indices des cases adjacentes autour de (i, j) sous la forme d'un générateur. """
+        """ Renvoie les indices des cases adjacentes autour de (i, j). """
         return ((i + di, j + dj) for di, dj in VOISINAGE if self.valide(i + di, j + dj))
 
     def placer_mines(self):
@@ -67,6 +68,9 @@ class Demineur:
         self.nb_drapeaux = 0
         self.nb_drapeaux_corrects = 0
         self.temps = 0
+
+        self.temps_clic = None
+        self.surplace = False
 
     def case_info(self, i, j):
         """ Renvoie toutes les informations de la case (i, j). """
@@ -130,13 +134,17 @@ class Demineur:
 
         _, _, visible, drapeau = self.case_info(i, j)
 
-        if (px.btnp(px.MOUSE_BUTTON_RIGHT) or px.btnp(px.KEY_D)) and not visible:
-            self.basculer_drapeau(i, j)
-
         if px.btnp(px.MOUSE_BUTTON_LEFT):
             self.selection = (i, j)  # permet au joueur d'annuler son clic s'il déplace le curseur
+            self.temps_clic, self.surplace = px.frame_count, True
 
-        if px.btnr(px.MOUSE_BUTTON_LEFT) and (i, j) == self.selection:
+        self.surplace = self.surplace and (i, j) == self.selection
+        long_clic = (self.temps_clic and px.frame_count - self.temps_clic >= DUREE_CLIC_LONG)
+        if (px.btnp(px.MOUSE_BUTTON_RIGHT) or px.btnp(px.KEY_D) or long_clic and self.surplace) and not visible:
+            self.basculer_drapeau(i, j)
+            self.temps_clic, self.surplace = None, False
+
+        if px.btnr(px.MOUSE_BUTTON_LEFT) and self.surplace and not long_clic:
             if drapeau:
                 self.basculer_drapeau(i, j)
             elif visible and self.drapeau_complet(i, j):
@@ -144,6 +152,7 @@ class Demineur:
                     self.explorer(vi, vj)
             else:
                 self.explorer(i, j)
+            self.temps_clic, self.surplace = None, False
 
         if self.nb_drapeaux_corrects == self.nb_mines == self.nb_nonvisibles:
             self.etat = VICTOIRE
@@ -170,11 +179,10 @@ class Demineur:
         i, j = self.curseur_case()
         if not self.est_fin() and self.valide(i, j):
             mine, voisins, visible, drapeau = self.case_info(i, j)
-            selection = px.btn(px.MOUSE_BUTTON_LEFT) and self.selection == (i, j)
             montrer_voisinage = visible and voisins and not mine
             rectangle = (7 * (i - 1) - 1, 7 * (j - 1) - 1, 3 * 7 + 2, 3 * 7 + 2) if montrer_voisinage else (7 * i - 1, 7 * j - 1, 7 + 2, 7 + 2)
             if not (visible and not voisins):
-                px.rectb(*rectangle, 0 if selection else 7)
+                px.rectb(*rectangle, 0 if px.btn(px.MOUSE_BUTTON_LEFT) else 7)
 
         # dessine le menu
         y = 7 * self.hauteur

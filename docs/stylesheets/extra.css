@@ -53,14 +53,6 @@
     text-transform: uppercase;
 }
 
-/* Regular version */
-@font-face {
-    font-family: "BerkeleyMono";
-    src: url("/assets/fonts/BerkeleyMono-Regular.ttf") format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 .pixelart {
     image-rendering: pixelated;
 }
@@ -81,25 +73,6 @@
 .md-nav__title .md-nav__button.md-logo svg {
     image-rendering: pixelated;
 }
-
-/* 
-.highlight .k {
-    font-weight: bold;
-}
-
-.highlight .ow {
-    font-weight: bold;
-    color: var(--md-code-hl-keyword-color);
-}
-
-.highlight .sd {
-    font-style: italic;
-}
-
-.highlight .c1 {
-    font-style: italic;
-} */
-
 
 .circle-ol ol {
     list-style: none;
