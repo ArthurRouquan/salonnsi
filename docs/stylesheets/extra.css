@@ -61,36 +61,8 @@
     font-style: normal;
 }
 
-/* Bold version */
-@font-face {
-    font-family: "BerkeleyMono";
-    src: url("/assets/fonts/BerkeleyMono-Bold.ttf") format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-/* Italic version */
-@font-face {
-    font-family: "BerkeleyMono";
-    src: url("/assets/fonts/BerkeleyMono-Italic.ttf") format('truetype');
-    font-weight: normal;
-    font-style: italic;
-}
-
-/* Bold Italic version */
-@font-face {
-    font-family: "BerkeleyMono";
-    src: url("/assets/fonts/BerkeleyMono-BoldItalic.ttf") format('truetype');
-    font-weight: bold;
-    font-style: italic;
-}
-
-:root {
-    --md-code-font: "BerkeleyMono";
-}
-
 .pixelart {
-    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
 
 /* .center img {
@@ -102,12 +74,12 @@
 .md-header__button.md-logo svg {
     height: 1.5rem;
     width: auto;
-    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
 
 .md-nav__title .md-nav__button.md-logo img,
 .md-nav__title .md-nav__button.md-logo svg {
-    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
 
 /* 
