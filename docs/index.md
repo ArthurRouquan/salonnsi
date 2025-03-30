@@ -1,5 +1,5 @@
 ---
-title: "Acceuil"
+title: "Accueil"
 icon: material/home
 hide:
   - toc
