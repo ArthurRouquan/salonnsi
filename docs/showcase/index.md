@@ -27,7 +27,7 @@ Le jeu du démineur consiste à localiser toutes les mines cachées, avec pour s
 
 <div class="card-flip" markdown>
 <div class="card-flip-inner" markdown>
-<div class="card-flip-front"><img src="assets/jeudelavie/jeudelavie.gif"></div>
+<div class="card-flip-front"><img src="assets/jeudelavie/jeudelavie.gif" class="pixelart"></div>
 <div class="card-flip-back" markdown>
 ## Jeu de la vie
 ### Le prof, Mars 2025

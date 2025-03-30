@@ -3,16 +3,32 @@ title: Annales
 icon: material/school
 ---
 
-## Format
+<!-- ## Format
 
 L'épreuve de NSI au baccalauréat se compose de **deux** parties distinctes :
 
 <div class="grid cards" markdown>
 - :material-file-edit: &nbsp; Une épreuve **écrite** de 3h30 composée de 3 exercices.
 - :material-laptop: &nbsp; Une épreuve **pratique** de 1h sur machine composée de 2 exercices.
+</div> -->
+
+## Épreuve pratique
+
+L'épreuve **pratique** consiste à résoudre en 1h un sujet composé de deux exercices de programmation sur machine. Les sujets sont connus à l'avance, vers fin Mars.
+
+<div class="grid cards" markdown>
+
+* :material-file-document-multiple-outline:{ .lg .middle } **Sujets 2025**
+
+    ---
+
+    [:material-open-in-new: S'entraîner sur Capytale](https://capytale2.ac-paris.fr/web/c/020a-6177185/atr)
 </div>
 
-## Épreuves écrites
+
+## Épreuve écrite
+
+L'épreuve **écrite** dure 3h30 et est composée de 3 exercices.
 
 ### Sujets 2024
 
