@@ -9,7 +9,7 @@ title: 24-NSIJ2PO1-1
 2. Les deux chemins possibles sont :
     * **Mp → Ar → Ax → Nc**
     * **Mp → Ar → Mr → Nc**
-  
+
 3. 
 ```python
 G = {

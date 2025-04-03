@@ -35,6 +35,14 @@
     filter: invert(0%);
 }
 
+[data-md-color-scheme="default"] .invert {
+    filter: invert(0%);
+}
+
+[data-md-color-scheme="slate"] .invert {
+    filter: invert(100%);
+}
+
 .tag {
     display: flex;
     align-items: center;
@@ -202,3 +210,10 @@
     align-items: center;
     margin: 0 auto;
 }
+
+
+/* .console .md-code__content {
+    background-color: #111317 !important;
+    color: #B8B9BA !important;
+    margin-bottom: 0 !important;
+} */

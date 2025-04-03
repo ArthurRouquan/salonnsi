@@ -77,4 +77,8 @@ nav:
   - "Accueil": index.md
   - "Annales":
       - annales/index.md
-  - "Exposition": showcase/index.md
+  - "Exposition": exposition/index.md
+  - "Fiches":
+      - fiches/index.md
+      - fiches/sql.md
+      - fiches/coeur.md
