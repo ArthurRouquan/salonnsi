@@ -1,6 +1,9 @@
 site_name: Salon NSI
 
-# site_url: https://example.com
+site_url: https://salonnsi.fr
+
+repo_url: https://github.com/arthurrouquan/salonnsi
+repo_name: arthurrouquan/salonnsi
 
 theme:
   logo: assets/salon-lion.png
@@ -8,7 +11,7 @@ theme:
   language: fr
   name: material
   font:
-    code: Roboto Mono
+    code: JetBrains Mono
 
   palette:
     # Palette toggle for light mode
@@ -27,8 +30,7 @@ theme:
 
 
   icon:
-    tag:
-      html: fontawesome/brands/html5
+    repo: fontawesome/brands/github
 
   features:
     - navigation.instant
