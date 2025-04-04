@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Game Terminal</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e2e;
+            color: #cdd6f4;
+            font-family: monospace;
+            height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        #terminal {
+            flex-grow: 1;
+            padding: 10px;
+            overflow-y: auto;
+            font-size: 1.1em;
+            line-height: 1.3;
+            scrollbar-width: none;
+        }
+
+        .terminal-line {
+            /* white-space: pre-wrap; */
+            /* Conserve les espaces et wrap */
+            word-break: break-word;
+            /* Force le cas échéant */
+            font-family: monospace;
+            /* margin: 2px 0; */
+        }
+
+        #input-container {
+            padding: 10px;
+            background-color: #313244;
+            position: sticky;
+            bottom: 0;
+        }
+
+        #input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            background-color: #1e1e2e;
+            border: 1px solid #45475a;
+            color: #cdd6f4;
+            font-family: monospace;
+            font-size: 1.1em;
+            border-radius: 0.25em;
+        }
+
+        .narration {
+            color: #74c7ec;
+        }
+
+        .success {
+            color: #6FC6A8;
+        }
+
+        .error {
+            color: #f38ba8;
+
+        }
+
+        .bad {
+            /* color: #1e1e2e; */
+            background-color: #d20f39;
+            font-weight: bold;
+        }
+
+        .typing-container {
+            display: inline;
+            position: relative;
+        }
+
+        .typing-cursor {
+            position: absolute;
+            right: -2px;
+            border-right: 2px solid #6FC6A8;
+            animation: blink 1s step-end infinite;
+        }
+
+        .user {
+            font-weight: bold;
+            padding: 10px 0;
+        }
+
+        .comment {
+            color: #9399b2;
+            font-style: italic;
+        }
+
+        @keyframes blink {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: #6FC6A8;
+            }
+        }
+
+        .terminal-line {
+            margin: 2px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="terminal"></div>
+    <div id="input-container">
+        <input type="text" id="input" placeholder="Tapez votre réponse ici...">
+    </div>
+    <script>
+        const terminal = document.getElementById('terminal');
+        const input = document.getElementById('input');
+        let currentEnigme = 1;
+        let isTyping = false;
+        let enigmeShown = false;
+        let currentTyping = {
+            resolve: null,
+            reject: null,
+            timeout: null
+        };
+        let debug = false;
+        let nbtry = 0;
+
+        async function addLine(text, className = '', typing = true, speed = 30) {
+            const lines = text.split('\n');
+            for (let i = 0; i < lines.length; i++) {
+                const line = document.createElement('div');
+                line.className = `terminal-line ${className}`;
+                terminal.appendChild(line);
+
+                if (lines[i] === '') {
+                    line.innerHTML = '&nbsp;';
+                } else if (typing) {
+                    await typeWriter(lines[i], line, speed);
+                } else {
+                    // Ne transforme que les espaces de début de ligne
+                    const leadingSpaces = lines[i].match(/^ +/)?.[0] || '';
+                    const restOfLine = lines[i].slice(leadingSpaces.length);
+                    line.innerHTML = leadingSpaces.replace(/ /g, '&nbsp;') + restOfLine;
+                }
+                terminal.scrollTop = terminal.scrollHeight;
+            }
+        }
+
+        async function typeWriter(text, element, speed = 30) {
+            isTyping = true;
+            let skipRequested = false || debug;
+
+            // Ne transforme que les espaces de début
+            const leadingSpaces = text.match(/^ +/)?.[0] || '';
+            const restOfText = text.slice(leadingSpaces.length);
+            const processedText = leadingSpaces.replace(/ /g, '\u00A0') + restOfText;
+
+            const container = document.createElement('span');
+            container.className = 'typing-container';
+            element.appendChild(container);
+
+            const cursor = document.createElement('span');
+            cursor.className = 'typing-cursor';
+            container.appendChild(cursor);
+
+            for (let i = 0; i < processedText.length; i++) {
+                if (skipRequested) {
+                    container.insertBefore(document.createTextNode(processedText.substring(i)), cursor);
+                    break;
+                }
+
+                container.insertBefore(document.createTextNode(processedText[i]), cursor);
+
+                try {
+                    await new Promise((resolve, reject) => {
+                        currentTyping.resolve = resolve;
+                        currentTyping.reject = reject;
+                        currentTyping.timeout = setTimeout(resolve, speed);
+                    });
+                } catch {
+                    skipRequested = true;
+                    i--;
+                    continue;
+                }
+
+                terminal.scrollTop = terminal.scrollHeight;
+            }
+
+            container.removeChild(cursor);
+            isTyping = false;
+            currentTyping = { resolve: null, reject: null, timeout: null };
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        let skipWait = false;
+
+        function wait(ms) {
+            if (debug) return Promise.resolve(true);
+            return new Promise((resolve) => {
+                const timeout = setTimeout(() => {
+                    document.removeEventListener('keydown', onKeyDown);
+                    resolve(false); // Attente terminée naturellement
+                }, ms);
+
+                function onKeyDown(e) {
+                    if (e.key === 'Enter') {
+                        clearTimeout(timeout);
+                        document.removeEventListener('keydown', onKeyDown);
+                        skipWait = true;
+                        resolve(true); // Attente écourtée
+                    }
+                }
+
+                document.addEventListener('keydown', onKeyDown);
+            });
+        }
+
+        async function showEnigme() {
+            enigmeShown = true;
+            if (currentEnigme === 1) {
+                await addLine(`OH LA BARBE ! Un hacker s'est infiltré sur le serveur du lycée de l'Empéri !`, 'error')
+                await wait(1000);
+                await addLine(`\nPar chance, ce petit malin semble avoir laissé plein d'indices pour retrouver sa trace.\n`, 'narration')
+                await wait(1000);
+                await addLine(`Le professeur de NSI, M. Rouquan, occupé à corriger ses copies et à jouer du ukulélé, n'a pas d'autre choix que de vous laissez mener l'enquête.`, 'narration')
+                await wait(1000);
+                await addLine(`\nVous êtes les experts en informatique du lycée après tout, pas vrai ?`, 'narration')
+
+            }
+            else if (currentEnigme === 2) {
+                await wait(1000);
+                await addLine(`Vous vous tenez devant le terminal d’accès au serveur du lycée, prêt à réveiller cette machine d'un autre millénaire.`, 'narration');
+                await wait(3000);
+                await addLine(`\nVous appuyez sur le bouton d’allumage, et à peine l’avez vous fait, la bête se réveille de son coma dans un nuage de poussière, émettant des bips étranges, presque comme des râles d’agonie.`, 'narration');
+                await wait(1000);
+                await addLine(`\n*beep*`, 'comment', false, 0)
+                await wait(1000);
+                await addLine(`*boop*`, 'comment', false, 0)
+                await wait(1000);
+                await addLine(`*schlink*`, 'comment', false, 0)
+                await wait(1000);
+                await addLine(`*schwagabada*`, 'comment', false, 0)
+                await wait(1000);
+                await addLine(`*aaaaaAAAAAAaaaaAAAAAAAAAHAHHHHHHHHHHHHH*`, 'comment', false, 0)
+                await wait(1000);
+                await addLine(`\nPendant que vous vous demandez si cette machine a connu Alan Turing, l’écran s’allume et affiche :\n`, 'narration');
+                await wait(1000);
+                await addLine(`Démarrage sur la disquette...\n`, '', true, 100)
+                await addLine(`♫･*:.｡. .｡.:* (ღ˘⌣˘ღ) ♫･*:.｡. .｡.:*･`, '', true, 100)
+                await addLine(`\nDémarrage effectué avec succès !\n`, true, 100)
+                await addLine(`               __________
+              / ======== \\
+             / ___________\\
+            | ____________ |
+            | | TERMINAL | |
+            | | =EMPERI= | |
+            | |__________| |
+            \\=_____________/  
+            / """""""""""" \\ 
+           / :::::::::::::: \\ 
+          (__________________)`, '', true, 1)
+
+                await addLine(`\nBienvenue sur le terminal d'accès au serveur du lycée de l'Empéri à Salon-de-Provence !`)
+                await addLine(`\nEntrez le mot de passe :`)
+            }
+            else if (currentEnigme === 3) {
+                await addLine(`Ce bon vieux Chichi ! — Si on oublie qu'il a été condamné pour détournement de fonds publics —`, 'narration');
+                await wait(1000);
+                await addLine(`\nAprès de longs crissements de la disquette, le terminal vous affiche :`, 'narration');
+                await wait(1000);
+                await addLine(`\nConnexion au réseau...`, '', true);
+                await addLine(`♫･*:.｡. .｡.:* (ღ˘⌣˘ღ) ♫･*:.｡. .｡.:*･`, '', true, 100)
+                await wait(100);
+                await addLine(`Échec de la connexion ಥ﹏ಥ`, 'error');
+                await wait(1000);
+                await addLine(`\n/!\\ L'adresse de la passerelle est corrompue /!\\`, 'error');
+                await addLine(`Mettez à jour l'adresse IP de la passerelle via la commande :`);
+                await addLine(`\n    > route XXX.XXX.XXX.XXX`);
+                await addLine(`\nOù XXX.XXX.XXX.XXX est l'adresse IP de la passerelle.`);
+                await addLine(`\nDécidément, c'est pas votre jour...`, 'narration');
+            }
+            else if (currentEnigme === 4) {
+                await addLine(`Mise à jour de la boîte de messagerie...`)
+                await wait(100);
+                await addLine(`\nVous avez reçu 1 nouveau message le 4/04/2025`)
+                await wait(100);
+                await addLine(`\n                    ...
+                  /'⠀⠀⠀'\\
+                 / ⠀⠀⠀⠀⠀⠀\\
+                |\\~~~~~~~/|
+                | \\=====/ |
+                | /'...'\\ |
+                |/_______\\|`, '', true, 1)
+                await addLine(`\nLe message a été déposé dans vos documents.`)
+                await wait(100);
+                await addLine(`\nUn nouveau message ? Aujourd'hui ?!`, 'narration')
+
+            }
+            else if (currentEnigme === 5) {
+                await addLine(`De    : ███████████████
+À     : 192.168.20.1
+Date  : 4/04/2025 à 8h30
+---
+Alors comme ça on tente de m'attraper ?
+Avec cette antiquité ringarde sous tes doigts ?
+
+Voyons-voir ce que tu vaux petit...
+
+Quelle est la réponse à la grande question sur
+la vie, l'Univers et le reste ?... en binaire.`)
+                await wait(200);
+                await addLine(`\n« La grande question sur la vie, l'Univers et le reste ? Il a fumé sa carte mère lui ? » soupirez-vous.`, 'narration')
+                await wait(2000);
+                await addLine(`\nSoudain, l'écran se met à trembler et les ventilateurs de la machine grondent :\n`, 'narration')
+                await wait(200);
+                await addLine(`&&)àçrç!!)___ 09ZE09RZ
+ZE09R0°--- !!*#
+C0RRUPT!0N DE LA MÉM0IRE
+é"àç)!'èè! @#$~~%??
+AHAHAH!! CE M3SS@GE A ETE PI3GÉ
+çàç'#~####~~~- èè"æ¶.....??????dskfé"''
+^%#&00|><\\~~~... Connection LOST!
+>>> D0nNe mOi Ta réP0nse PLUS VITE : ***>>>`, 'bad')
+                await wait(500);
+                await addLine(`\nOh... effrayant... il a l'air d'être un vrai méchant pas beau lui. Tant pis, il va falloir rentrer dans son jeu pour en apprendre plus.`, 'narration')
+
+            }
+            else if (currentEnigme === 6) {
+                await addLine(`Bien joué... mais ce n'était qu'un échauffement.`, 'success')
+                await wait(100);
+                await addLine(`\nTu as pris la spécialité NSI, hein ? Tu sais donc le résultat de 0.1 + 0.2 ?`, 'error')
+                await wait(500);
+                await addLine(`\n« Avoir pris la spécialité NSI et suivre les cours de NSI sont deux choses bien différentes. » marmonnez-vous. La quesiton vous semble trop évidente.`, 'narration')
+
+            }
+            else if (currentEnigme === 7) {
+                await addLine(`\nTu as cru que tu allais répondre à des questions de cours tranquillement ?`, 'error')
+                await wait(500);
+                await addLine(`\nQuelle insouciance...`, 'error', true, 100)
+                await wait(1000);
+                await addLine(`\n*bip*`, 'comment', false)
+                await wait(500);
+                await addLine(`\nHm ?`, 'narration')
+                await wait(1000);
+                await addLine(`\n*bip*`, 'comment', false)
+                await wait(500);
+                await addLine(`\nHein ?`, 'narration')
+                await wait(1000);
+                await addLine(`\n*bip*`, 'comment', false)
+                await wait(500);
+                await addLine(`\nCela semble venir de la machine... mais les bips semblent bien différents cette fois-ci.`, 'narration')
+                await wait(500);
+                await addLine(`\n*bip*`, 'comment', false)
+                await wait(1000);
+                await addLine(`\nSi j'étais toi, je regarderais à l'intérieur de la machine...`, 'error')
+                await addLine(`Tic...`, 'error', true, 500)
+                await addLine(`Tac...`, 'error', true, 500)
+                await wait(500);
+                await addLine(`\nVos mains moites s’approchent de la machine, prêtes à l’éventrer... vous soulevez le couvercle et... UNE BOMBE ?! Pourtant, l’usage d’explosifs est formellement interdit dans l’enceinte du lycée. Et, en y réfléchissant, probablement ailleurs aussi.`, 'narration')
+                await wait(1000);
+                await addLine(`\nC'est tout de suite plus fun ! Pour désarmorcer cette bombe, il va falloir que tu coupes les câbles dans un certain ordre... regarde bien : chaque câble est numéroté dans l’ordre croissant.`, 'error')
+                await wait(1000);
+                await addLine(`\nEffectivement, les câbles du mécanisme portent les numéros :`, 'narration')
+
+                await addLine(`\n5-6-8-12-14-16-18-19-20-23-26-27-28-28-29-30-33-35-36-38-42-46-50-88-94-105-106-114-117-123-128`, 'narration')
+                await wait(1000);
+                await addLine(`\n« Ça fait vraiment beaucoup de câbles... » pensez-vous.`, 'narration')
+                await wait(1000);
+                await addLine(`\nTu dois les couper en suivant une recherche dichotomique, comme si tu cherchais le nombre 42 dans cette liste triée de numéros.`, 'error')
+                await wait(1000);
+                await addLine(`\n« La recherche dichoquoicoubeh ...? » Voilà un casse-tête digne de votre niveau.`, 'narration')
+                await wait(500);
+                await addLine(`\nDonne les câbles que tu coupes... comme : « 5 6 8 » (ne fais pas ça ou tu risques d'être toi aussi découpé en deux ahahah)`, 'error')
+
+            }
+            else if (currentEnigme === 8) {
+                await addLine(`\nDommage... tu es plus coriace que prévu...`, 'error')
+                await wait(500);
+                await addLine(`Mais as-tu fais atttention à l'arrière de la bombe ? Non parce que je tiens vraiment à ta survie tu sais.`, 'error')
+                await wait(500);
+                await addLine(`\nIl commence sérieusement à vous taper sur le système d'exploitation, celui-là... vous retournez la bombe et, sans surprise, un nouveau mécanisme vous attend. Cette fois, ce sont de petites roues crantées à défiler.\n`, 'narration')
+                await wait(500);
+                await addLine(`╭ ┏━━━┓   ┏━━━┓   ┏━━━┓ ╮   ╭ ┏━━━┓   ┏━━━┓ ╮ 
+│ ┃ 1 ┃×┃ 7 ┃—┃ 19┃ │÷│ ┃ 3 ┃+┃11 ┃ │ = 199
+╰ ┗━━━┛   ┗━━━┛   ┗━━━┛ ╯   ╰ ┗━━━┛   ┗━━━┛ ╯`, 'narration', true, 1)
+                await wait(500);
+                await addLine(`\nIl semble que vous devez défiler les 5 roues crantées pour que le calcul soit correct... chaque nombre vont de 1 à 20 (inclus). Hm. Pas facile.`, 'narration')
+                await wait(500);
+                await addLine(`\nAlors, quel est le code ? Je vous laisse exactement... hm. Le temps de prendre ma douche.`, 'error')
+                await wait(500);
+                await addLine(`\n« Déjà, ce n'est pas un joueur de League Of Legends. » pensez-vous au moment où la bombe recommence à bipper sous vos doigts. `, 'narration')
+                await wait(500);
+            }
+
+        }
+
+        async function checkAnswer() {
+            const userInput = input.value.trim();
+            if (userInput === '') return false;
+
+            if (currentEnigme === 1) {
+                await addLine('Super ! On peut toujours compter sur vous !\n', 'success');
+                await wait(1000);
+                return true;
+            }
+            else if (currentEnigme === 2) {
+                if (input.value === 'CHIRAC') {
+
+                    await addLine('Connexion réussie !\n', 'success');
+                    await wait(1000);
+                    return true;
+                } else {
+                    await addLine('Mot de passe erroné.', 'error');
+                    if (nbtry === 2) {
+                        await addLine(`\nVous reculez de votre chaise d'un air agacé... tiens ? Un post-it délavé est collé sur l’écran « MDP : 67 72 73 82 65 67 »... un chef-d’œuvre de cybersécurité.\n`, 'narration')
+                    }
+                    else if (nbtry === 5) {
+                        await addLine(`\nIl semble que le mot de passe sur le post-it soit codé...\n`, 'narration')
+                    }
+                    else if (nbtry === 10) {
+                        await addLine(`\nUn code, un code... un code ASCII ! Votre fulgurance vous menera loin !\n`, 'narration')
+                    }
+                }
+                await addLine('Entrez le mot de passe :');
+            }
+            else if (currentEnigme === 3) {
+                if (input.value === 'route 192.168.23.254') {
+                    await addLine(`Vous appuyez sur la touche Entrée, une goutte de sueur perlant sur votre front, espérant avoir correctement calculé l’adresse réseau à la main…\n`, 'narration')
+                    await addLine(`Changement de passerelle effectué...`, '', true);
+                    await addLine(`Connexion au réseau...`, '', true);
+                    await addLine(`♫･*:.｡. .｡.:* (ღ˘⌣˘ღ) ♫･*:.｡. .｡.:*･`, '', true, 100)
+                    await wait(100);
+                    await addLine('Connexion au réseau établie !\n', 'success');
+                    await wait(1000);
+                    return true;
+                }
+                else if (input.value.startsWith('route')) {
+                    await addLine(`Changement de passerelle effectué...`, '', true);
+                    await addLine(`Connexion au réseau...`, '', true);
+                    await addLine(`♫･*:.｡. .｡.:* (ღ˘⌣˘ღ) ♫･*:.｡. .｡.:*･`, '', true, 100)
+                    await wait(100);
+                    await addLine(`Échec de la connexion ಥ﹏ಥ`, 'error');
+                }
+                else if (input.value.startsWith('ipconfig')) {
+                    await addLine(`Adresse IP de la machine... : 192.168.20.1
+Masque de sous-réseau...... : 255.255.248.0\n`);
+                } else {
+                    await addLine('La machine grogne.', 'error');
+
+                }
+                if (nbtry === 2) {
+                    await addLine(`\nQue ferait maître Filius ...? Fort de vos connaissances en réseau, vous vous rappelez commande ipconfig !`, 'narration');
+                }
+                else if (nbtry === 6) {
+                    await addLine(`\nLe prof avait parlé d'une convention pour configurer l'adresse du routeur, « Souvent dans un sous-réseau, on choisit le plus grand numéro d'hôte disponible pour l'adresse IP de la passerelle ».`, 'narration');
+                }
+            }
+            else if (currentEnigme === 4) {
+                if (input.value === 'cat documents/message.txt') {
+                    return true;
+                } else if (input.value === 'cat documents/portefeuille_bitcoin.txt') {
+                    await addLine(`Montant sur le compte : 12443 Bitcoins`);
+                    await addLine(`Clé du portfeuille : ██1zP1█████Gef████████PTfT████mv7D██████`);
+                    await addLine(`\nLes données semblent corrompues... dommage, vous aurez bien offert un vrai instrument à votre professeur.`, 'narration');
+                }
+                else if (input.value === 'cat documents/trucs_a_faire.txt') {
+                    await addLine(`   [X] Acheter une machine à café pour la salle des profs`);
+                    await addLine(`   [ ] Préparer les machines pour le bug de l'an 2000`);
+                    await addLine(`   [ ] Corriger les copies des classes de 1ère C`);
+                    await addLine(`   [X] Écrire le mdp de connexion pour Gérard, il oublie tout...`);
+                    await addLine(`   [ ] Vérifier qu’il y a assez de place sur la disquette (1.44 Mo, c’est précieux)`);
+                    await addLine(`\nUn prof qui oublie de corriger ses copies... étrange.`, 'narration');
+                } else if (input.value === 'cat documents/eleves_bannis.txt') {
+                    await addLine('  * Patrick Mougin (a tenté d’installer Doom)');
+                    await addLine('  * Brigitte Lemoine (a utilisé Wikipédia pour tricher à son DS)');
+                    await addLine('  * Martine Corbier (a imprimé 237 pages d’ASCII art de Nirvana en cours d’informatique)');
+                    await addLine('  * Gérard Bastien (a remplacé le mot de passe du réseau par « WAZAAA » et a oublié)');
+                    await addLine(`  * Arthur Rouquan (vous savez... on en tirera rien de bon de lui)`);
+                    await addLine('  * Raymond Casteix (a changé la souris à boule par une boule de mammouth "pour rigoler")');
+                    await addLine('  * Monique Truchon (a cru que “format c:” était une commande pour agrandir le texte)');
+                    await addLine('  * Alain Berthier (a mis un fond d’écran X-Files et fait croire qu’un alien avait piraté le réseau)');
+                    await addLine(`\nCe prof vous cache définitivement des choses...`, 'narration');
+                } else if (input.value === 'cat') {
+                    await addLine(`Chemin du fichier manquant.`, 'error');
+                }
+                else if (input.value.startsWith('cat')) {
+                    await addLine(`Mémoire corrompue, fichier innaccessible.`, 'error');
+                }
+                else if (input.value.startsWith('tree')) {
+                    addLine(`├── code/
+│ ⠀ ├── the_language_C.txt
+│ ⠀ └── programmes/
+│ ⠀⠀⠀⠀ ├── demineur2000.c
+│ ⠀⠀⠀⠀ └── ageofempire2.exe
+├── documents/
+│   ├── trucs_a_faire.txt
+│   ├── eleves_bannis.txt
+│   ├── portefeuille_bitcoin.txt
+│   └── message.txt
+└── travail/
+    ├── films/
+    │   ├── terminator2.avi
+    │   ├── the_thing.avi
+    │   └── alien.avi
+    └── musique/
+         ├── daft_punk.mp3
+         └── dark_side_of_the_moon.wav`);
+                } else if (input.value.startsWith('cd')) {
+                    await addLine(`Commande corrompue.`, 'error');
+                    await addLine(`\nVous criez "MAIS RIEN NE FONCTIONNE SUR CE TERMINAL" avant de vous rappeler que vous jouez à un petit escape game réalisé à la va-vite par votre professeur en une nuit blanche.`, 'narration');
+                    await wait(500)
+                    await addLine(`\nVous entendez un son de ukulélé s'arrêter au loin suivi de quelques sanglots.`, 'comment')
+                    await wait(500)
+                    await addLine(`\n... vous espérez qu'il corrige juste une mauvaise copie.`, 'narration');
+                } else {
+                    await addLine('La machine grogne.', 'error');
+
+                }
+                if (nbtry === 2) {
+                    await addLine(`\nMes documents... ça doit être un dossier. La commande tree vous permettra d'y voir un peu plus clair.`, 'narration');
+                }
+                else if (nbtry === 6) {
+                    await addLine(`\nDans le jeu que le professeur a honteusement plagié, on utilisait la commande cat (≽^•⩊•^≼) pour afficher le contenu d'un fichier.`, 'narration');
+                }
+
+
+            }
+            else if (currentEnigme === 5) {
+
+                if (input.value === '101010') {
+                    return true;
+                } else {
+
+                    if (nbtry === 0) {
+                        await addLine('AHAHAHAH CA NE CONNAIT MÊME PAS SES CLASSIQUES', 'error');
+                        await addLine(`\nAvant de céder à l’envie de fracasser votre clavier, rappelez-vous que vu son épaisseur, c’est plutôt lui qui risque de vous fracturer les phalanges.`, 'narration')
+                    } else if (nbtry === 1) {
+                        await addLine('AHAHAHAH LE NULLOS 🫵 🤣 🫵', 'error');
+                        await addLine(`\n“Des emojis ?!” vous exclamez-vous. Apparemment, il a pris le temps de mettre à jour le terminal… juste pour mieux se moquer de vous.`, 'narration')
+                        await addLine('...', 'narration', true, 800)
+                        await addLine(`😏`, 'narration')
+                        await addLine('...', 'narration', true, 800)
+                        await addLine(`C'était trop tentant, excusez-moi. Je redeviens un narrateur extra-diégétique. `, 'narration')
+                    } else {
+                        await addLine('BAH ALORS ?! ON EST BLOQUÉ ?!', 'error');
+                        await addLine(`\nVous conservez votre sang froid.`, 'narration')
+                    }
+
+                    if (nbtry === 2) {
+                        await addLine(`\nAvant de sortir de la salle du serveur, pour espérer croiser un professeur de philo, une vieille référence vous revient en mémoire : ce bouquin où des voyageurs interstellaires traversent la galaxie toujours munis d'une serviette de bain. Après tout, c’est toujours utile, une serviette.`, 'narration')
+                    }
+
+                    if (nbtry === 3) {
+                        await addLine(`\nQUARANTE DEUX ! MAIS OUI !`, 'narration')
+                    }
+
+                    if (nbtry === 4) {
+                        await addLine(`\nLa conversion en binaire n'a pas de secret pour vous, évidemment, vous avez simplement mal saisi la réponse.`, 'narration')
+                    }
+                }
+
+
+            }
+            else if (currentEnigme === 6) {
+                if (input.value === '0.30000000000000004') {
+                    await addLine('Tu connais parfaitement la norme IEEE-754, intéressant !\n', 'success');
+                    await wait(200);
+                    await addLine(`« parfaitement »... ce hacker semble avoir une haute opinion de vous. `, 'narration')
+                    await wait(1000);
+                    return true;
+                } else {
+                    await addLine(`Ce n'est pas ce que me dit ma machine...`, 'error');
+                    if (nbtry === 2) {
+                        await addLine(`\nBesoin d'une console Python ? Le site console.basthon.fr est toujours là pour vous !`, 'narration')
+                    }
+                }
+            }
+            else if (currentEnigme === 7) {
+
+
+                if (input.value === '30 88 38 46 42') {
+                    await addLine(`Vous sortez vos ciseaux à bouts ronds — on n'est jamais trop prudent — pour couper les câbles dans cet ordre... \n`, 'narration');
+                    await addLine(`La bombe s'éteint.`, 'success');
+                    await wait(500);
+
+
+                    return true;
+                } else {
+                    await addLine(`BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOMMMMMM`, 'bad', false);
+                    await wait(500);
+                    await addLine(`\nMais...`, 'narration', true, 200);
+                    await wait(500);
+                    await addLine(`\nVous ouvrez les yeux devant la bombe, prêt à couper les câbles à nouveau. Vous vous demandez si, finalement, la mort n'était pas une issue plus favorable.`, 'narration');
+                    await wait(500);
+                    await addLine(`\nDonne les câbles que tu coupes... comme : « 5 6 8 » (ne fais pas ça ou tu risques d'être toi aussi découpé en deux ahahah)`, 'error')
+
+                }
+            }
+            else if (currentEnigme === 8) {
+                if (input.value === '20 20 2 1 1') {
+                    await addLine(`*clic*`, 'comment');
+                    await wait(500);
+                    await addLine(`\nLe mécanisme de la bombe s'ouvre devant vous.\n`, 'success');
+                    await wait(500);
+                    await addLine(`4h du matin ?! Bon, il est temps d'aller dormir... et je ne sais même pas comment finir cette histoire ! Mais bien joué d'en être arrivé là... j'ai toujours cru en vous.`, 'narration');
+
+                    await wait(1000);
+                    return true;
+                }
+
+                await addLine(`Le mécanisme semble toujours aussi bloqué...\n`, 'comment');
+                await wait(1000);
+
+                if (nbtry === 1) {
+                    await addLine(`Vous avez beau essayer des combinaisons, votre cerveau surchauffe. Vous vous demandez si ce n'est pas une question à donner à manger à un Python...`, 'narration')
+                } else if (nbtry === 3) {
+                    await addLine(`Quelques boucles imbriquées devraient...`, 'narration')
+                    await addLine(`JE SUIS DE RETOUR !`, 'error')
+                    await wait(1000);
+                    await addLine(`Quoi ? Déjà ?! Et tu pourrais attendre que j'ai fini ma narration, peut-être ?`, 'narration')
+                    await wait(1000);
+                    await addLine(`Un méchant coupe toujours la parole, j'ai vu ça dans Scarface.`, 'error')
+                    await wait(1000);
+                    await addLine(`... il néglige la politesse et sa douche apparemment. `, 'narration')
+                    await wait(1000);
+                    await addLine(`C'était une douche au déo !`, 'error')
+                    await wait(1000);
+                    await addLine(`Je............`, 'narration', true, 300)
+                    await addLine(`Essayez à nouveau mon cher joueur.`, 'narration')
+                }
+            }
+            nbtry++;
+            return false;
+        }
+
+        async function nextEnigme() {
+            currentEnigme++;
+            nbtry = 0
+            enigmeShown = false;
+            input.value = '';
+            await showEnigme();
+        }
+
+        function skipAnimation() {
+            if (isTyping && currentTyping) {
+                if (currentTyping.timeout) {
+                    clearTimeout(currentTyping.timeout);
+                }
+                if (currentTyping.reject) {
+                    currentTyping.reject();
+                }
+            }
+        }
+
+        input.addEventListener('keyup', async (e) => {
+            if (e.key === 'Enter') {
+                if (isTyping) {
+                    skipAnimation();
+                    return;
+                }
+
+                const userInput = input.value.trim();
+                if (userInput === '') return;
+
+                addLine(`> ${userInput}`, 'user', false);
+
+                if (!enigmeShown) {
+                    await showEnigme();
+                } else {
+                    const isCorrect = await checkAnswer();
+                    if (isCorrect) {
+                        await nextEnigme();
+                    }
+                }
+
+                input.value = '';
+            }
+        });
+
+        // Démarrage du jeu
+        (async function () {
+            currentEnigme = 1;
+            await showEnigme();
+        })();
+    </script>
+</body>
+
+</html>
