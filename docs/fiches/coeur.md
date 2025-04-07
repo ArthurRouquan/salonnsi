@@ -19,18 +19,46 @@ icon: material/language-python
     a, b = b, a  # création d'un tuple (b, a) puis déballage
     ```
 
+<span></span>
+
+=== "Conversion binaire"
+
+    ```{.python .no-copy}
+    def binaire(n):
+        """ Renvoie l'écriture binaire de l'entier positif n. """
+        if n == 0:
+            return '0'  # cas particulier
+        bits = '' 
+        while n > 0:    # algorithme des divisions successives
+            reste = n % 2
+            bits = str(reste) + bits
+            n = n // 2
+        return bits
+    ```
+
+=== "Version récursive"
+
+    ```{.python .no-copy}
+    def binaire(n):
+        if n <= 1:
+            return str(n)
+        return binaire(n // 2) + str(n % 2)
+    ```
+
+
+
 ## Listes
 
 === "Parcours par indice" 
 
-    ```{.python .no-copy title="Complexité $O(n)$"}
+    ```{.python .no-copy }
     for i in range(len(tab)):
         print(i, tab[i])
     ```
 
 === "Parcours par élément" 
 
-    ```{.python .no-copy title="Complexité $O(n)$"}
+    ```{.python .no-copy }
     for valeur in tab:
         print(valeur)
     ```
@@ -39,7 +67,7 @@ icon: material/language-python
 
 === "Somme"
 
-    ```{.python .no-copy title="Complexité $O(n)$"}
+    ```{.python .no-copy }
     def somme(tab):
         total = 0
         for valeur in tab:
@@ -49,7 +77,7 @@ icon: material/language-python
 
 === "Moyenne"
 
-    ```{.python .no-copy title="Complexité $O(n)$"}
+    ```{.python .no-copy }
     def moyenne(tab):
         total = 0
         for valeur in tab:
@@ -59,7 +87,7 @@ icon: material/language-python
 
 === "Moyenne pondérée"
 
-    ```{.python .no-copy title="Complexité $O(n)$"}
+    ```{.python .no-copy }
     def moyenne_ponderee(notes, coeffs):
         total = 0
         total_coeffs = 0
@@ -71,7 +99,7 @@ icon: material/language-python
 
 === ":octicons-terminal-16:"
 
-    ```{.pycon .console .no-copy title="Complexité $O(n)$"}
+    ```{.pycon .console .no-copy }
     >>> tab = [12, 21, 37, 42]
     >>> somme(tab)
     112
@@ -85,7 +113,7 @@ icon: material/language-python
 
 === "Recherche linéaire" 
 
-    ```{.python .no-copy title="Complexité $O(n)$"}
+    ```{.python .no-copy }
     def rechercher(tab, x):
         """ Renvoie True si x est présent dans tab, False sinon. """
         for valeur in tab:
@@ -98,7 +126,7 @@ icon: material/language-python
 
 === "Indice" 
 
-    ```{.python .no-copy title="Complexité $O(n)$"}
+    ```{.python .no-copy }
     def rechercher_indice(tab, x):
         """ Renvoie l'indice de la 1ère occurence de x s'il est présent dans tab, None sinon. """
         for i in range(len(tab)):
@@ -109,7 +137,7 @@ icon: material/language-python
 
 === "Tous les indices" 
 
-    ```{.python .no-copy title="Complexité $O(n)$"}
+    ```{.python .no-copy }
     def rechercher_indices(tab, x):
         """ Renvoie tous les indices où apparaît x dans tab. """
         indices = []
@@ -121,7 +149,7 @@ icon: material/language-python
 
 === "Nombre d'occurences" 
 
-    ```{.python .no-copy title="Complexité $O(n)$"}
+    ```{.python .no-copy }
     def compter(tab, x):
         """ Renvoie le nombre d'occurences de x dans tab. """
         compteur = 0
@@ -149,7 +177,7 @@ icon: material/language-python
 
 === "Minimum"
 
-    ```{.python .no-copy title="Complexité $O(n)$"}
+    ```{.python .no-copy }
     def minimum(tab):
         """ Renvoie le minimum de tab. """
         mini = tab[0]  # minimum courant
@@ -161,7 +189,7 @@ icon: material/language-python
 
 === "Indice"
 
-    ```{.python .no-copy title="Complexité $O(n)$"}
+    ```{.python .no-copy }
     def indice_minimum(tab):
         """ Renvoie le 1er indice du minimum de tab. """
         m = 0  # indice du minimum courant
@@ -173,7 +201,7 @@ icon: material/language-python
 
 === "Tous les indices"
 
-    ```{.python .no-copy title="Complexité $O(n)$"}
+    ```{.python .no-copy }
     def indices_minimum(tab):
         """ Renvoie les indices où apparaît le minimum de tab. """
         indices = [0] # indices du minimum courant
@@ -241,7 +269,6 @@ icon: material/language-python
             else:
                 F.append(B[b])
                 b += 1
-    
         return F + A[a:] + B[b:]  # ajoute les éléments restants
 
     def tri_fusion(tab):
@@ -262,7 +289,7 @@ icon: material/language-python
         """ Recherche l'élément x dans la liste triée tab par dichotomie
             et retourne son indice s'il existe, None sinon. """
         i, j = 0, len(tab) - 1  # indices de la fenêtre de recherche
-        while i <= j:  # tant qu'il reste des éléments à tester
+        while j >= i:  # tant qu'il reste des éléments dans la fenêtre
             m = (i + j) // 2
             if tab[m] == x:
                 return m

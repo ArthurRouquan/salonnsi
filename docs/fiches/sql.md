@@ -3,7 +3,24 @@ title: SQL & BDD
 icon: material/database
 ---
 
-## Syntaxe SQL
+## Modèle Relationnel
+
+![](assets/bddr.svg){ .invert }
+
+Concernant les **clés étrangères** : 
+
+* Les clés étrangères permettent de relier des tables, et ainsi, d'éviter les **redondances** et faciliter les modifications.
+
+* Une clé étrangère doit toujours être une référence **valide**. Ainsi, pour supprimer un auteur, il faut d’abord supprimer tous les livres qui lui sont associés.
+
+Le **schéma relationnel** s'écrit comme :
+
+* <tt style="font-size: .9em">Livres(<u>isbn</u>: TEXT, titre: TEXT, annee: INT, #id_auteur)</tt>
+* <tt style="font-size: .9em">Auteurs(<u>id</u>: INT, nom_complet: TEXT, annee_naissance: INT, pays: TEXT)</tt>
+
+Les clés primaires sont <u>soulignés</u> et les clés étrangères sont précédées d'un <tt>#</tt>. 
+
+## Requêtes SQL
 
 * Récupérer des données d'une table :
 
@@ -49,7 +66,3 @@ icon: material/database
     DELETE FROM nom_table
     WHERE condition(s)
     ```
-
-## Le modèle relationnel
-
-TODO

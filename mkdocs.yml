@@ -82,5 +82,6 @@ nav:
   - "Exposition": exposition/index.md
   - "Fiches":
       - fiches/index.md
+      - fiches/poo.md
       - fiches/sql.md
       - fiches/coeur.md
