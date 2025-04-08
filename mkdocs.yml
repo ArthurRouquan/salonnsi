@@ -83,6 +83,7 @@ nav:
   - "Fiches":
       - fiches/index.md
       - fiches/poo.md
+      - fiches/lineaire.md
       - fiches/recursivite.md
       - fiches/dac.md
       - fiches/sql.md
