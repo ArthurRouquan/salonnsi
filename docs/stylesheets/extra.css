@@ -236,24 +236,24 @@ tt {
 
 .hl-blue {
     background-color: rgba(11, 132, 255, 0.25);
-    border-radius: 0.1em;
+    border-radius: 0.2em;
     padding: 0.2em 0.2em;
 }
 
 .hl-green {
     background-color: rgba(50, 215, 75, 0.25);
-    border-radius: 0.1em;
+    border-radius: 0.2em;
     padding: 0.2em 0.2em;
 }
 
 .hl-yellow {
     background-color: rgba(254, 217, 7, 0.25);
-    border-radius: 0.1em;
+    border-radius: 0.2em;
     padding: 0.2em 0.2em;
 }
 
 .hl-red {
     background-color: rgba(255, 68, 58, 0.25);
-    border-radius: 0.1em;
+    border-radius: 0.2em;
     padding: 0.2em 0.2em;
 }

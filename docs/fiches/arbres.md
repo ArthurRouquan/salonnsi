@@ -111,11 +111,11 @@ icon: material/graph
 * Sous l'hypothèse que l'arbre soit équilibré, cette structure de données permet de maintenir des valeurs triées (et donc de rechercher rapidement une valeur grâce à une recherche dichotomique) et d'insérer de manière efficiente de nouvelles valeurs. 
 
 <div class="center-table" markdown>
-|    Structure     | Complexité moyenne `insérer` | Complexité moyenne `rechercher` |
-| :--------------: | :--------------------------: | :-----------------------------: |
-| Tableau non-trié |            $O(1)$            |             $O(n)$              |
-|   Tableau trié   |            $O(n)$            |           $O(\log n)$           |
-|  ABR équilibré   |         $O(\log n)$          |           $O(\log n)$           |
+|    Structure     |       Complexité moyenne `insérer`        |      Complexité moyenne `rechercher`      |
+| :--------------: | :---------------------------------------: | :---------------------------------------: |
+| Tableau non-trié |    <span class="hl-blue">$O(1)$</span>    |    <span class="hl-red">$O(n)$</span>     |
+|   Tableau trié   |    <span class="hl-red">$O(n)$</span>     | <span class="hl-green">$O(\log n)$</span> |
+|  ABR équilibré   | <span class="hl-green">$O(\log n)$</span> | <span class="hl-green">$O(\log n)$</span> |
 </div>
 
 <div class="grid" markdown>
