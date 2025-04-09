@@ -257,3 +257,8 @@ tt {
     border-radius: 0.2em;
     padding: 0.2em 0.2em;
 }
+
+.transparent-codeblock {
+    font-family: var(--md-code-font);
+    font-size: .85em;
+}
