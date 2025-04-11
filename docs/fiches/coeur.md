@@ -206,9 +206,9 @@ icon: material/language-python
         """ Renvoie les indices où apparaît le minimum de tab. """
         indices = [0] # indices du minimum courant
         for i in range(len(tab)):
-            if tab[i] < indices[m]:
+            if tab[i] < tab[indices[0]]:
                 indices = [i]
-            elif tab[i] == indices[m]:
+            elif tab[i] == tab[indices[0]]:
                 indices.append(i)
         return indices
     ```
