@@ -104,6 +104,7 @@ Il existe trois représentations classiques d’un graphe en informatique :
     ]
     ```
 
+    <div class="grid" markdown>
     ```{ .python .no-copy title="Matrice d'adjacence"}
     # correspondance : A=0, B=1, C=2…
     graphe = [
@@ -115,7 +116,6 @@ Il existe trois représentations classiques d’un graphe en informatique :
         [ 0,  0,  0, 75,  4,  0],
     ]
     ```
-
     ```{ .python .no-copy title="Dictionnaire de listes d'adjacence"}
     graphe = {
         'A': [('B', 11), ('C', 22)],
@@ -125,7 +125,9 @@ Il existe trois représentations classiques d’un graphe en informatique :
         'E': [('B',  7), ('C',  8), ('D',  1), ('F', 4)],
         'F': [('D', 75), ('E',  4)],
     }
+     
     ```
+    </div>
 
 === "Graphe orienté pondéré"
 
@@ -220,7 +222,7 @@ Correctement implémentés, ces deux parcours visitent chaque sommet et chaque a
     ```
 
     1. On suppose que la classe `File` existe. Certaines implémentations utilisent une simple liste.
-    2. Les sommets marqués `M` sont réunis dans un **ensemble**, `#!py set` en python. Cette structure peut se voir comme un dictionnaire composé uniquement de clés. Certaines implémentations utilisent une simple liste ou encore un dictionnaire.
+    2. Les sommets marqués `M` sont réunis dans un **ensemble**, `set` en python. Cette structure peut se voir comme un dictionnaire composé uniquement de clés. Certaines implémentations utilisent une simple liste ou encore un dictionnaire.
     3. Le graphe est ici représenté sous la forme d'un dictionnaire de listes d'adjacence.
 
 === "Pseudocode DFS"

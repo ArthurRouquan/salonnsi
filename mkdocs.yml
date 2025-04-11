@@ -7,7 +7,7 @@ repo_name: arthurrouquan/salonnsi
 
 theme:
   logo: assets/salon-lion.png
-  favicon: assets/salon-lion-favicon-block.png
+  favicon: assets/salon-lion-favicon-block.svg
   language: fr
   name: material
   font:
@@ -72,6 +72,7 @@ extra_javascript:
   - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
 
 extra_css:
+  - stylesheets/colors.css
   - stylesheets/extra.css
   - https://unpkg.com/katex@0/dist/katex.min.css
 
@@ -90,3 +91,4 @@ nav:
       - fiches/arbres.md
       - fiches/graphes.md
       - fiches/coeur.md
+      - fiches/reseaux.md
