@@ -34,6 +34,8 @@ theme:
 
   features:
     - navigation.instant
+    - navigation.instant.prefetch
+    
     - navigation.tabs
     - navigation.indexes
     - search.suggest
@@ -68,6 +70,7 @@ markdown_extensions:
 
 extra_javascript:
   - javascripts/katex.js
+  - javascripts/slideshow.js
   - https://unpkg.com/katex@0/dist/katex.min.js
   - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
 
@@ -90,5 +93,6 @@ nav:
       - fiches/sql.md
       - fiches/arbres.md
       - fiches/graphes.md
-      - fiches/coeur.md
       - fiches/reseaux.md
+      - fiches/processus.md
+      - fiches/coeur.md

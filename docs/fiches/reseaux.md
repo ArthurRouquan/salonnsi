@@ -63,6 +63,7 @@ icon: material/web
 
         En excluant les adresses IP inutilisables — l’adresse réseau et l’adresse broadcast — les adresses IP utilisables du réseau vont ici de `192.168.144.1` à `192.168.151.254`.
 
+
 ## Protocoles de routage
 
 ![](assets/rip-ospf.svg)
@@ -73,3 +74,13 @@ icon: material/web
     $$\text{Coût} = \frac{\text{Constante}}{\text{Bande passante}}
     $$
     Souvent, la constante vaut $10^8$.
+
+
+## Sécurisation des communications
+
+Il existe deux types de **chiffrement** :
+
+* **Symétrique** : **1 clé** unique pour chiffrer et déchiffrer.
+* **Asymétrique** : **2 clés**, une pour chiffrer (clé publique), une autre pour déchiffrer (clé privée).
+
+Le chiffrement asymétrique sert à échanger une clé symétrique en début de communication. Ensuite, les échanges utilisent le chiffrement symétrique (plus rapide).
