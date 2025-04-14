@@ -1,5 +1,5 @@
 ---
-title: Architecture matérielle
+title: Architecture matérielle & OS
 icon: octicons/cpu-16
 ---
 
