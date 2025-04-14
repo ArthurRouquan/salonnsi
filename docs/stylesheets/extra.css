@@ -232,13 +232,6 @@ tt {
     font-family: var(--md-code-font);
 }
 
-
-
-.transparent-codeblock {
-    font-family: var(--md-code-font);
-    font-size: .85em;
-}
-
 .slideshow {
     display: grid;
     grid-template-columns: auto 1fr auto;

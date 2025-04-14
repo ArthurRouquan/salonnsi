@@ -192,22 +192,20 @@ Correctement implémentés, ces deux parcours visitent chaque sommet et chaque a
 
 === "Pseudocode BFS"
 
-    <div class="transparent-codeblock annotate" markdown>
-    <pre>
-    **fonction** parcours_largeur(graphe, sommet_depart) :
+    ```{ .txt .no-copy .annotate }
+    fonction parcours_largeur(graphe, sommet_depart) :
         initialiser une file et enfiler le sommet de départ à la file
-        marquer le sommet de départ (1)
-        **tant que** la file n'est pas vide :
+        marquer le sommet de départ
+        tant que la file n'est pas vide :
             défiler un sommet de la file et le traiter/visiter
             mettre tous ses voisins non marqués dans la file et les marquer
-    </pre>
-    </div>
-
-    1. Le marquage est un simple booléen associé à chaque sommet. Il signifie que le sommet a été visité ou qu'il se situe dans la file des sommets à visiter. Un sommet non-marqué est donc un sommet non-découvert.
+    ```
+    
+    Le **marquage** est un simple booléen associé à chaque sommet. Il signifie que le sommet a été visité ou qu'il se situe dans la file des sommets à visiter. Un sommet non-marqué est donc un sommet non-découvert.
 
 === ":material-language-python: Code Python BFS"
 
-    ```{ .python .no-code }
+    ```{ .python .no-copy }
     def parcours_largeur(G, s):
         F = File() #(1)!
         F.enfiler(s)
@@ -215,33 +213,33 @@ Correctement implémentés, ces deux parcours visitent chaque sommet et chaque a
         while not F.est_vide():
             u = F.defiler()
             print('On visite le sommet', u)  # ou tout autre traitement
-            for v in G[u]: #(2)!
+            for v in G[u]: #(3)!
                 if v not in M:
                     F.enfiler(v)
                     M.add(v)
     ```
 
     1. On suppose que la classe `File` existe. Certaines implémentations utilisent une simple liste.
-    2. Les sommets marqués `M` sont réunis dans un **ensemble**, `set` en python. Cette structure peut se voir comme un dictionnaire composé uniquement de clés. Certaines implémentations utilisent une simple liste ou encore un dictionnaire.
+    
+    2. Ici, les sommets marqués `M` sont réunis dans un **ensemble**, `set` en python. Cette structure peut se voir comme un dictionnaire composé uniquement de clés. Certaines implémentations utilisent une simple liste ou encore un dictionnaire.
+    
     3. Le graphe est ici représenté sous la forme d'un dictionnaire de listes d'adjacence.
 
 === "Pseudocode DFS"
 
-    <div class="transparent-codeblock annotate" markdown>
-    <pre>
-    **fonction** parcours_profondeur(graphe, u) :
+    ```{ .txt .no-copy }
+    fonction parcours_profondeur(graphe, u) :
         visiter/traiter u
-        **pour** tous les sommets voisins v de u :
-            **si** v n'a pas été visité :
+        pour tous les sommets voisins v de u :
+            si v n'a pas été visité :
                 appeler (récursivement) parcours_profondeur(graphe, v)
-    </pre>
-    </div>
+    ```
 
     Le parcours en profondeur peut être aussi implémenté itérativement à l'aide d'une **pile**. Cette pile remplace la pile des différents appels.
 
 === ":material-language-python: Code Python DFS"
 
-    ```{ .python .no-code }
+    ```{ .python .no-copy }
     def parcours_profondeur(G, u, visites):
         visites.append(u)
         print('On visite le sommet', u)  # ou tout autre traitement
