@@ -46,8 +46,8 @@ L'**ordonnanceur** est un programme du système d’exploitation qui choisit le 
 
 L'**interblocage** est une situation où plusieurs processus sont bloqués, chacun attendant une ressource détenue par un autre, aboutissant à un blocage mutuel et infini.
 
-<div class="slideshow" markdown="span">
-  <button class="nav prev" markdown="span">:material-arrow-left-circle:</button>
+<div class="slideshow" markdown>
+  <button class="nav prev">:material-arrow-left-circle:</button>
   <div class="slides">
     <img src="../assets/interblocage/01.svg" class="slide">
     <img src="../assets/interblocage/02.svg" class="slide">
@@ -62,7 +62,7 @@ L'**interblocage** est une situation où plusieurs processus sont bloqués, chac
     <img src="../assets/interblocage/11.svg" class="slide">
     <img src="../assets/interblocage/12.svg" class="slide active">
   </div>
-  <button class="nav next" markdown="span">:material-arrow-right-circle:</button>
+  <button class="nav next">:material-arrow-right-circle:</button>
   <div class="dots">
     <span class="dot"></span>
     <span class="dot"></span>
