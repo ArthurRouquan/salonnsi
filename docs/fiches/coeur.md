@@ -91,7 +91,7 @@ icon: material/language-python
     def moyenne_ponderee(notes, coeffs):
         total = 0
         total_coeffs = 0
-        for i in range(len(tab)):
+        for i in range(len(notes)):
             total += notes[i] * coeffs[i]
             total_coeffs += coeffs[i]
         return total / total_coeffs
@@ -218,7 +218,7 @@ icon: material/language-python
     ```{.pycon .console .no-copy}
     >>> tab = [21, 37, 7, 42, 7]
     >>> minimum(tab)
-    True
+    7
     >>> minimum_indice(tab)
     2
     >>> minimum_indices(tab)
@@ -272,7 +272,7 @@ icon: material/language-python
         return F + A[a:] + B[b:]  # ajoute les éléments restants
 
     def tri_fusion(tab):
-        if len(tab) == 1:  # cas de base
+        if len(tab) <= 1:  # cas de base
             return tab
         m = len(tab) // 2
         G, D = tab[:m], tab[m:]              # Étape 1. Diviser
