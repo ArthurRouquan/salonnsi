@@ -30,11 +30,35 @@ Un programme est une suite d'**instructions** en code machine, c'est-à-dire une
   
     </div>
 
-* Chaque processus possède un identifiant unique (**PID**) et celui de son parent (PPID). Cela permet de structurer les processus en arbre. Si un processus parent se termine, tous ses processus enfants (et leur descendance) sont également arrêtés.
+* Un **processus** peut être démarré au démarrage du système, par l'utilisateur, par un périphérique ou par un autre processus appelé **parent**.
+
+* Chaque processus possède un **identifiant unique (PID)** et celui de son parent (PPID). Cela permet de structurer les processus en arbre. Si un processus parent se termine, tous ses processus enfants (et leur descendance) sont également arrêtés.
 
 * Un processeur n’exécute qu’une seule instruction à la fois, donc un seul processus à la fois. Pour donner l'illusion de simultanéité d'exécution, les processus se partagent le processeur à tour de rôle. Ainsi, un processus peut donc se trouver dans différents **états** :
 
     ![](assets/processus-etats.svg){ .center-img }
+
+### Commandes UNIX relatifs aux processus
+
+=== ":material-camera-enhance: &nbsp; `ps`"
+
+    `ps` affiche **un cliché instantané** des processus en cours d'exécution. Les options `-ef` permet d'afficher tous les processus avec informations détaillées.
+
+    ![](assets/ps.png){ width="600px" .center-img }
+
+=== ":material-monitor-eye: &nbsp; `top`"
+
+    `top` affiche **en temps réel** les processus actifs et leur consommation ﬂsystème (CPU, mémoire...).
+
+    ![](assets/top.png){ width="600px" .center-img }
+
+
+=== ":material-skull: &nbsp; `kill`"
+
+    `kill <PID>` **termine** le processus identifié par son PID. L'option `-9` permet de forcer l’arrêt immédiat du processus, sans lui laisser la possibilité de se terminer de manière contrôlée.
+
+    ![](assets/kill.png){ width="600px" .center-img }
+
 
 ### Ordonnancement des processus
 
