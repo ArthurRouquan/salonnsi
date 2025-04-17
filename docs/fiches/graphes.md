@@ -186,7 +186,7 @@ De la même manière que l'on explore les éléments d'une liste pour les décou
 
 * Le **parcours en profondeur** (en anglais *Depth First Search*, **DFS**) consiste à aller le plus loin possible dans une direction avant de revenir en arrière si on tombe sur une impasse.
 
-![](assets/parcours-graphe.svg)
+![](assets/parcours-graphe.svg){ .center-img }
 
 Correctement implémentés, ces deux parcours visitent chaque sommet et chaque arête une seule fois, d’où une complexité en temps de $O(n + m)$.
 
@@ -249,3 +249,32 @@ Correctement implémentés, ces deux parcours visitent chaque sommet et chaque a
     ```
 
     Pour appeler cette fonction : `parcours_profondeur(G, sommet_depart, [])`.
+
+## Détection de cycles / circuits
+
+* Dans la cas **non-orienté**, un **parcours en largeur** suffit à détecter un **cycle**. Si lors du parcours du voisinage d'un sommet on retombe sur un sommet déjà marqué, alors on a détecté un cycle.
+
+* Dans le cas **orienté**, un **parcours en profondeur** permet de détecter un **circuit**. Seul un **arc de retour** témoigne d'un circuit :
+
+    ![](assets/dfs-arcs.svg){ .center-img }
+
+    Un sommet est dit **terminé** si on a découvert toute sa descendance. Un arc de retour est ainsi un arc vers un ancêtre déjà visité mais **non-terminé**. L'algorithme colorie les sommets selon leur état d’exploration :
+
+    <div class="center-table">
+    
+    | Couleur | État du sommet      | Description                                       |
+    | ------- | ------------------- | ------------------------------------------------- |
+    | Blanc   | Non visité          | Le sommet n’a pas encore été exploré.             |
+    | Gris    | Visité, non terminé | Exploration en cours de la descendance.           |
+    | Noir    | Visité et terminé   | Toute la descendance a été complètement explorée. |
+    
+    </div>
+
+    La coloration est finalement un marquage plus détaillé que celui d'un parcours en profondeur classique. Initialement, tous les sommets sont blancs. Lorsqu'on visite un sommet $s$ :
+
+    * Si $s$ est noir (arc avant ou transverse), ne rien faire.
+    * Si $s$ est gris (arc de retour), un circuit est découvert.
+    * Si $s$ est blanc (un arc de liaison) :
+        * Colorier $s$ en gris
+        * Visiter tous les voisins de $s$ récursivement
+        * Colorier $s$ en noir (les différents appels récursifs font qu'à ce moment-là, tous les descendants de $s$ sont terminés).
