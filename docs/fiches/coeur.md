@@ -362,7 +362,7 @@ Une chaîne de caractères est une **liste** de caractères, tous les algorithme
     def compter(tab):
         compteurs = {}
         for valeur in tab:
-            if valeur in tab:
+            if valeur in compteurs:
                 compteurs[valeur] += 1
             else:
                 compteurs[valeur] = 1
