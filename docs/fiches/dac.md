@@ -24,7 +24,7 @@ Pour appliquer la stratégie « Diviser pour régner » à un problème, on rais
 
 * Le **tri fusion** applique la stratégie « Diviser pour régner ». Ce tri consiste à :
 
-    * **Cas de base** : Si la liste ne possède qu'un élément, elle est déjà triée, la renvoyer.
+    * **Cas de base** : Si la liste ne possède qu'un élément ou moins, elle est déjà triée, la renvoyer.
     * **Diviser** : Sinon, diviser en deux la liste à trier.
     * **Régner** : Trier récursivement les deux sous-listes.
     * **Combiner** : Fusionner les deux sous-listes triées en une liste triée et la renvoyer.
@@ -48,7 +48,7 @@ Pour appliquer la stratégie « Diviser pour régner » à un problème, on rais
         return F + A[a:] + B[b:]  # ajoute les éléments restants
 
     def tri_fusion(tab):
-        if len(tab) == 1:  # cas de base
+        if len(tab) <= 1:  # cas de base
             return tab
         m = len(tab) // 2
         G, D = tab[:m], tab[m:]              # Étape 1. Diviser
