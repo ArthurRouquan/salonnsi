@@ -20,7 +20,7 @@ icon: octicons/cpu-16
 
     <div class="grid" markdown>
 
-    ```asm {.no-copy .title="Code machine"}
+    ```asm {.no-copy title="Code machine"}
     00011010
     00100010 
     00010011
@@ -28,7 +28,7 @@ icon: octicons/cpu-16
     01111000 
     ```
 
-    ```tasm {.no-copy .title="Code assembleur"}
+    ```tasm {.no-copy title="Code assembleur"}
     LD A, (DE) 
     LD (HL+), A 
     INC DE 
