@@ -1,10 +1,29 @@
+from pathlib import Path
 from pprint import pprint
 from PyPDF2 import PdfReader, PdfWriter
 from tqdm import tqdm
 
-SUBJECTS_FOLDER = './data/sujets'
-EXERCICES_FOLDER = './data/exercices'
+SUBJECTS_FOLDER = './docs/annales/sujets'
+EXERCICES_FOLDER = './docs/annales/exercices'
 SUBJECTS_INFO = """
+23-NSI0A 2,3 4,5 6,7,8,9
+23-NSI0B 2,3,4 5,6 7,8,9
+23-NSIJ1AN1 2,3,4,5,6 7,8,9 10,11,12,13
+23-NSIJ1AS1 2,3,4,5 6,7,8 9,10,11,12,13
+23-NSIJ1G11 2,3 4,5 6,7,8,9
+23-NSIJ1LI1 2,3 4,5,6,7 8,9,10
+23-NSIJ1LR1 2,3,4 5,6 7,8
+23-NSIJ1ME1 2,3 4,5 6,7,8,9,10
+23-NSIJ1NC1 2,3 4,5 6,7,9
+23-NSIJ1PO1 2,3,4,5 6,7,8 9,10,11
+23-NSIJ2AN1 2,3,4 5,6,7,8 9,10,11,12
+23-NSIJ2AS1 2,3,4,5 6,7,8,9 10,11,12,13,14
+23-NSIJ2G11 2,3,4 5,6 7,8,9
+23-NSIJ2JA1 2,3,4 5,6 7,8
+23-NSIJ2LI1 2,3 4,5,6,7 7,8,9,10,11,12
+23-NSIJ2LR1 2,3,4 4,5,6,7 8,9,10
+23-NSIJ2ME1 2,3 4,5,6 7,8,9,10
+23-NSIJ2PO1 2,3,4 5,6,7 8,9,10
 24-NSI0A 2,3,4,5 6,7,8,9 10,11,12,13,14
 24-NSI0B 2,3,4 5,6,7,8 9,10,11,12,13,14
 24-NSIG11BIS 2,3,4 5,6,7,8 9,10,11,12,13
@@ -46,6 +65,13 @@ def parse(subjects_info):
         subjects[code] = [list(map(int, p.split(','))) for p in pages]
     return subjects
 
+
+def get_subject_names():
+    stems = sorted([file.stem for file in Path(SUBJECTS_FOLDER).iterdir() if file.is_file()])
+    print('\n'.join(map(str, stems)))
+
+
+# get_subject_names()
 
 subjects = parse(SUBJECTS_INFO)
 
