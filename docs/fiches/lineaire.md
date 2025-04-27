@@ -49,7 +49,7 @@ Une liste chaînée a un seul sens de parcours, on la parcours toujours en parta
 | Suppression en tête                    | <span class="hl-green">$O(1)$</span> | <span class="hl-green">$O(1)$</span> |  <span class="hl-red">$O(n)$</span>  |
 | Suppression en fin                     |  <span class="hl-red">$O(n)$</span>  | <span class="hl-green">$O(1)$</span> | <span class="hl-green">$O(1)$</span> |
 | Adapté pour implémenter une **pile** ? |        :material-check-bold:         |        :material-check-bold:         |        :material-check-bold:         |
-| Adapté pour implémenter une **file** ? |        :material-close-thick:        |        :material-check-bold:         |        :material-close-thick:        |
+| Adapté pour implémenter une **file** ? |        :material-check-bold:         |        :material-check-bold:         |        :material-close-thick:        |
 </div>
 
 
@@ -81,27 +81,42 @@ Une liste chaînée a un seul sens de parcours, on la parcours toujours en parta
 === "File"
 
     ```{.python .no-copy}
+    class Chainon:
+        def __init__(self, element):
+            self.element = element
+            self.suivant = None
+
+
     class File:
         def __init__(self):
-            self.data = []  # tableau comme conteneur
-
-        def taille(self):
-            return len(self.data)
+            self.tete = None
+            self.queue = None  # dernier chainon
 
         def est_vide(self):
-            return self.taille() == 0
+            return self.tete is None
 
-        def sommet(self):
-            return self.data[-1]
-
-        def enfiler(self, e):
-            self.data.append(e)  # O(1)
+        def enfiler(self, element):
+            if self.est_vide():
+                self.tete = self.queue = Chainon(element)
+            else:
+                self.queue.suivant = Chainon(element)
+                self.queue = self.queue.suivant
 
         def defiler(self):
-            return self.data.pop(0)  # O(n) aïe ! 
-    ```
+            assert not self.est_vide()
+            e = self.tete.element
+            self.tete = self.tete.suivant
+            if self.tete is None:
+                self.queue = None
+            return e
 
-    Une implémentation optimale d'une file utilise plutôt une **liste doublement chaînée** pour stocker les éléments, car elle permet d’ajouter (`enfiler`) ou de retirer (`défiler`) un élément en **temps constant** \( O(1) \).
+        def afficher(self):
+            chainon = self.tete
+            while chainon:
+                print(chainon.element, end=' → ')
+                chainon = chainon.suivant
+            print('')
+    ```
 
 === "Liste chaînée"
 
