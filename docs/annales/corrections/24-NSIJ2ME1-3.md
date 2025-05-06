@@ -35,7 +35,7 @@ for piste in lievre_blanc.get_pistes():
 
 5. 
 ```python
-def pistes_de_couleur(couleur: str, lst: list):
+def pistes_de_couleur(lst: list, couleur: str):
     pistes = []
     for piste in lst:
         if piste.get_couleur() == couleur:

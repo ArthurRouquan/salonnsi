@@ -90,6 +90,7 @@ nav:
       - fiches/lineaire.md
       - fiches/recursivite.md
       - fiches/dac.md
+      - fiches/dp.md
       - fiches/sql.md
       - fiches/arbres.md
       - fiches/graphes.md
@@ -97,3 +98,4 @@ nav:
       - fiches/architecture.md
       - fiches/os.md
       - fiches/coeur.md
+      - fiches/python.md

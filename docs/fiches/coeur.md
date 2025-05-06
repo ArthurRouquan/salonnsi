@@ -1,6 +1,6 @@
 ---
 title: Programmes à connaître
-icon: material/language-python
+icon: octicons/file-code-16
 ---
 
 ## Général
