@@ -98,4 +98,4 @@ nav:
       - fiches/architecture.md
       - fiches/os.md
       - fiches/coeur.md
-      - fiches/python.md
+      # - fiches/python.md

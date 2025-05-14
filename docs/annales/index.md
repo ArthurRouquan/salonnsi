@@ -23,6 +23,9 @@ L'épreuve **pratique** consiste à résoudre en 1h un sujet composé de deux ex
     ---
 
     [:material-open-in-new: S'entraîner sur Capytale](https://capytale2.ac-paris.fr/web/c/020a-6177185/atr)
+
+    [:material-youtube: Correction vidéo](https://www.youtube.com/watch?v=IkOMhqGqZY4)
+
 </div>
 
 
