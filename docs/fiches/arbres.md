@@ -29,7 +29,7 @@ icon: material/graph
 
     ``` { .python .no-copy }
     class Noeud:
-        def __init__(self, valeur, noeugd_gauche, noeud_droit):
+        def __init__(self, valeur, noeud_gauche, noeud_droit):
             self.valeur = valeur        # une valeur associée à un nœud (un nombre, une chaîne de caractères etc.)
             self.gauche = noeud_gauche  # une référence vers le nœud fils gauche. None s'il n'existe pas.
             self.droit  = noeud_droit 

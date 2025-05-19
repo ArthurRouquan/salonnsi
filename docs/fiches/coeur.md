@@ -368,3 +368,45 @@ Une chaîne de caractères est une **liste** de caractères, tous les algorithme
                 compteurs[valeur] = 1
         return compteurs
     ```
+
+
+## Arbres
+
+```{.python .no-copy}
+class Noeud:
+    def __init__(self, v, g=None, d=None):
+        self.valeur = v
+        self.gauche = g  # sous-arbre gauche
+        self.droit  = d  # sous-arbre droit
+```
+
+=== "Insertion fonctionnelle" 
+
+    ```{.python .no-copy}
+    def inserer(arbre, x):
+        """ Insère une valeur x dans un ABR arbre et renvoie l’arbre modifié. """
+        if arbre is None:
+            return Noeud(x)
+        if x < arbre.valeur:
+            arbre.gauche = inserer(arbre.gauche, x)
+        else:
+            arbre.droit  = inserer(arbre.droit,  x)
+        return arbre
+    ```
+
+=== "Insertion en place" 
+
+    ```{.python .no-copy}
+    def inserer(arbre, x):
+        """ Insère une valeur x dans un ABR arbre. """
+        if x < arbre.valeur:
+            if arbre.gauche is None:
+                arbre.gauche = Noeud(x)
+            else:
+                inserer(arbre.gauche, x)
+        else:
+            if arbre.droit is None:
+                arbre.droit = Noeud(x)
+            else:
+                inserer(arbre.droit, x)
+    ```

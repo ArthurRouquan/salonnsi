@@ -9,6 +9,24 @@ hide:
 
 <div class="card-container" markdown>
 
+
+<div class="card-flip" markdown>
+<div class="card-flip-inner" markdown>
+<div class="card-flip-front"><img src="assets/snake/snake.gif" class="pixelart"></div>
+<div class="card-flip-back" markdown>
+## Snake
+### Émilien & Gabin, Mai 2025
+Manger des pommes. Le prof a fait un score de 50.
+<div class="card-links" markdown="span">
+[Télécharger le code :octicons-download-16:](assets/snake/snake.zip)
+[Jouer au jeu :material-open-in-new:](assets/snake/snake.html)
+</div>
+</div>
+</div>
+</div>
+
+
+
 <div class="card-flip" markdown>
 <div class="card-flip-inner" markdown>
 <div class="card-flip-front"><img src="assets/demineur/demineur.gif"></div>
@@ -39,7 +57,6 @@ Ce n'est pas vraiment un jeu, mais un petit automate cellulaire !
 </div>
 </div>
 </div>
-
 
 
 </div>

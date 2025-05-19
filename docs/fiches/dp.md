@@ -3,9 +3,70 @@ title: Programmation dynamique
 icon: material/call-split
 ---
 
-* La **programmation dynamique** est une méthode utilisée pour concevoir des algorithmes capables de résoudre à l'optimalité des problèmes d’optimisation, c’est-à-dire des problèmes où l’on cherche à maximiser ou minimiser une certaine quantité numérique. Cette approche repose sur la décomposition récursive du problème en sous-problèmes interdépendants (par la définition récursive du coût optimal d'un problème en fonction des coûts optimaux de ses sous-problèmes), dont les solutions sont mémorisées afin d’éviter des calculs redondants (mémoisation).
+## Introduction
 
-## Exemple — Rendu de monnaie
+La **programmation dynamique** est une méthode utilisée pour résoudre des problèmes d’optimisation, où l’on cherche à maximiser ou minimiser une valeur. Elle permet d’obtenir une solution optimale avec, souvent, une excellente complexité en temps.
+
+Cette approche consiste à décomposer le problème en sous-problèmes, de les résoudre **récursivement**, et mémoriser leurs solutions pour éviter de recalculer ceux déjà rencontrés (**mémoïsation**).
+
+<!-- ## Intuition avec le rendu de monnaie
+
+On souhaite rendre 50€ avec des pièces de 1€, 10€, 25€ et 33€. On souhaite rendre le moins de pièces possibles.
+
+Imaginons que l’on veuille rendre 50 € à l’aide des pièces : 1 €, 10 €, 25 € et 33 €. L'objectif est de rendre le moins de pièces possible pour rendre cette somme.
+
+Pour trouver la meilleure façon de rendre 50 €, on peut raisonner par sous-problèmes. Si on connaissait déjà le nombre minimal de pièces nécessaires pour rendre certaines sommes plus petites, on pourrait s’en servir pour construire la solution pour 50 €.
+
+Exemple : choix possibles pour 50 €
+
+Pour rendre 50 €, on peut :
+	•	utiliser une pièce de 1 € et résoudre le sous-problème de 49 €
+	•	utiliser une pièce de 10 € et résoudre 40 €
+	•	utiliser une pièce de 25 € et résoudre 25 €
+	•	utiliser une pièce de 33 € et résoudre 17 €
+
+Autrement dit, chaque choix nous ramène à un problème plus petit.
+
+
+On peut constater que **si on sait rendre optimalement 49€, 40€, 25€ et 17€, alors on sait rendre optimalement 50€** :
+
+Supposons que l’on connaît déjà les solutions optimales :
+
+$$
+\begin{align*}
+c^\star(49) &= 7 \text{ pièces} \
+c^\star(40) &= 4 \text{ pièces} \
+c^\star(25) &= 1 \text{ pièce} \
+c^\star(17) &= 8 \text{ pièces}
+\end{align*}
+$$
+
+Alors on peut en déduire :
+
+$$
+c^\star(50) = 1 + \min\big( c^\star(49), c^\star(40), c^\star(25), c^\star(17) \big) = 1 + \min(7, 4, 1, 8) = 2
+$$
+
+✅ Conclusion : la meilleure option est de rendre 25 € avec une pièce de 25 €, puis encore 25 € avec une autre pièce. Deux pièces suffisent !
+
+
+$$
+\begin{align*}
+c^\star(50€ &- 1€) &= c^\star(49€) &= 7 \text{ pièces} \\
+c^\star(50€ &- 10€) &= c^\star(40€) &= 4 \text{ pièces} \\
+c^\star(50€ &- 25€) &= c^\star(25€) &= 1 \text{ pièce} \\
+c^\star(50€ &- 33€) &= c^\star(17€) &= 8 \text{ pièces}
+\end{align*} \ \implies c^\star(50€) = \min(7, 4, 1, 8) + 1 = 2 \text{ pièces}
+$$ 
+
+Où $c^\star(s)$ désigne le coût optimal, ici le nombre de pièces minimales pour rendre $s$€.
+
+Plus généralement, si je dois rendre optimalement $s$€, je dois d'abord savoir rendre optimalement $(s - p_1)$€, $(s - p_2)$€, etc. -->
+
+
+<!-- 50 (1, 10, 25, 33) [7, 4, 1, 8] -->
+
+<!-- ## Exemple — Rendu de monnaie
 
 1. Définir les **données** du problème :
 
@@ -127,7 +188,7 @@ icon: material/call-split
 
 
         print("Solution / Coût opt. :", rendu(25, [1, 5, 6, 7]))
-        ```    
+        ```     -->
 
 <!-- ## Exemple introductif
 
