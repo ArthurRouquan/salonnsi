@@ -12,6 +12,12 @@
     text-align: center;
 }
 
+.md-content .center-button {
+    display: block;
+    text-align: center;
+    margin: 2rem 0;
+}
+
 .md-typeset .center-table :is(td, th):not([align]) {
     text-align: initial;
 }

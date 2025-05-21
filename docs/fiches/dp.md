@@ -1,55 +1,83 @@
 ---
-title: Programmation dynamique
-icon: material/call-split
+title: Programmation Dynamique
+icon: material/dots-triangle
 ---
 
 ## Introduction
 
-La **programmation dynamique** est une méthode utilisée pour résoudre des problèmes d’optimisation, où l’on cherche à maximiser ou minimiser une valeur. Elle permet d’obtenir une solution optimale avec, souvent, une excellente complexité en temps.
+La **programmation dynamique** est une puissante méthode utilisée pour résoudre des problèmes d’optimisation, où l’on cherche à maximiser ou minimiser une valeur. Elle permet d’obtenir une solution optimale avec, souvent, une excellente complexité en temps.
 
-Cette approche consiste à décomposer le problème en sous-problèmes, de les résoudre **récursivement**, et mémoriser leurs solutions pour éviter de recalculer ceux déjà rencontrés (**mémoïsation**).
+Cette approche consiste à décomposer le problème en sous-problèmes, de les résoudre **récursivement**, et mémoriser leurs solutions pour éviter de recalculer ceux déjà rencontrés à l'aide d'un cache (**mémoïsation**).
 
-<!-- ## Intuition avec le rendu de monnaie
+<div class="red-text" style="text-align: center;" markdown>:material-traffic-cone: En construction :material-traffic-cone:</div>
 
-On souhaite rendre 50€ avec des pièces de 1€, 10€, 25€ et 33€. On souhaite rendre le moins de pièces possibles.
+<!-- 
+## Intuition avec le problème du rendu de monnaie
 
-Imaginons que l’on veuille rendre 50 € à l’aide des pièces : 1 €, 10 €, 25 € et 33 €. L'objectif est de rendre le moins de pièces possible pour rendre cette somme.
+Imaginons que l’on souhaite rendre 50 € à l’aide des pièces suivantes : 1 €, 10 €, 25 € et 33 €. L'objectif est de rendre le moins de pièces possible pour rendre cette somme.
 
-Pour trouver la meilleure façon de rendre 50 €, on peut raisonner par sous-problèmes. Si on connaissait déjà le nombre minimal de pièces nécessaires pour rendre certaines sommes plus petites, on pourrait s’en servir pour construire la solution pour 50 €.
+On peut constater que **si on sait rendre optimalement 49€, 40€, 25€ et 17€, alors on sait rendre optimalement 50€**. En effet, pour rendre 50€, on peut au choix :
 
-Exemple : choix possibles pour 50 €
+* Rendre une pièce de 1 €  et rendre ensuite 49 € (un sous-problème)
+* Rendre une pièce de 10 € et rendre ensuite 40 €
+* Rendre une pièce de 25 € et rendre ensuite 25 €
+* Rendre une pièce de 33 € et rendre ensuite 17 €
 
-Pour rendre 50 €, on peut :
-	•	utiliser une pièce de 1 € et résoudre le sous-problème de 49 €
-	•	utiliser une pièce de 10 € et résoudre 40 €
-	•	utiliser une pièce de 25 € et résoudre 25 €
-	•	utiliser une pièce de 33 € et résoudre 17 €
+Nous avons ainsi décomposé notre problème en 4 sous-problèmes, c'est-à-dire 4 problèmes de même nature, mais plus petits. Supposons que l’on ait résolu optimalement les sous-problèmes :
 
-Autrement dit, chaque choix nous ramène à un problème plus petit.
+$$\begin{align*}
+c^\star(49€) &= 7 \text{ pièces} \\
+c^\star(40€) &= 4 \text{ pièces} \\
+c^\star(25€) &= 1 \text{ pièce} \\
+c^\star(17€) &= 8 \text{ pièces}
+\end{align*}$$
+
+La fonction $c^\star$ désigne généralement le coût optimal. Plus précisement, ici, $c^\star(s)$ est le nombre minimal de pièces pour rendre $s$€.
+ Alors on peut en déduire :
+
+$$\begin{align*}
+c^\star(50€) &= 1 + \min\Big( c^\star(49€), c^\star(40€), c^\star(25€), c^\star(17€) \Big) \\
+&= 1 + \min(7, 4, 1, 8) \\
+&= 2 \text{ pièces}
+\end{align*}$$
+
+Mais comment calcule-t-on les coûts optimaux des sous-problèmes, $c^\star(49)$, $c^\star(40)$ etc. ? En décomposant récursivement de la même manière !
+
+$$\left\{\begin{align*}
+&c^\star(49) = 1 + \min\Big( c^\star(49 - 1), c^\star(49 - 10), c^\star(49 - 25), c^\star(49 - 33) \Big) \\
+&c^\star(40) = 1 + \min\Big( c^\star(40 - 1), c^\star(40 - 10), c^\star(40 - 25), c^\star(40 - 33) \Big) \\
+&\cdots \\
+\end{align*} \right.
+$$
 
 
-On peut constater que **si on sait rendre optimalement 49€, 40€, 25€ et 17€, alors on sait rendre optimalement 50€** :
-
-Supposons que l’on connaît déjà les solutions optimales :
+On peut **généraliser** cette décomposition pour aboutir à une **formulation récursive du coût optimal** (appelée *fonction d'état* ou *équation de Bellman*) :
 
 $$
-\begin{align*}
-c^\star(49) &= 7 \text{ pièces} \
-c^\star(40) &= 4 \text{ pièces} \
-c^\star(25) &= 1 \text{ pièce} \
-c^\star(17) &= 8 \text{ pièces}
-\end{align*}
+c^\star(s) = \begin{cases}
+0 & \text{si } s = 0 \\ 
+1 + \min \Big\{c^\star(s - p) \ \Big| \ p \in P, p \leq s\Big\} & \text{sinon} \\ 
+\end{cases}
 $$
 
-Alors on peut en déduire :
+Où $P$ est l'ensemble des valeurs des différentes pièces. La condition $p \leq s$ permet d'éviter de rendre une pièce plus grande que la somme à rendre. On décompose alors le problème jusqu'au cas de base, c'est-à-dire le problème le plus simple, ici rendre 0€. Il ne reste plus qu'à implémenter cette fonction récursive en Python :
 
-$$
-c^\star(50) = 1 + \min\big( c^\star(49), c^\star(40), c^\star(25), c^\star(17) \big) = 1 + \min(7, 4, 1, 8) = 2
-$$
+```python
+def rendu(somme_initial, pieces):
+    def c(s):
+        """ Renvoie le nombre minimal de pièces pour rendre s€ suivant les
+        différentes valeurs de pièces. """
+        if s == 0:
+            return 0
+        else:
+            return 1 + min(c(s - p) for p in pieces if p <= s)
+    
+    return c(somme_initial)  # on résout le problème initial
+```
 
-✅ Conclusion : la meilleure option est de rendre 25 € avec une pièce de 25 €, puis encore 25 € avec une autre pièce. Deux pièces suffisent !
+Il ne manque plus que la technique de mémoïsation  -->
 
-
+<!--
 $$
 \begin{align*}
 c^\star(50€ &- 1€) &= c^\star(49€) &= 7 \text{ pièces} \\
