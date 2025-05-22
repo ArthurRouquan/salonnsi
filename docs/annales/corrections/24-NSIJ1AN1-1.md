@@ -11,17 +11,17 @@ title: 24-NSIJ1AN1-1
 3. 
 ```python hl_lines="2 3"
 def defile(self):
-    if not self.contenu:
+    if not self.est_vide():
         return None
     return self.contenu.pop(0)
 ```
 
-    La condition peut aussi s'écrire `#!py len(self.contenu) == 0` ou bien `#!py self.contenu == []`.
+    La condition peut aussi s'écrire `#!py not self.contenu `,`#!py len(self.contenu) == 0` ou bien `#!py self.contenu == []`. La clause `#!py else`est optionnelle ici.
 
 1. ![](assets/24-NSIJ1AN1-1-Q4.svg){ .center-img }
 
 2. 
-```python hl_lines="8 14 15 17"
+```python hl_lines="8 15 16 18"
 class Ordonnanceur:
     def __init__(self):
         self.temps = 0
