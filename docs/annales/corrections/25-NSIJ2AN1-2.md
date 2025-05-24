@@ -4,7 +4,7 @@ title: 25-NSIJ2AN1-2
 
 <div class="circle-ol" markdown>
 
-1. Dans le cas où le collier possède 8 bonbons, Bob les mange dans l'ordre **0 — 3 — 7 — 4 — 2 — 5 — 1**.
+1. Dans le cas où le collier possède 8 bonbons, Bob les mange dans l'ordre **0 — 3 — 6 — 4 — 2 — 5 — 1**.
 
 2. Une erreur de type `NameError` signifie que l’on utilise un nom (variable ou fonction) qui n’a pas été défini ou initialisé. Ici, Bob a écrit `true` au lieu de `#!py True`.
 
