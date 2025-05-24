@@ -10,7 +10,7 @@ title: 25-NSIJ1AN1-1
 
 <div class="circle-ol" markdown>
 
-1. En suivant l'arbre de décision, le végétal correspondant à cette description un **sorbier**.
+1. En suivant l'arbre de décision, le végétal correspondant à cette description est un **sorbier**.
 
 2. En suivant l'arbre de décision, la feuille correspondante à cette description est vide, **on ne peut donc pas identifier ce végétal**.
 
