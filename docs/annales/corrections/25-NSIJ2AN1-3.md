@@ -8,7 +8,7 @@ title: 25-NSIJ2AN1-3
 
 2. Le couple `(id_vol, id_passager)` peut être utilisé comme une clé primaire. En effet, `id_passager` n'est pas suffisant car un passager pourrait réserver plusieurs vols (typiquement une correspondance).
 
-3. Une clé étrangère fait référence à une clé primaire d'une autre relation.
+3. Une clé étrangère est un attribut qui fait référence à une clé primaire d'une autre relation.
 
 4. Cette requête renvoie tous les identifiants des vols dont l'aéroport d'arrivé est CDG, plus précisement l'aéroport Charles de Gaulle à Paris. Suivant la table donnée en exemple, cette requête renvoie :
    
