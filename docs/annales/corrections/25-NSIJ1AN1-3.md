@@ -79,7 +79,7 @@ def sommets_tries(g):
 1.  La fonction `sommets_tries` utilise un **tri par insertion** de coût $O(n^2)$ dans le pire des cas.
 
 2.  ![](assets/25-NSIJ1AN1-3-Q15.svg){ width="400px" .center-img }
-
+   
 3.  
 ```python
 def colorer_graphe(g, dc):
