@@ -14,7 +14,7 @@ L'épreuve de NSI au baccalauréat se compose de **deux** parties distinctes :
 
 ## Épreuve pratique
 
-L'épreuve **pratique** consiste à résoudre en 1h un sujet composé de deux exercices de programmation sur machine. Les sujets sont connus à l'avance, vers fin Mars.
+L'épreuve **pratique** consiste à résoudre en 1h un sujet composé de deux exercices de programmation et déroule **sur machine**. Les sujets sont connus à l'avance, vers fin Mars.
 
 <div class="grid cards" markdown>
 
@@ -33,14 +33,32 @@ L'épreuve **pratique** consiste à résoudre en 1h un sujet composé de deux ex
 
 L'épreuve **écrite** dure 3h30 et est composée de 3 exercices. Les trois exercices de chaque sujet ont été séparés afin de vous permettre de réviser plus facilement les thèmes de votre choix.
 
+<!-- <div class="center-table" markdown>
+| Code                                    | Signification                              |
+| :-------------------------------------- | :----------------------------------------- |
+| <tt>J1</tt> ou <tt>J2</tt>              | Jour 1 (sujet 1) ou Jour 2 (sujet 2)       |
+| <tt>AN1</tt>                            | Amérique du Nord                           |
+| <tt>A1</tt>                             | Asie                                       |
+| <tt>G1</tt>                             | Centres Étrangers Afrique                  |
+| <tt>ME1</tt>                            | Métropole France                           |
+| <tt>ME3</tt>                            | Métropole France (épreuve de remplacement) |
+| <tt>PO1</tt>                            | Polynésie                                  |
+| <tt>G11BIS</tt>                         | Suède                                      |
+| <tt>0A</tt> ou <tt>0B</tt>              | Sujet Zéro A ou B                          |
+| <tt>-1</tt>, <tt>-2</tt> et <tt>-3</tt> | Exercice 1, 2 et 3                         |
+</div> -->
+
 ### Sujets 2025
 
 <div class="center-table" markdown>
-| Exercice                                                                     | Thèmes                                                                                                                                                                                          |                       Correction                       |
-| :--------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------: |
-| [:fontawesome-solid-file-pdf: <tt>J1AN1-1</tt>](exercices/25-NSIJ1AN1-1.pdf) | <span class="tags-container"><span class="tag">Arbre binaire</span><span class="tag">Récursivité</span><span class="tag">POO</span></span>                                                      | [:material-open-in-new:](corrections/25-NSIJ1AN1-1.md) |
-| [:fontawesome-solid-file-pdf: <tt>J1AN1-2</tt>](exercices/25-NSIJ1AN1-2.pdf) | <span class="tags-container"><span class="tag">POO</span><span class="tag">Récursivité</span><span class="tag">Glouton</span></span>                                                            | [:material-open-in-new:](corrections/25-NSIJ1AN1-2.md) |
-| [:fontawesome-solid-file-pdf: <tt>J1AN1-3</tt>](exercices/25-NSIJ1AN1-3.pdf) | <span class="tags-container"><span class="tag">Graphe</span><span class="tag">SQL</span><span class="tag">Tri</span><span class="tag">Glouton</span><span class="tag">Récursivité</span></span> | [:material-open-in-new:](corrections/25-NSIJ1AN1-3.md) |
+| Exercice                                                                     | Thèmes                                                                                                                                                                                                                        |                       Correction                       |
+| :--------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------: |
+| [:fontawesome-solid-file-pdf: <tt>J1AN1-1</tt>](exercices/25-NSIJ1AN1-1.pdf) | <span class="tags-container"><span class="tag">Arbre binaire</span><span class="tag">Récursivité</span><span class="tag">POO</span></span>                                                                                    | [:material-open-in-new:](corrections/25-NSIJ1AN1-1.md) |
+| [:fontawesome-solid-file-pdf: <tt>J1AN1-2</tt>](exercices/25-NSIJ1AN1-2.pdf) | <span class="tags-container"><span class="tag">POO</span><span class="tag">Récursivité</span><span class="tag">Glouton</span></span>                                                                                          | [:material-open-in-new:](corrections/25-NSIJ1AN1-2.md) |
+| [:fontawesome-solid-file-pdf: <tt>J1AN1-3</tt>](exercices/25-NSIJ1AN1-3.pdf) | <span class="tags-container"><span class="tag">Graphe</span><span class="tag">SQL</span><span class="tag">Tri</span><span class="tag">Glouton</span><span class="tag">Récursivité</span></span>                               | [:material-open-in-new:](corrections/25-NSIJ1AN1-3.md) |
+| [:fontawesome-solid-file-pdf: <tt>J2AN1-1</tt>](exercices/25-NSIJ2AN1-1.pdf) | <span class="tags-container"><span class="tag">Liste</span><span class="tag">Dictionnaire</span><span class="tag">Arbre binaire</span><span class="tag">Programmation</span><span class="tag">Récursivité</span></span>       | [:material-open-in-new:](corrections/25-NSIJ2AN1-1.md) |
+| [:fontawesome-solid-file-pdf: <tt>J2AN1-2</tt>](exercices/25-NSIJ2AN1-2.pdf) | <span class="tags-container"><span class="tag">Gestion des bugs</span><span class="tag">Algorithmique</span><span class="tag">File</span><span class="tag">Liste doublement chaînée</span><span class="tag">POO</span></span> | [:material-open-in-new:](corrections/25-NSIJ2AN1-2.md) |
+| [:fontawesome-solid-file-pdf: <tt>J2AN1-3</tt>](exercices/25-NSIJ2AN1-3.pdf) | <span class="tags-container"><span class="tag">SQL</span><span class="tag">Programmation</span><span class="tag">Récursivité</span><span class="tag">Graphe</span></span>                                                     | [:material-open-in-new:](corrections/25-NSIJ2AN1-3.md) |
 </div>
 
 
