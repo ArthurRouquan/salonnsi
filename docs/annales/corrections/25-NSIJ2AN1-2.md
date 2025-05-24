@@ -16,7 +16,7 @@ def dernier(n):
     collier[indice] = False
     for etape in range(n - 1):
         nb_bonbons_vus = 0
-        while nb_bonbons_vus < n:
+        while nb_bonbons_vus < 3:
             indice += 1
             if indice >= n:
                 indice = 0
