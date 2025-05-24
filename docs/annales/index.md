@@ -31,19 +31,28 @@ L'épreuve **pratique** consiste à résoudre en 1h un sujet composé de deux ex
 
 ## Épreuve écrite
 
-L'épreuve **écrite** dure 3h30 et est composée de 3 exercices.
+L'épreuve **écrite** dure 3h30 et est composée de 3 exercices. Les trois exercices de chaque sujet ont été séparés afin de vous permettre de réviser plus facilement les thèmes de votre choix.
+
+### Sujets 2025
+
+<div class="center-table" markdown>
+| Exercice                                                                     | Thèmes                                                                                                                                                                                          |                       Correction                       |
+| :--------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------: |
+| [:fontawesome-solid-file-pdf: <tt>J1AN1-1</tt>](exercices/25-NSIJ1AN1-1.pdf) | <span class="tags-container"><span class="tag">Arbre binaire</span><span class="tag">Récursivité</span><span class="tag">POO</span></span>                                                      | [:material-open-in-new:](corrections/25-NSIJ1AN1-1.md) |
+| [:fontawesome-solid-file-pdf: <tt>J1AN1-2</tt>](exercices/25-NSIJ1AN1-2.pdf) | <span class="tags-container"><span class="tag">POO</span><span class="tag">Récursivité</span><span class="tag">Glouton</span></span>                                                            | [:material-open-in-new:](corrections/25-NSIJ1AN1-2.md) |
+| [:fontawesome-solid-file-pdf: <tt>J1AN1-3</tt>](exercices/25-NSIJ1AN1-3.pdf) | <span class="tags-container"><span class="tag">Graphe</span><span class="tag">SQL</span><span class="tag">Tri</span><span class="tag">Glouton</span><span class="tag">Récursivité</span></span> | [:material-open-in-new:](corrections/25-NSIJ1AN1-3.md) |
+</div>
+
 
 ### Sujets 2024
 
-Les trois exercices de chaque sujet ont été séparés afin de vous permettre de réviser plus facilement les thèmes de votre choix.
-
-<div class="center-table" markdown>
+<div class="center-table full-width-table" markdown>
 | Exercice                                                                       | Thèmes                                                                                                                                                                                             |                       Correction                       |
 | :----------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------: |
 | [:fontawesome-solid-file-pdf: <tt>0A-1</tt>](exercices/24-NSI0A-1.pdf)         | <span class="tags-container"><span class="tag">Architecture</span><span class="tag">Réseau</span></span>                                                                                           |                           —                            |
 | [:fontawesome-solid-file-pdf: <tt>0A-2</tt>](exercices/24-NSI0A-2.pdf)         | <span class="tags-container"><span class="tag">Programmation</span></span>                                                                                                                         |                           —                            |
 | [:fontawesome-solid-file-pdf: <tt>0A-3</tt>](exercices/24-NSI0A-3.pdf)         | <span class="tags-container"><span class="tag">Graphe</span><span class="tag">SQL</span></span>                                                                                                    |                           —                            |
-| [:fontawesome-solid-file-pdf: <tt>0B-1</tt>](exercices/24-NSI0B-1.pdf)         | <span class="tags-container"><span class="tag">Récursivité</span><span class="tag">Programmation Dynamique</span></span>                                                                           |                           —                            |
+| [:fontawesome-solid-file-pdf: <tt>0B-1</tt>](exercices/24-NSI0B-1.pdf)         | <span class="tags-container"><span class="tag">Récursivité</span><span class="tag">Programmation Dynamique</span></span>                                                                           |  [:material-open-in-new:](corrections/24-NSI0B-1.md)   |
 | [:fontawesome-solid-file-pdf: <tt>0B-2</tt>](exercices/24-NSI0B-2.pdf)         | <span class="tags-container"><span class="tag">OS</span><span class="tag">Commandes UNIX</span><span class="tag">Pile</span><span class="tag">File</span></span>                                   |                           —                            |
 | [:fontawesome-solid-file-pdf: <tt>0B-3</tt>](exercices/24-NSI0B-3.pdf)         | <span class="tags-container"><span class="tag">Programmation</span><span class="tag">POO</span><span class="tag">SQL</span></span>                                                                 |                           —                            |
 | [:fontawesome-solid-file-pdf: <tt>J1AN1-1</tt>](exercices/24-NSIJ1AN1-1.pdf)   | <span class="tags-container"><span class="tag">Programmation</span><span class="tag">File</span><span class="tag">Processus</span></span>                                                          | [:material-open-in-new:](corrections/24-NSIJ1AN1-1.md) |
@@ -86,8 +95,3 @@ Les trois exercices de chaque sujet ont été séparés afin de vous permettre d
 | [:fontawesome-solid-file-pdf: <tt>J2PO1-2</tt>](exercices/24-NSIJ2PO1-2.pdf)   | <span class="tags-container"><span class="tag">ABR</span><span class="tag">POO</span><span class="tag">Récursivité</span></span>                                                                   | [:material-open-in-new:](corrections/24-NSIJ2PO1-2.md) |
 | [:fontawesome-solid-file-pdf: <tt>J2PO1-3</tt>](exercices/24-NSIJ2PO1-3.pdf)   | <span class="tags-container"><span class="tag">Réseau</span><span class="tag">SQL</span><span class="tag">Programmation</span></span>                                                              | [:material-open-in-new:](corrections/24-NSIJ2PO1-3.md) |
 </div>
-
-<!-- <div class="center" markdown="span">
-[:fontawesome-solid-paper-plane: &nbsp;  Envoyer le projet](#){  .md-button }
-</div> -->
-
