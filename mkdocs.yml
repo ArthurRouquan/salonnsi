@@ -98,4 +98,7 @@ nav:
       - fiches/architecture.md
       - fiches/os.md
       - fiches/coeur.md
-      # - fiches/python.md
+
+not_in_nav: |
+  /annales/corrections/*
+  fiches/python.md
