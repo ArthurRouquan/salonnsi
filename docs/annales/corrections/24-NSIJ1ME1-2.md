@@ -15,7 +15,7 @@ title: 24-NSIJ1ME1-2
 
     Ces deux routes partagent le même coût, à savoir 0.1 + 1 + 0.1 + 0.1 + 1 = **2.3**.
 
-4. Puisque l'attribut `id_client` permet d'identifier de manière unique un client, elle peut être choisie comme clé primaire.
+4. Puisque l'attribut `id_client` permet d'identifier de manière **unique** un client, il peut être choisie comme clé primaire.
 
 5. Une clé étrangère est un attribut qui fait référence à une clé primaire d'une autre relation, permettant ainsi de les lier. Dans la base de données de l'exercice :
    
