@@ -10,8 +10,6 @@ theme:
   favicon: assets/salon-lion-favicon-block.svg
   language: fr
   name: material
-  font:
-    code: JetBrains Mono
 
   palette:
     # Palette toggle for light mode

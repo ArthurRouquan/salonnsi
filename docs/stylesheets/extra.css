@@ -1,3 +1,36 @@
+@font-face {
+    font-family: "MapleMono NF";
+    src: url('../assets/MapleMono-NF/MapleMono-NF-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "MapleMono NF";
+    src: url('../assets/MapleMono-NF/MapleMono-NF-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "MapleMono NF";
+    src: url('../assets/MapleMono-NF/MapleMono-NF-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "MapleMono NF";
+    src: url('../assets/MapleMono-NF/MapleMono-NF-BoldItalic.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+}
+
+:root {
+    --md-code-font: "MapleMono NF", monospace;
+}
+
+
 .rounded {
     border-radius: 0.3rem;
 }
@@ -98,7 +131,7 @@
     counter-increment: my-counter;
     position: relative;
     padding-left: 1.5rem;
-    /* Adds space for the number */
+    margin-bottom: 1.5rem;
 }
 
 .circle-ol ol>li::before {
@@ -216,18 +249,6 @@
     margin: 0 auto;
 }
 
-/* 
-[data-md-color-scheme="default"] .console .md-code__content {
-    background-color: #303030 !important;
-    color: #FFFFFF !important;
-
-}
-
-[data-md-color-scheme="slate"] .console .md-code__content {
-    background-color: #14151A !important;
-    color: #cdd6f4 !important;
-
-} */
 
 u {
     text-decoration: none;
