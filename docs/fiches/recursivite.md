@@ -16,14 +16,14 @@ icon: fontawesome/solid/rotate
 
 * Si un programme récursif peut se traduire dans un style itératif (avec de simples boucles), et inversement, aborder de manière récursive un problème est parfois plus facile.
     <div class="grid" markdown>
-    ```{ .python .no-copy title="Style itératif" } 
+    ```{ .python .no-copy title="Style récursif" } 
     def factorielle(n):
         if n == 0:  # cas de base
             return 1
         else:
             return n * factorielle(n-1)
     ```
-    ```{ .python .no-copy title="Style récursif" } 
+    ```{ .python .no-copy title="Style itératif" } 
     def factorielle(n):
         produit = 1
         for facteur in range(n + 1):
