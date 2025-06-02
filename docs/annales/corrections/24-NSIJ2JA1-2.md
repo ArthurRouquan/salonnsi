@@ -4,7 +4,7 @@ title: 24-NSIJ2JA1-2
 
 <div class="circle-ol" markdown>
 
-1. L'expression est **mal parenthéséee** : <tt markdown style="font-size: .85em"><span class="green-text">[</span>2 * <span class="green-text">(</span>i + 1<span class="green-text">)</span> - 3<span class="red-text hl-red" markdown>**)**</span> for i in range<span class="green-text">(</span>3, 10<span class="green-text">)]</span></tt>
+1. L'expression est **mal parenthésée** : <tt markdown style="font-size: .85em"><span class="blue-text">[</span>2 * <span class="green-text">(</span>i + 1<span class="green-text">)</span> - 3<span class="red-text hl-red" markdown>**)**</span> for i in range<span class="purple-text">(</span>3, 10<span class="purple-text">)</span><span class="blue-text">]</span></tt>
 
 2. 
 ```python
