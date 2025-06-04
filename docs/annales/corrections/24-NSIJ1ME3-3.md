@@ -2,6 +2,15 @@
 title: 24-NSIJ1ME3-3
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-arrow-left:](24-NSIJ1ME3-2.md){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/24-NSIJ1ME3-3.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/24-NSIJ1ME3.pdf){ .md-button }
+[:material-home:](../index.md/#sujets-2024){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <style>
 @font-face {
     font-family: "Noto Sans Mayan Numerals";

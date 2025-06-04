@@ -2,6 +2,15 @@
 title: 24-NSIJ2AN1-3
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-arrow-left:](24-NSIJ2AN1-2.md){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/24-NSIJ2AN1-3.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/24-NSIJ2AN1.pdf){ .md-button }
+[:material-home:](../index.md/#sujets-2024){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. Le masque `255.255.255.0` indique que les trois premiers octets de l'adresse IP correspondent à l'adresse réseau. Alice et Bob sont donc sur le réseau `192.168.1.0`. Une adresse valide pour Charlie pourrait être `192.168.1.3`, car elle n’est ni déjà attribuée, ni une adresse réservée, comme l’adresse du réseau (`.0`) ou l’adresse de diffusion (`.255`).

@@ -2,6 +2,15 @@
 title: 24-NSIJ1ME1-2
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-arrow-left:](24-NSIJ1ME1-1.md){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/24-NSIJ1ME1-2.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/24-NSIJ1ME1.pdf){ .md-button }
+[:material-arrow-right:](24-NSIJ1ME1-3.md){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. Un SGBD permet d'assurer la **cohérence** des données (en évitant les doublons ou incohérences) et leur **sécurité** (en contrôlant les accès et en protégeant contre les pertes ou modifications non autorisées).

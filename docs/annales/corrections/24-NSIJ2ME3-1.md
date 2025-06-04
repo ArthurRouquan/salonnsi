@@ -2,6 +2,15 @@
 title: 24-NSIJ2ME3-1
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-home:](../index.md/#sujets-2024){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/24-NSIJ2ME3-1.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/24-NSIJ2ME3.pdf){ .md-button }
+[:material-arrow-right:](24-NSIJ2ME3-2.md){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. La variable `i` prend successivement les valeurs : 7, 8, 9 et enfin 10. `#!py f1(7)` **se termine** donc.

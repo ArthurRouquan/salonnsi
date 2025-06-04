@@ -2,6 +2,15 @@
 title: 24-NSIJ1PO1-1
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-home:](../index.md/#sujets-2024){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/24-NSIJ1PO1-1.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/24-NSIJ1PO1.pdf){ .md-button }
+[:material-arrow-right:](24-NSIJ1PO1-2.md){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. Le masque `255.255.255.0` réserve 8 bits pour le numéro d’hôte, donc on peut connecter au maximum $2^8 - 2 = \boxed{254}$ machines. On enlève bien les deux adresses réservées : celle du réseau et celle de diffusion générale.

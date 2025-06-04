@@ -2,6 +2,15 @@
 title: 24-NSIJ2AN1-1
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-home:](../index.md/#sujets-2024){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/24-NSIJ2AN1-1.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/24-NSIJ2AN1.pdf){ .md-button }
+[:material-arrow-right:](24-NSIJ2AN1-2.md){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. 

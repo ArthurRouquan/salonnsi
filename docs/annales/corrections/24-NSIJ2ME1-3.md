@@ -2,6 +2,15 @@
 title: 24-NSIJ2ME1-3
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-arrow-left:](24-NSIJ2ME1-2.md){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/24-NSIJ2ME1-3.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/24-NSIJ2ME1.pdf){ .md-button }
+[:material-home:](../index.md/#sujets-2024){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. La classe `Piste` a pour attributs :
@@ -20,7 +29,7 @@ def set_couleur(self):
         self.couleur = 'rouge'
     elif self.denivele >= 40:
         self.couleur = 'bleue'
-    else
+    else:
         self.couleur = 'verte'
 ```
 

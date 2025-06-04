@@ -2,6 +2,15 @@
 title: 24-NSIJ2JA1-2
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-arrow-left:](24-NSIJ2JA1-1.md){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/24-NSIJ2JA1-2.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/24-NSIJ2JA1.pdf){ .md-button }
+[:material-arrow-right:](24-NSIJ2JA1-3.md){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. L'expression est **mal parenthésée** : <tt markdown style="font-size: .85em"><span class="blue-text">[</span>2 * <span class="green-text">(</span>i + 1<span class="green-text">)</span> - 3<span class="red-text hl-red" markdown>**)**</span> for i in range<span class="purple-text">(</span>3, 10<span class="purple-text">)</span><span class="blue-text">]</span></tt>

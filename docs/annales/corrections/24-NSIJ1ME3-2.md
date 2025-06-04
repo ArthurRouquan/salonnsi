@@ -2,6 +2,15 @@
 title: 24-NSIJ1ME3-2
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-arrow-left:](24-NSIJ1ME3-1.md){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/24-NSIJ1ME3-2.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/24-NSIJ1ME3.pdf){ .md-button }
+[:material-arrow-right:](24-NSIJ1ME3-3.md){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. P2 est connecté au réseau L1 constitué de P1 et R1. Comme P1 a pour adresse IP `192.168.1.10`, on en déduit que le routeur R1 est connecté au réseau via l'interface 1 `192.168.1.1/24`. Donc une adresse possible pour P2 est `192.168.1.2`.

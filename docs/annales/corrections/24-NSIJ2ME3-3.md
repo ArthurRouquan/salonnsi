@@ -2,6 +2,15 @@
 title: 24-NSIJ2ME3-3
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-arrow-left:](24-NSIJ2ME3-2.md){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/24-NSIJ2ME3-3.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/24-NSIJ2ME3.pdf){ .md-button }
+[:material-home:](../index.md/#sujets-2024){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. Une adresse IPv4 est composée de **4 octets**.
@@ -69,7 +78,7 @@ WHERE poids > 1000;
 16. 
 ```sql
 INSERT INTO texte
-VALUES (2754, "Vulcania", "Parc d'attraction", 250);
+VALUES (2754, 'Vulcania', 'Parc d''attraction', 250);
 ```
 
 17. Cette requête supprime le texte portant le numéro 2034 de la relation <tt>texte</tt>.

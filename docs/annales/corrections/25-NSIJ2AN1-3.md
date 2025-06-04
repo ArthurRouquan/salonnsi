@@ -2,6 +2,15 @@
 title: 25-NSIJ2AN1-3
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-arrow-left:](25-NSIJ2AN1-2.md){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/25-NSIJ2AN1-3.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/25-NSIJ2AN1.pdf){ .md-button }
+[:material-home:](../index.md/#sujets-2025){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. Plusieurs passagers peuvent réserver le même vol, donc l'attribut `id_vol` ne peut à lui seul identifier de manière unique une réservation d'un passager.
@@ -23,7 +32,7 @@ title: 25-NSIJ2AN1-3
 SELECT DISTINCT aeroport.ville
 FROM aeroport
 JOIN vol ON vol.aeroport_arr = aeroport.id_aeroport
-WHERE vol.aeroport_dep = "CDG";
+WHERE vol.aeroport_dep = 'CDG';
 ```
 
 6. 

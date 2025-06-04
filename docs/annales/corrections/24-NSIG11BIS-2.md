@@ -2,6 +2,15 @@
 title: 24-NSIG11BIS-2
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-arrow-left:](24-NSIG11BIS-1.md){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/24-NSIG11BIS-2.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/24-NSIG11BIS.pdf){ .md-button }
+[:material-arrow-right:](24-NSIG11BIS-3.md){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. Seul le troisième octet des adresses IP permet de déterminer leur réseau :

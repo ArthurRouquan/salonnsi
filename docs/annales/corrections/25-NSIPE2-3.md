@@ -2,6 +2,15 @@
 title: 25-NSIPE2-3
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-arrow-left:](25-NSIPE2-2.md){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/25-NSIPE2-3.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/25-NSIPE2.pdf){ .md-button }
+[:material-home:](../index.md/#sujets-2025){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. `#!py a4.duree = 12`
@@ -53,7 +62,7 @@ def est_balade(attractions):
 ```sql
 SELECT DISTINCT nom, prenom
 FROM visiteur
-WHERE date = "2025-01-11";
+WHERE date = '2025-01-11';
 ```
 
 16. 
@@ -61,10 +70,10 @@ WHERE date = "2025-01-11";
 SELECT SUM(prix)
 FROM visiteur
 JOIN photo ON photo.id_visiteur = visiteur.id
-WHERE visiteur.prenom = "Alan" 
-    AND visiteur.nom = "Turing" 
-    AND visiteur.date >= "2024-01-01"
-    AND visiteur.date < "2025-01-01"
+WHERE visiteur.prenom = 'Alan' 
+    AND visiteur.nom = 'Turing' 
+    AND visiteur.date >= '2024-01-01'
+    AND visiteur.date < '2025-01-01'
 ```
 
 17. La requête cherche à identifier le prénom et le nom des visiteurs présents sur une photo prise sur la grande roue le 26 juillet 2024 à 12h34.
@@ -78,8 +87,5 @@ WHERE visiteur.prenom = "Alan"
         <center><tt style="font-size: .8em">commande(<u>id</u>: INT, #id_photo: INT, #id_format: INT, quantite: INT)</tt></center>
 
     La table `photo` n’a alors plus besoin de l'attribut <tt>prix</tt>.
-
-
-
 
 </div>

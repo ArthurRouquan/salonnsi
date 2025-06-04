@@ -2,6 +2,15 @@
 title: 24-NSIJ1ME3-1
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-home:](../index.md/#sujets-2024){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/24-NSIJ1ME3-1.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/24-NSIJ1ME3.pdf){ .md-button }
+[:material-arrow-right:](24-NSIJ1ME3-2.md){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. L’attribut `CP` peut être de type `#!sql INT` (entier) ou `#!sql TEXT` si l’on souhaite conserver les éventuels zéros initiaux des codes postaux.

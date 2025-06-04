@@ -2,6 +2,15 @@
 title: 24-NSIJ2JA1-1
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-home:](../index.md/#sujets-2024){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/24-NSIJ2JA1-1.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/24-NSIJ2JA1.pdf){ .md-button }
+[:material-arrow-right:](24-NSIJ2JA1-2.md){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. Pour être strictement majoritaire dans une liste de taille 10, un élément doit apparaître au moins $\left\lceil \frac{10}{2} \right\rceil = \boxed{6}$ fois.

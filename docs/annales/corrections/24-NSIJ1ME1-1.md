@@ -2,6 +2,15 @@
 title: 24-NSIJ1ME1-1
 ---
 
+<!--NAVIGATION_START-->
+<div class="center-button" markdown>
+[:material-home:](../index.md/#sujets-2024){ .md-button .nav-button }
+[:fontawesome-solid-file-pdf: &nbsp; Énoncé](../exercices/24-NSIJ1ME1-1.pdf){ .md-button }
+[:fontawesome-solid-file-pdf: &nbsp; Sujet](../sujets/24-NSIJ1ME1.pdf){ .md-button }
+[:material-arrow-right:](24-NSIJ1ME1-2.md){ .md-button .nav-button }
+</div>
+<!--NAVIGATION_END-->
+
 <div class="circle-ol" markdown>
 
 1. Aucune autre site ne cite le site 2 (`s2`), il n'a donc pas de prédécesseurs. Ainsi la ligne 9 affecte à l'attribut `predecesseurs` de `s2` une liste vide.
