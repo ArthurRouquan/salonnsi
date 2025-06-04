@@ -55,14 +55,6 @@
     padding: .625em 1em;
 }
 
-
-.md-content .nav-button {
-    /* border-radius: 50%; */
-    padding: .625em .625em;
-    width: 2.5rem;
-    /* margin: 0rem 1rem; */
-}
-
 .md-typeset .center-table :is(td, th):not([align]) {
     text-align: initial;
 }
