@@ -24,7 +24,7 @@ assert nb_caracteres + (nb_mots - 1) <= justification
 
 4. 
 ```python hl_lines="7 13 15"
-def ajout_espace(liste_mots: list[str], justification: int) -> str:
+def ajout_espace(liste_mots, justification):
     nb_caracteres = sum([len(mot) for mot in liste_mots])
     nb_mots = len(liste_mots)
     assert nb_caracteres + (nb_mots - 1) <= justification
@@ -66,19 +66,21 @@ def affiche_justifie(liste_mots, decoupage, justification):
 ```python
 def cout(i, j, liste_mots, justification):
     nb_mots = j - i
-    nb_caracteres = sum([len(liste_mots[i]) for i in range(i, j)])
+    nb_caracteres = 0
+    for i in range(i, j):
+        nb_caracteres += len(liste_mots[i])
     nb_espaces = justification - (nb_caracteres + (nb_mots - 1))
     if nb_espaces < 0:
         return 1000000
-    cout = nb_espaces ** 2 
+    cout = nb_espaces * nb_espaces
     return cout
 ```
 
 9. Une découpe du texte de $n$ mots peut être codée comme un mot binaire de $n - 1$ bits. Chaque mot — sauf le dernier — est associé un bit : 0 s’il n’y a pas de retour à la ligne après ce mot, 1 s’il y en a un. Tester toutes les découpes possibles revient donc à tester tous les mots binaires de $n-1$ bits, soit $2^{n-1}$ possibilités. Une recherche exhaustive aurait donc une complexité en temps d'au moins $O(2^n)$. Cette croissance exponentielle rend cette approche par recherche exhaustive trop lente dès que $n$ devient un peu trop grand.
 
-10. La fonction `cout` est appelée $O(n^2)$ fois.
+10. La fonction `#!py cout` est appelée $\boxed{O(n^2)}$ fois.
 
-11. `cout_mini[i]` est calculé à partir des valeurs suivantes `#!py cout_mini[i + 1:]`. Plus précisément :
+11. `#!py cout_mini[i]` est calculé à partir des valeurs suivantes `#!py cout_mini[i + 1:]`. Plus précisément :
     
     $$
     \footnotesize
@@ -101,6 +103,6 @@ def cout(i, j, liste_mots, justification):
     return decoupage, cout_mini[0]
     ```
 
-    En effet, `cout_mini[i]` représente le coût inesthétique minimal en considérant tous les mots de `liste_mots[i:]`.
+    En effet, `#!py cout_mini[i]` représente le coût inesthétique minimal en considérant tous les mots de `#!py liste_mots[i:]`.
 
 </div>

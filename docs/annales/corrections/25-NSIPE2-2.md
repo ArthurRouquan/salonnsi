@@ -17,7 +17,7 @@ title: 25-NSIPE2-2
     * Exemple de **feuille** : $\small (\texttt{j},\ 1)$
     * La **racine** de l'arbre :  $\small (\texttt{ }-\texttt{j}-\texttt{f}-\texttt{e}-\texttt{l}-\texttt{i}-\texttt{p}-\texttt{t}-\texttt{a}-\texttt{u},\ 19)$
 
-2. Le nœud correspondant au caractère $\texttt{p}$ se situe à 4 arêtes de la racine, donc sa profondeur est de **4**. Son code associé est $\texttt{1100}$.
+2. Le nœud correspondant au caractère $\texttt{p}$ se situe à 4 arêtes de la racine, donc sa profondeur est de **4**. Son code associé est $\boxed{\texttt{1100}}$.
 
 3. Suivant cette compression, plus un caractère est fréquent, plus son code binaire associé est court, ce qui réduit la longueur totale du message compressé.
 
@@ -93,7 +93,7 @@ def construit_arbre(liste):
     while len(liste) > 1:
         noeud1 = liste.pop(0)
         noeud2 = liste.pop(0)
-        nom_noeud_pere = noeud1.nom + "-" + noeud2.nom
+        nom_noeud_pere = noeud1.nom + '-' + noeud2.nom
         nb_occu_noeud_pere = noeud1.nb_occu + noeud2.nb_occu
         noeud_pere = Noeud(nom_noeud_pere, nb_occu_noeud_pere, noeud1, noeud2)
         insere_noeud(noeud_pere, liste)

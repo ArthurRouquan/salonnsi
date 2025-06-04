@@ -73,7 +73,7 @@ JOIN photo ON photo.id_visiteur = visiteur.id
 WHERE visiteur.prenom = 'Alan' 
     AND visiteur.nom = 'Turing' 
     AND visiteur.date >= '2024-01-01'
-    AND visiteur.date < '2025-01-01'
+    AND visiteur.date < '2025-01-01';
 ```
 
 17. La requête cherche à identifier le prénom et le nom des visiteurs présents sur une photo prise sur la grande roue le 26 juillet 2024 à 12h34.
@@ -86,6 +86,6 @@ WHERE visiteur.prenom = 'Alan'
     * La table `commande` qui modélise les différentes commandes :
         <center><tt style="font-size: .8em">commande(<u>id</u>: INT, #id_photo: INT, #id_format: INT, quantite: INT)</tt></center>
 
-    La table `photo` n’a alors plus besoin de l'attribut <tt>prix</tt>.
+    La table `photo` n’a alors plus besoin de l'attribut `prix`.
 
 </div>
