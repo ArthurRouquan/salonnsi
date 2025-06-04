@@ -51,6 +51,11 @@
     margin: 2rem 0;
 }
 
+.md-content .center-button .md-button {
+    padding: .625em 1em;
+}
+
+
 .md-content .nav-button {
     /* border-radius: 50%; */
     padding: .625em .625em;
