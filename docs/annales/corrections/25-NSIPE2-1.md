@@ -67,8 +67,8 @@ def affiche_justifie(liste_mots, decoupage, justification):
 def cout(i, j, liste_mots, justification):
     nb_mots = j - i
     nb_caracteres = 0
-    for i in range(i, j):
-        nb_caracteres += len(liste_mots[i])
+    for k in range(i, j):
+        nb_caracteres += len(liste_mots[k])
     nb_espaces = justification - (nb_caracteres + (nb_mots - 1))
     if nb_espaces < 0:
         return 1000000
