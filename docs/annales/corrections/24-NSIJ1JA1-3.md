@@ -93,6 +93,6 @@ WHERE p.annee_debut >= 2015
     AND c.ville = 'Lille';
 ```
 
-14. Cette requête renvoie une erreur car elle tente de supprimer un centre (`Normandie`) qui est encore référencé par des enregistrements dans la table `Personnel` via la clé étrangère `num_centre`. **Elle viole donc la contrainte d'intégrité référentielle**, qui impose que toute valeur de clé étrangère corresponde à une clé primaire existante. Pour corriger cela, il faut d’abord réaffecter les employés du centre `Normandie` vers un autre centre, avant de pouvoir supprimer ce centre.
+14. Cette requête renvoie une erreur car elle tente de supprimer un centre (`Normandie`) qui est encore référencé par des enregistrements dans la table `Personnel` via la clé étrangère `num_centre`. **Elle viole donc la contrainte d'intégrité référentielle**, qui impose que toute valeur de clé étrangère corresponde à une clé primaire existante. Pour corriger cela, il faut d'abord réaffecter les employés du centre `Normandie` vers un autre centre, avant de pouvoir supprimer ce centre.
 
 </div>

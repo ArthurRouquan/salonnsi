@@ -26,7 +26,7 @@ title: 25-NSIJ1AN1-3
 
 4. Puisqu'on ne considère qu'un seul parent par élève, chaque parent peut être identifié de manière unique grâce à son numéro de téléphone. L'attribut `tel` est donc une clé primaire pertinente pour la table `parent`.
 
-5. Une clé étrangère doit toujours correspondre à une clé primaire existante. Modifier directement la clé primaire (`tel`) d’un parent pourrait rendre invalide la référence à ce parent dans la table `enfant`, ce qui explique l’erreur levée par la requête.
+5. Une clé étrangère doit toujours correspondre à une clé primaire existante. Modifier directement la clé primaire (`tel`) d'un parent pourrait rendre invalide la référence à ce parent dans la table `enfant`, ce qui explique l'erreur levée par la requête.
 
 6. 
 ```sql

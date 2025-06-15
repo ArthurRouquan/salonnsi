@@ -8,10 +8,10 @@ icon: material/puzzle
 | Terme            | Définition                                                                                                                   |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | **Classe**       | Modèle qui définit les **attributs** (données) et **méthodes** (fonctions) communes à tous les objets créés à partir d'elle. |
-| **Objet**        | Instance concrète d'une classe. Il possède ses **propres valeurs d’attributs**.                                              |
+| **Objet**        | Instance concrète d'une classe. Il possède ses **propres valeurs d'attributs**.                                              |
 | **Attributs**    | Données associées à un objet.                                                                                                |
 | **Méthodes**     | Fonctions définies dans une classe, qui agissent spécifiquement sur les objets de cette classe.                              |
-| **Constructeur** | Méthode spéciale appelée à la création d’un objet qui initialise ses attributs.                                              |
+| **Constructeur** | Méthode spéciale appelée à la création d'un objet qui initialise ses attributs.                                              |
 
 ## Exemple
 
@@ -24,7 +24,7 @@ class Pokemon:
         self.pv      = pv_max   # paramètres ≠ attributs 
         
     def subir_degats(self, degats):  # méthode
-        # self est l’objet de la classe sur lequel on applique la méthode.
+        # self est l'objet de la classe sur lequel on applique la méthode.
         self.pv = self.pv - degats   # un attribut peut être modifié
         if self.pv < 0:
             self.pv = 0

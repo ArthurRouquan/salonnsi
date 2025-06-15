@@ -13,7 +13,7 @@ title: 24-NSIJ2AN1-3
 
 <div class="circle-ol" markdown>
 
-1. Le masque `255.255.255.0` indique que les trois premiers octets de l'adresse IP correspondent à l'adresse réseau. Alice et Bob sont donc sur le réseau `192.168.1.0`. Une adresse valide pour Charlie pourrait être `192.168.1.3`, car elle n’est ni déjà attribuée, ni une adresse réservée, comme l’adresse du réseau (`.0`) ou l’adresse de diffusion (`.255`).
+1. Le masque `255.255.255.0` indique que les trois premiers octets de l'adresse IP correspondent à l'adresse réseau. Alice et Bob sont donc sur le réseau `192.168.1.0`. Une adresse valide pour Charlie pourrait être `192.168.1.3`, car elle n'est ni déjà attribuée, ni une adresse réservée, comme l'adresse du réseau (`.0`) ou l'adresse de diffusion (`.255`).
 
 2. La liste de ces transactions est :
 
@@ -80,7 +80,7 @@ def ajouter_bloc(self, liste_transactions):
 
 10. Suivant la variable `blockchain` définit à la question 5, l'expression `#!py blockchain.tete.calculer_solde('Alice')` renvoie le solde actuel d'Alice.
 
-11. Déterminer une valeur par recherche exhaustive signifie tester toutes les valeurs possibles, une par une, jusqu’à trouver celle qui satisfait une condition donnée (par exemple, ici, un hash commençant par `#!py '00'`).
+11. Déterminer une valeur par recherche exhaustive signifie tester toutes les valeurs possibles, une par une, jusqu'à trouver celle qui satisfait une condition donnée (par exemple, ici, un hash commençant par `#!py '00'`).
 
 
 12. Puisque le bloc 0 correspond au tout premier bloc crée, son attribut `bloc_precedent` vaut  `None`. Son attribut `hash_bloc_precedent` est initialisé par la méthode `donner_hash_precedent`, qui lui affecte la valeur `#!py '0'`.

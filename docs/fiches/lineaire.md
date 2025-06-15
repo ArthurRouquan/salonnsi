@@ -15,7 +15,7 @@ icon: octicons/stack-16
 
 ![](assets/pile.svg){ .center-img }
 
-Une **pile** est une structure de données fondée sur le principe du « dernier entré, premier sorti » (en anglais « Last In, First Out », **LIFO**). C’est le principe même de la pile d’assiettes : c’est la dernière assiette posée sur la pile d’assiettes sales qui sera la première lavée.
+Une **pile** est une structure de données fondée sur le principe du « dernier entré, premier sorti » (en anglais « Last In, First Out », **LIFO**). C'est le principe même de la pile d'assiettes : c'est la dernière assiette posée sur la pile d'assiettes sales qui sera la première lavée.
 
 
 ## File (FIFO)
@@ -43,7 +43,7 @@ Une liste chaînée a un seul sens de parcours, on la parcours toujours en parta
 <div class="center-table" markdown>
 | Opération                              |            Liste chaînée             |       Liste doublement chaînée       |    Tableau dynamique `#!py list`     |
 | -------------------------------------- | :----------------------------------: | :----------------------------------: | :----------------------------------: |
-| Accès à l’élément d’indice $i$         |  <span class="hl-red">$O(n)$</span>  |  <span class="hl-red">$O(n)$</span>  | <span class="hl-green">$O(1)$</span> |
+| Accès à l'élément d'indice $i$         |  <span class="hl-red">$O(n)$</span>  |  <span class="hl-red">$O(n)$</span>  | <span class="hl-green">$O(1)$</span> |
 | Insertion en tête                      | <span class="hl-green">$O(1)$</span> | <span class="hl-green">$O(1)$</span> |  <span class="hl-red">$O(n)$</span>  |
 | Insertion en fin                       |  <span class="hl-red">$O(n)$</span>  | <span class="hl-green">$O(1)$</span> | <span class="hl-green">$O(1)$</span> |
 | Suppression en tête                    | <span class="hl-green">$O(1)$</span> | <span class="hl-green">$O(1)$</span> |  <span class="hl-red">$O(n)$</span>  |
@@ -160,6 +160,6 @@ Une liste chaînée a un seul sens de parcours, on la parcours toujours en parta
 
     2. On peut ajouter un attribut `self.taille` à la liste chaînée, et le maintenir à jour à chaque ajout ou suppression de chaînon, ce qui permet de connaître la taille en O(1).
 
-    Cette implémentation de liste chaînée propose uniquement quelques primitives à titre d’exemple.
+    Cette implémentation de liste chaînée propose uniquement quelques primitives à titre d'exemple.
 
 

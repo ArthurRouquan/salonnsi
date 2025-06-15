@@ -45,7 +45,7 @@ WHERE Style = 'Metal'
     AND Numero_etagere = 1;
 ```
 
-6. Il faut d’abord supprimer l’album dans la table `Rangement` car il y est référencé. Ensuite, on peut le supprimer de la table `CD`. Enfin, si l’artiste n’a plus d’album, on peut aussi le retirer de la table `Artiste`. La requête pour supprimer l’album de la table `CD` :
+6. Il faut d'abord supprimer l'album dans la table `Rangement` car il y est référencé. Ensuite, on peut le supprimer de la table `CD`. Enfin, si l'artiste n'a plus d'album, on peut aussi le retirer de la table `Artiste`. La requête pour supprimer l'album de la table `CD` :
 
     ```sql
     DELETE FROM CD

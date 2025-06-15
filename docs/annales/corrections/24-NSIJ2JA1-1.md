@@ -64,7 +64,7 @@ def majo_abs2(lst):
 
 8. Si la liste possède un seul élément alors `lst[0]` est absolument majoritaire.
 
-9. Si ni `lst1` ni `lst2` n’admet d’élément absolument majoritaire, dans le cas plus extrême, un élément apparaît au plus $\left\lfloor \frac{n}{4} \right\rfloor$ fois dans les deux-sous listes. Ainsi dans la liste initiale `lst`, cet élément apparaît au plus $2 \times \left\lfloor \frac{n}{4} \right\rfloor \leq \left\lfloor \frac{n}{2} \right\rfloor$ fois. Or, le seuil pour qu'il soit strictement majoritaire est d'au moins $\left\lfloor \frac{n}{2} \right\rfloor + 1$. Donc `lst` n'admet pas d'élément strictement majoritaire.
+9. Si ni `lst1` ni `lst2` n'admet d'élément absolument majoritaire, dans le cas plus extrême, un élément apparaît au plus $\left\lfloor \frac{n}{4} \right\rfloor$ fois dans les deux-sous listes. Ainsi dans la liste initiale `lst`, cet élément apparaît au plus $2 \times \left\lfloor \frac{n}{4} \right\rfloor \leq \left\lfloor \frac{n}{2} \right\rfloor$ fois. Or, le seuil pour qu'il soit strictement majoritaire est d'au moins $\left\lfloor \frac{n}{2} \right\rfloor + 1$. Donc `lst` n'admet pas d'élément strictement majoritaire.
 
 10. On compte le nombre d'occurence de cet élément `maj1` dans la liste initiale `lst`, s'il est strictement supérieur à $\left\lfloor \frac{n}{2} \right\rfloor$ alors il est strictement majoritaire.
 

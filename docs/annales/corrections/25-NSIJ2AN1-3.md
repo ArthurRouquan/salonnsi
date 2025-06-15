@@ -94,8 +94,8 @@ def est_connexe(graphe):
 ['W', 'P', 'T', 'B'] 25
 ```
 
-18. Plus généralement, cette fonction effectue un **parcours en profondeur** à partir de la ville de départ `ville`. Elle explore récursivement les villes voisines jusqu’à atteindre la ville `arrivee` et afficher le chemin parcouru et sa distance totale.
+18. Plus généralement, cette fonction effectue un **parcours en profondeur** à partir de la ville de départ `ville`. Elle explore récursivement les villes voisines jusqu'à atteindre la ville `arrivee` et afficher le chemin parcouru et sa distance totale.
 
-    Cependant, puisqu'il s’agit d’un parcours en profondeur, il peut s’engager dans un cul-de-sac et revenir en arrière pour explorer d’autres branches du graphe. Le chemin affiché n’est donc pas garanti comme un itinéraire réalisable sans rebroussement. Autrement dit, cette fonction ne fournit pas nécessairement un plan de vol valide, à moins qu'un avion puisse se téléporter. Auquel cas, il suffit de se téléporter directement à `arrivee` 😄
+    Cependant, puisqu'il s'agit d'un parcours en profondeur, il peut s'engager dans un cul-de-sac et revenir en arrière pour explorer d'autres branches du graphe. Le chemin affiché n'est donc pas garanti comme un itinéraire réalisable sans rebroussement. Autrement dit, cette fonction ne fournit pas nécessairement un plan de vol valide, à moins qu'un avion puisse se téléporter. Auquel cas, il suffit de se téléporter directement à `arrivee` 😄
 
 </div>

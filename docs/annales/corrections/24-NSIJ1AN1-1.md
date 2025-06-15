@@ -15,7 +15,7 @@ title: 24-NSIJ1AN1-1
 
 1. Un processus peut se trouver dans l'un des trois états suivants : **Prêt**, **Élu** ou **Bloqué**.
    
-2. Puisqu’aucune ressource n’est considérée dans ce contexte, un processus ne peut jamais se retrouver dans l'état Bloqué. Ainsi, les processus alternent ici entre l'état **Prêt** et **Élu**.
+2. Puisqu'aucune ressource n'est considérée dans ce contexte, un processus ne peut jamais se retrouver dans l'état Bloqué. Ainsi, les processus alternent ici entre l'état **Prêt** et **Élu**.
    
 3. 
 ```python hl_lines="2 3"

@@ -121,6 +121,6 @@ def plus_court(G, depart, arrivee):
     return chemin_plus_court
 ```
 
-13. Le choix du pisteur-secouriste de privilégier la distance minimale est discutable car il ne prend pas en compte le dénivelé, qui influence le temps et l’effort nécessaires pour atteindre l’incident. Une piste plus courte mais avec un fort dénivelé pourrait en réalité être plus longue à parcourir. Un meilleur critère serait de calculer le temps estimé en fonction de la distance et du dénivelé pour choisir la piste la plus rapide.
+13. Le choix du pisteur-secouriste de privilégier la distance minimale est discutable car il ne prend pas en compte le dénivelé, qui influence le temps et l'effort nécessaires pour atteindre l'incident. Une piste plus courte mais avec un fort dénivelé pourrait en réalité être plus longue à parcourir. Un meilleur critère serait de calculer le temps estimé en fonction de la distance et du dénivelé pour choisir la piste la plus rapide.
 
 </div>

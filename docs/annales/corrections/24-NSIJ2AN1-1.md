@@ -51,7 +51,7 @@ def triStooge(tab, i, j):
     * Case 3 : `#!py triStooge(A, 0, 3)`
 
 7. 
-|           Appel           | Valeur de `A` avant l’appel | Valeur de `A` après l’appel |
+|           Appel           | Valeur de `A` avant l'appel | Valeur de `A` après l'appel |
 | :-----------------------: | :-------------------------: | :-------------------------: |
 | `#!py triStooge(A, 0, 3)` |     `#!py [5, 6, 4, 2]`     |     `#!py [2, 6, 4, 5]`     |
 | `#!py triStooge(A, 0, 2)` |     `#!py [2, 6, 4, 5]`     |     `#!py [2, 6, 4, 5]`     |

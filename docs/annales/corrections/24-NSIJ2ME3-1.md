@@ -23,7 +23,7 @@ title: 24-NSIJ2ME3-1
 
 5. `#!py f2(4)` **se termine** et renvoie 4 + 2 + 0 = **6**.
 
-6. `#!py f2(5)` **ne se termine pas** car le cas de base n’est jamais atteint. En effet, chaque appel diminue la valeur de 2 : `#!py f2(5)` appelle `#!py f2(3)` qui appelle `#!py f2(1)`, `#!py f2(-1)`, `#!py f2(-3)`, etc. sans jamais atteindre une condition d’arrêt, ce qui entraîne une récursion infinie.
+6. `#!py f2(5)` **ne se termine pas** car le cas de base n'est jamais atteint. En effet, chaque appel diminue la valeur de 2 : `#!py f2(5)` appelle `#!py f2(3)` qui appelle `#!py f2(1)`, `#!py f2(-1)`, `#!py f2(-3)`, etc. sans jamais atteindre une condition d'arrêt, ce qui entraîne une récursion infinie.
 
 7. L'appel `#!py f2(n)` se termine si et seulement si `n` est un **entier positif ou nul pair**.
 
@@ -37,7 +37,7 @@ def infini(n):
 
 10. Sinon, si `#!py arret(code_paradoxe, code_paradoxe)` renvoie `#!py False` alors la prochaine instruction à être exécutée est `#!py return 0`, ainsi l'appel `#!py paradoxe(code_paradoxe)` **termine**.
 
-11. On a supposé que la fonction `arret` existait, mais cette hypothèse conduit à une situation paradoxale décrite par les deux questions précédentes. En effet, lorsque `arret` affirme que `paradoxe` s’arrête, ce dernier ne s’arrête pas, et lorsque `arret` affirme que `paradoxe` ne s’arrête pas, il s’arrête. On aboutit donc à une contradiction. Par conséquent, notre hypothèse de départ est fausse : la fonction `arret` ne peut pas exister. Il s’agit d’un raisonnement par l’absurde.
+11. On a supposé que la fonction `arret` existait, mais cette hypothèse conduit à une situation paradoxale décrite par les deux questions précédentes. En effet, lorsque `arret` affirme que `paradoxe` s'arrête, ce dernier ne s'arrête pas, et lorsque `arret` affirme que `paradoxe` ne s'arrête pas, il s'arrête. On aboutit donc à une contradiction. Par conséquent, notre hypothèse de départ est fausse : la fonction `arret` ne peut pas exister. Il s'agit d'un raisonnement par l'absurde.
 
 
 </div>

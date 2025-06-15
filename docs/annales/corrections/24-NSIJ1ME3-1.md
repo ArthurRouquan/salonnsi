@@ -13,7 +13,7 @@ title: 24-NSIJ1ME3-1
 
 <div class="circle-ol" markdown>
 
-1. L’attribut `CP` peut être de type `#!sql INT` (entier) ou `#!sql TEXT` si l’on souhaite conserver les éventuels zéros initiaux des codes postaux.
+1. L'attribut `CP` peut être de type `#!sql INT` (entier) ou `#!sql TEXT` si l'on souhaite conserver les éventuels zéros initiaux des codes postaux.
 
 2. Cette requête renvoie une **erreur** car les noms d'attributs ne doivent pas être entourés de guillemets simples en SQL.
 

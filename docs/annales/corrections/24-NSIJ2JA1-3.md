@@ -41,7 +41,7 @@ SET titre = 'Welcome to the Jungle'
 WHERE id = 7;
 ```
 
-6. Cette séparation en plusieurs tables permet d’éviter la **redondance** des données (par exemple, ne pas répéter le nom du groupe à chaque chanson).
+6. Cette séparation en plusieurs tables permet d'éviter la **redondance** des données (par exemple, ne pas répéter le nom du groupe à chaque chanson).
 
 7. L'attribut `id_album` est une clé étrangère qui met en relation la table `Chanson` avec la table `Album`.
 

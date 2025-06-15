@@ -42,7 +42,7 @@ def ajout_espace(liste_mots, justification):
         return reponse
 ```
 
-5. On parcourt un à un les mots du texte et on les ajoute à la ligne en cours, espace inclus. Si l’ajout du mot suivant fait dépasser la largeur de justification, alors on revient à la ligne après le dernier mot ajouté, puis on continue avec les mots suivants.
+5. On parcourt un à un les mots du texte et on les ajoute à la ligne en cours, espace inclus. Si l'ajout du mot suivant fait dépasser la largeur de justification, alors on revient à la ligne après le dernier mot ajouté, puis on continue avec les mots suivants.
 
 6. 
 ```python
@@ -53,7 +53,7 @@ def affiche_justifie(liste_mots, decoupage, justification):
 ```
 
 7. 
-| Indice du mot de début | Indice du mot de fin + 1 | # mots | # caractères | # d’espaces supplémentaires pour atteindre 15 caractères |  Coût  |
+| Indice du mot de début | Indice du mot de fin + 1 | # mots | # caractères | # d'espaces supplémentaires pour atteindre 15 caractères |  Coût  |
 | :--------------------: | :----------------------: | :----: | :----------: | :------------------------------------------------------: | :----: |
 |           0            |            2             |   2    |      11      |                            3                             |   9    |
 |           2            |            4             | **2**  |    **6**     |                          **8**                           | **64** |
@@ -76,7 +76,7 @@ def cout(i, j, liste_mots, justification):
     return cout
 ```
 
-9. Une découpe du texte de $n$ mots peut être codée comme un mot binaire de $n - 1$ bits. Chaque mot — sauf le dernier — est associé un bit : 0 s’il n’y a pas de retour à la ligne après ce mot, 1 s’il y en a un. Tester toutes les découpes possibles revient donc à tester tous les mots binaires de $n-1$ bits, soit $2^{n-1}$ possibilités. Une recherche exhaustive aurait donc une complexité en temps d'au moins $O(2^n)$. Cette croissance exponentielle rend cette approche par recherche exhaustive trop lente dès que $n$ devient un peu trop grand.
+9. Une découpe du texte de $n$ mots peut être codée comme un mot binaire de $n - 1$ bits. Chaque mot — sauf le dernier — est associé un bit : 0 s'il n'y a pas de retour à la ligne après ce mot, 1 s'il y en a un. Tester toutes les découpes possibles revient donc à tester tous les mots binaires de $n-1$ bits, soit $2^{n-1}$ possibilités. Une recherche exhaustive aurait donc une complexité en temps d'au moins $O(2^n)$. Cette croissance exponentielle rend cette approche par recherche exhaustive trop lente dès que $n$ devient un peu trop grand.
 
 10. La fonction `#!py cout` est appelée $\boxed{O(n^2)}$ fois.
 

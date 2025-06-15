@@ -9,14 +9,14 @@ icon: fontawesome/solid/circle-nodes
 
 ## Représentations
 
-Il existe trois représentations classiques d’un graphe en informatique :
+Il existe trois représentations classiques d'un graphe en informatique :
 
-- **Collection d’arêtes** : liste de couples représentant les arêtes.
-- **Matrice d’adjacence** : matrice carré indiquant la présence d’une arête entre deux sommets.
-- **Listes d’adjacence** : pour chaque sommet, on stocke la liste de ses voisins.
+- **Collection d'arêtes** : liste de couples représentant les arêtes.
+- **Matrice d'adjacence** : matrice carré indiquant la présence d'une arête entre deux sommets.
+- **Listes d'adjacence** : pour chaque sommet, on stocke la liste de ses voisins.
 
 !!! info "Remarque"
-    Ces représentations peuvent être adaptées selon les besoins : on peut par exemple représenter une arête par une classe, utiliser une liste chaînée pour les listes d’adjacence, encapsuler la structure du graphe dans une classe, ou encore stocker la liste des prédécesseurs pour les graphes orientés. Les exemples ci-dessous restent simples pour faciliter la compréhension.
+    Ces représentations peuvent être adaptées selon les besoins : on peut par exemple représenter une arête par une classe, utiliser une liste chaînée pour les listes d'adjacence, encapsuler la structure du graphe dans une classe, ou encore stocker la liste des prédécesseurs pour les graphes orientés. Les exemples ci-dessous restent simples pour faciliter la compréhension.
 
 === "Graphe non-orienté"
 
@@ -173,10 +173,10 @@ En notant $n$ le nombre de sommets et $m$ le nombre d'arêtes :
 | ------------------------------------- | :-----------------: | :-----------------: | :------------------: |
 | **Espace mémoire**                    |       $O(m)$        |      $O(n^2)$       |      $O(n + m)$      |
 | **$u$ et $v$ connectés ?**            |       $O(m)$        |       $O(1)$        | $O(\mathrm{deg}(u))$ |
-| **Parcourir les voisins d’un sommet** |       $O(m)$        |       $O(n)$        | $O(\mathrm{deg}(u))$ |
+| **Parcourir les voisins d'un sommet** |       $O(m)$        |       $O(n)$        | $O(\mathrm{deg}(u))$ |
 </div>
 
-Puisque le parcours du voisinage est au cœur de la majorité des algorithmes sur les graphes, la représentation par listes d’adjacence est la plus couramment utilisée.
+Puisque le parcours du voisinage est au cœur de la majorité des algorithmes sur les graphes, la représentation par listes d'adjacence est la plus couramment utilisée.
 
 ## Parcours en largeur / profondeur
 
@@ -188,7 +188,7 @@ De la même manière que l'on explore les éléments d'une liste pour les décou
 
 ![](assets/parcours-graphe.svg){ .center-img }
 
-Correctement implémentés, ces deux parcours visitent chaque sommet et chaque arête une seule fois, d’où une complexité en temps de $O(n + m)$.
+Correctement implémentés, ces deux parcours visitent chaque sommet et chaque arête une seule fois, d'où une complexité en temps de $O(n + m)$.
 
 === "Pseudocode BFS"
 
@@ -258,13 +258,13 @@ Correctement implémentés, ces deux parcours visitent chaque sommet et chaque a
 
     ![](assets/dfs-arcs.svg){ .center-img }
 
-    Un sommet est dit **terminé** si on a découvert toute sa descendance. Un arc de retour est ainsi un arc vers un ancêtre déjà visité mais **non-terminé**. L'algorithme colorie les sommets selon leur état d’exploration :
+    Un sommet est dit **terminé** si on a découvert toute sa descendance. Un arc de retour est ainsi un arc vers un ancêtre déjà visité mais **non-terminé**. L'algorithme colorie les sommets selon leur état d'exploration :
 
     <div class="center-table">
     
     | Couleur | État du sommet      | Description                                       |
     | ------- | ------------------- | ------------------------------------------------- |
-    | Blanc   | Non visité          | Le sommet n’a pas encore été exploré.             |
+    | Blanc   | Non visité          | Le sommet n'a pas encore été exploré.             |
     | Gris    | Visité, non terminé | Exploration en cours de la descendance.           |
     | Noir    | Visité et terminé   | Toute la descendance a été complètement explorée. |
     

@@ -68,7 +68,7 @@ icon: octicons/cpu-16
     
     </div>
 
-* Un programme est une suite d'**instructions** en **code machine** spécifique à un processeur, c'est-à-dire une suite d’octets que le processeur décode puis exécute. Ce code machine est souvent traduit en **code assembleur** pour faciliter sa lecture :
+* Un programme est une suite d'**instructions** en **code machine** spécifique à un processeur, c'est-à-dire une suite d'octets que le processeur décode puis exécute. Ce code machine est souvent traduit en **code assembleur** pour faciliter sa lecture :
 
     <div class="grid" markdown>
 
@@ -111,7 +111,7 @@ icon: octicons/cpu-16
 
 * Une mémoire de stockage peut être de type **ROM** (*Read Only Memory*, ou mémoire morte), qui ne peut être que lue (pas d'écriture possible). Typiquement une cartouche de jeu.
 
-* Les **mémoires cache** sont de petites mémoires rapides dans le CPU qui évite de trop attendre les données venant de la RAM en conservant celles qu’on utilise souvent ou bientôt. L’animation ci-dessous illustre les différents temps d’accès (ou latence) :
+* Les **mémoires cache** sont de petites mémoires rapides dans le CPU qui évite de trop attendre les données venant de la RAM en conservant celles qu'on utilise souvent ou bientôt. L'animation ci-dessous illustre les différents temps d'accès (ou latence) :
 
     <div class="memory-level" markdown="span">
     <div class="label" style="color: rgb(var(--custom-red));" markdown>:fontawesome-solid-border-all: &nbsp;  Registres</div>
@@ -170,13 +170,13 @@ icon: octicons/cpu-16
 
 ## Systèmes sur puce (SoC)
 
-* Un **SoC** (*System on a Chip* ou *Système sur puce*) est une puce qui regroupe tous les composants essentiels d’un ordinateur classique : processeur (CPU), mémoire vive (RAM), processeur graphique (GPU) et circuits de communication (Wi-Fi, Bluetooth…).
+* Un **SoC** (*System on a Chip* ou *Système sur puce*) est une puce qui regroupe tous les composants essentiels d'un ordinateur classique : processeur (CPU), mémoire vive (RAM), processeur graphique (GPU) et circuits de communication (Wi-Fi, Bluetooth…).
 
-* Ces puces sont très **compactes** (quelques cm²) et surtout conçues pour **consommer beaucoup moins d’énergie** qu’un ordinateur traditionnel à puissance équivalente.
+* Ces puces sont très **compactes** (quelques cm²) et surtout conçues pour **consommer beaucoup moins d'énergie** qu'un ordinateur traditionnel à puissance équivalente.
 
-* On les retrouve dans les **smartphones**, les **consoles de jeux portables** (comme la Nintendo Switch), les **nano-ordinateurs** (comme le Raspberry Pi), et même certains **ordinateurs portables récents** (comme les MacBook d’Apple depuis 2021).
+* On les retrouve dans les **smartphones**, les **consoles de jeux portables** (comme la Nintendo Switch), les **nano-ordinateurs** (comme le Raspberry Pi), et même certains **ordinateurs portables récents** (comme les MacBook d'Apple depuis 2021).
 
-* Le **marché des SoC** est en forte croissance et joue un rôle majeur dans l’évolution des technologies mobiles et embarquées.
+* Le **marché des SoC** est en forte croissance et joue un rôle majeur dans l'évolution des technologies mobiles et embarquées.
 
 * À gauche, la puce M1 Ultra d'Apple en comparaison avec un processeur de chez AMD, et à droite, l'architecture de la puce M1 Max d'Apple :
 

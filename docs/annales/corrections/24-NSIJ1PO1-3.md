@@ -67,9 +67,9 @@ for ligne in tableau_temps:
     tableau_final.append(coureur)
 ```
 
-5. Une clé primaire doit permettre d’identifier chaque enregistrement **de manière unique**. Dans la table `Temps`, un coureur (représenté par `numDossard`) participe à plusieurs étapes, donc cet attribut seul n’est pas unique. De même, une étape (`numEtape`) concerne plusieurs coureurs.
+5. Une clé primaire doit permettre d'identifier chaque enregistrement **de manière unique**. Dans la table `Temps`, un coureur (représenté par `numDossard`) participe à plusieurs étapes, donc cet attribut seul n'est pas unique. De même, une étape (`numEtape`) concerne plusieurs coureurs.
    
-    En revanche, le couple `(numDossard, numEtape)` est unique pour chaque ligne, car **un coureur n’a qu’un seul temps par étape**. Ce couple peut donc servir de clé primaire.
+    En revanche, le couple `(numDossard, numEtape)` est unique pour chaque ligne, car **un coureur n'a qu'un seul temps par étape**. Ce couple peut donc servir de clé primaire.
  
 6. Cette requête renvoie **tous les noms des coureurs de l'équipe Cofidis**.
 
@@ -88,7 +88,7 @@ JOIN Coureurs ON Equipe = nomEquipe
 WHERE nomCoureur = 'BARDET Romain';
 ```
 
-9. La première requête provoque une erreur car elle tente d’insérer un temps pour l’étape 5 alors que cette étape n’existe pas encore dans la table `Etapes`. Or une clé étrangère doit obligatoirement faire référence à une clé primaire existante dans la table liée. Ici, **la première requête viole la contrainte d'intégrité référentielle**.
+9. La première requête provoque une erreur car elle tente d'insérer un temps pour l'étape 5 alors que cette étape n'existe pas encore dans la table `Etapes`. Or une clé étrangère doit obligatoirement faire référence à une clé primaire existante dans la table liée. Ici, **la première requête viole la contrainte d'intégrité référentielle**.
 
 10. Il suffit d'**inverser l'ordre des deux requêtes**.
 

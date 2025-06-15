@@ -55,7 +55,7 @@ def lePlusPopulaire(listeSites):
 1.   L'expression `lePlusPopulaire(parcoursGraphe(s1)).nom` renvoie `#!py 'site5'`.
 
 2.   Quelques points :
-	* L’implémentation actuelle du parcours en largeur est sous-optimale en raison de l’utilisation de `.pop(0)` — de complexité linéaire — pour défiler un sommet de la file. Dans le pire des cas, cette opération est effectuée jusqu’à $n$ fois, la complexité finale atteint $O(n² + m)$.
+	* L'implémentation actuelle du parcours en largeur est sous-optimale en raison de l'utilisation de `.pop(0)` — de complexité linéaire — pour défiler un sommet de la file. Dans le pire des cas, cette opération est effectuée jusqu'à $n$ fois, la complexité finale atteint $O(n² + m)$.
 	* Cette complexité quadratique est inefficace même pour quelques milliers de sites. En négligeant le traitement des arcs, car $m = O(n^2)$, et en considérant 10000 sites, et un temps de calcul pour une opération entre 1 µs et 100 µs, le temps d'exécution total varierait entre 2 minutes et 3 heures.
 	* De plus, ce parcours ne garantit pas que tous les sites soient visités, car certains peuvent être inaccessibles depuis le sommet de départ. Une solution pourrait être de considérer le graphe comme non orienté, en incluant les prédécesseurs au voisinage d'un sommet.
 	* Plus simplement, il suffit de stocker initialement tous les sites dans une liste et appeler directement `lePlusPopulaire` de complexité linéaire.

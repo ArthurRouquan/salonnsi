@@ -47,10 +47,10 @@ def temps_course(equipe):
 
 8. ![](assets/24-NSIJ1ME1-3-Q8.svg){ .center-img width="350px" }
 
-9. Le **parcours infixe** permet d’obtenir la liste des équipes classées de
+9. Le **parcours infixe** permet d'obtenir la liste des équipes classées de
 la plus rapide à la plus lente. En effet, le parcours infixe permet de considérer les noeuds dans un Arbre Binaire de Recherche (ABR) par ordre croissant.
 
-10. La fonction `inserer` est récursive car elle s’appelle elle-même (ligne 8 et 13).
+10. La fonction `inserer` est récursive car elle s'appelle elle-même (ligne 8 et 13).
 
 11. 
 ```python hl_lines="4 6 11"

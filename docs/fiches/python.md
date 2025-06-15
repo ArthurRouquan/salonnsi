@@ -43,7 +43,7 @@ icon: material/language-python
     toto = 40  # une nouvelle affectation écrase l'ancienne valeur, toto vaut 40
     ```
 
-* Lors de l’évaluation d’une expression contenant une variable, elle est remplacée par sa valeur courante :
+* Lors de l'évaluation d'une expression contenant une variable, elle est remplacée par sa valeur courante :
 
     ```python
     x = 25 * 2    # l'affectation se déroule toujours en dernier
@@ -51,13 +51,13 @@ icon: material/language-python
     ```
 
 
-* Le symbole `=` ne signifie pas « est égal à », c’est **l’opérateur d’affectation**.
+* Le symbole `=` ne signifie pas « est égal à », c'est **l'opérateur d'affectation**.
   
 * La première affectation à une variable est appelée **initialisation**. Si une variable n'est pas initialisée, elle ne contient aucune valeur courante. Si vous tentez de l'évaluer, Python vous retournera  l'erreur :
 
     <div class="red-text" style="font-family: var(--md-code-font); font-size: .85em; text-align: center;">NameError: name '...' is not defined</div>
 
-    Une variable n’est pas une inconnue comme en mathématiques, elle contient toujours une valeur.
+    Une variable n'est pas une inconnue comme en mathématiques, elle contient toujours une valeur.
 
 ## Évaluation d'une expression
 

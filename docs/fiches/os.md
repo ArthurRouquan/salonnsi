@@ -5,15 +5,15 @@ icon: material/linux
 
 ## Définition
 
-* Un **système d’exploitation** (ou **OS**, *Operating System*) est un logiciel qui sert d'intermédiaire entre les programmes et le matériel de l’ordinateur (CPU, RAM, disques, périphériques, etc.).
+* Un **système d'exploitation** (ou **OS**, *Operating System*) est un logiciel qui sert d'intermédiaire entre les programmes et le matériel de l'ordinateur (CPU, RAM, disques, périphériques, etc.).
 
 * Il offre une **interface standardisée** permettant d'éviter aux programmes de se soucier des spécificités du matériel.
 
-* L’OS est le **premier programme lancé** au démarrage et reste actif en permanence.
+* L'OS est le **premier programme lancé** au démarrage et reste actif en permanence.
 
 * Parmi les OS courants : **Windows**, **Linux**, **macOS**, **Android**, **iOS**.
 
-* Le **noyau** (ou **kernel**) est la partie centrale de l’OS. Ses principales fonctionnalités :
+* Le **noyau** (ou **kernel**) est la partie centrale de l'OS. Ses principales fonctionnalités :
     <div class="center-table" markdown>
 
     | Fonctionnalité                  | Description                                                                                                                     |
@@ -58,8 +58,8 @@ On distingue deux grands types de logiciels :
 | `cp`     | Copie un fichier ou un dossier                      | `-r` (récursif)               | `cp -r images backup`  |
 | `mv`     | Déplace ou renomme un fichier                       | —                             | `mv notes.csv ..`      |
 | `rm`     | Supprime un fichier ou dossier                      | `-r` (récursif), `-f` (force) | `rm -rf travail/`      |
-| `cat`    | Affiche le contenu d’un fichier                     | —                             | `cat fibo.py`          |
-| `man`    | Manuel d’une commande                               | —                             | `man ls`               |
+| `cat`    | Affiche le contenu d'un fichier                     | —                             | `cat fibo.py`          |
+| `man`    | Manuel d'une commande                               | —                             | `man ls`               |
 | `grep`   | Recherche un motif dans un fichier                  | —                             | `grep "mdp" essai.txt` |
 | `sudo`   | Exécute une commande avec les droits administrateur | —                             | `sudo rm -rf /`        |
 
@@ -106,7 +106,7 @@ On distingue deux grands types de logiciels :
     <div class="no-bullet" markdown>
     * :material-file-code: &nbsp; Les **instructions** du programme à exécuter (chargées en mémoire).
     * :fontawesome-solid-memory: &nbsp; Un **espace mémoire** réservé.
-    * :fontawesome-solid-hard-drive: &nbsp; Des droits d’accès à certaines **ressources** (fichiers, périphériques…).
+    * :fontawesome-solid-hard-drive: &nbsp; Des droits d'accès à certaines **ressources** (fichiers, périphériques…).
   
     </div>
 
@@ -114,7 +114,7 @@ On distingue deux grands types de logiciels :
 
 * Chaque processus possède un **identifiant unique (PID)** et celui de son parent (PPID). Cela permet de structurer les processus en arbre. Si un processus parent se termine, tous ses processus enfants (et leur descendance) sont également arrêtés.
 
-* Un processeur n’exécute qu’une seule instruction à la fois, donc un seul processus à la fois. Pour donner l'illusion de simultanéité d'exécution, les processus se partagent le processeur à tour de rôle. Ainsi, un processus peut donc se trouver dans différents **états** :
+* Un processeur n'exécute qu'une seule instruction à la fois, donc un seul processus à la fois. Pour donner l'illusion de simultanéité d'exécution, les processus se partagent le processeur à tour de rôle. Ainsi, un processus peut donc se trouver dans différents **états** :
 
     ![](assets/processus-etats.svg){ .center-img }
 
@@ -135,14 +135,14 @@ On distingue deux grands types de logiciels :
 
 === ":material-skull: &nbsp; `kill`"
 
-    `kill <PID>` **termine** le processus identifié par son PID. L'option `-9` permet de forcer l’arrêt immédiat du processus, sans lui laisser la possibilité de se terminer de manière contrôlée.
+    `kill <PID>` **termine** le processus identifié par son PID. L'option `-9` permet de forcer l'arrêt immédiat du processus, sans lui laisser la possibilité de se terminer de manière contrôlée.
 
     ![](assets/kill.png){ width="600px" .center-img }
 
 
 ### Ordonnancement des processus
 
-L'**ordonnanceur** est un programme du système d’exploitation qui choisit le processus à élire, l’interrompt si nécessaire, et définit le temps processeur (mesuré en cycles) qui lui est alloué. Pour cela, il peut appliquer différentes **stratégies d’ordonnancement**, selon des critères comme la priorité des processus, leur durée estimée, leur ordre d’arrivée, un partage équitable du temps etc. Voici quelques stratégies d'ordonnancement pour les quatre processus suivants :
+L'**ordonnanceur** est un programme du système d'exploitation qui choisit le processus à élire, l'interrompt si nécessaire, et définit le temps processeur (mesuré en cycles) qui lui est alloué. Pour cela, il peut appliquer différentes **stratégies d'ordonnancement**, selon des critères comme la priorité des processus, leur durée estimée, leur ordre d'arrivée, un partage équitable du temps etc. Voici quelques stratégies d'ordonnancement pour les quatre processus suivants :
 
 ![](assets/ordonnancements.svg)
 

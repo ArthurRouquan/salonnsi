@@ -55,7 +55,7 @@ icon: material/graph
     Où $A_g$ (resp. $A_d$) est le sous-arbre gauche (resp. droit) de A . L'implémentation en Python est alors immédiate :
 
     ``` { .python .no-copy }
-    def taille(arbre: Noeud):
+    def taille(arbre):
         if arbre is None:  # cas de base
             return 0
         else:
@@ -71,7 +71,7 @@ icon: material/graph
     $$
 
     ``` { .python .no-copy }
-    def hauteur(arbre: Noeud):
+    def hauteur(arbre):
         if arbre is None:
             return 0
         else:
@@ -87,7 +87,7 @@ icon: material/graph
 * Finalement, en terme de code, il suffit de déplacer une simple ligne de code :
 
     ``` { .python .no-copy }
-    def parcours(arbre: Noeud):
+    def parcours(arbre):
         if arbre is not None:
             # print(arbre.valeur)   # parcours préfixe
             parcours(arbre.gauche)
@@ -106,7 +106,7 @@ icon: material/graph
 
     ![](assets/abr.svg){ width="80%" .center-img .invert }
 
-* Le parcours infixe permet de traiter les nœuds par ordre croissant.
+* Le **parcours infixe** permet de traiter les nœuds par ordre croissant.
 
 * Sous l'hypothèse que l'arbre soit équilibré, cette structure de données permet de maintenir des valeurs triées (et donc de rechercher rapidement une valeur grâce à une recherche dichotomique) et d'insérer de manière efficiente de nouvelles valeurs. 
 
@@ -118,50 +118,72 @@ icon: material/graph
 |  ABR équilibré   | <span class="hl-green">$O(\log n)$</span> | <span class="hl-green">$O(\log n)$</span> |
 </div>
 
-<div class="grid" markdown>
-``` { .python .no-copy }
-def minimum(arbre: Noeud):
-    if arbre is None:
-        return None
-    elif arbre.gauche is None:
-        return arbre.valeur
-    else:
-        return minimum(arbre.gauche)
-```
+### Quelques algorithmes classiques sur un ABR
+
+=== "Minimum" 
+
+    ``` { .python .no-copy }
+    def minimum(arbre):
+        if arbre is None:
+            return None
+        elif arbre.gauche is None:
+            return arbre.valeur
+        else:
+            return minimum(arbre.gauche)
+    ```
+
+=== "Maximum" 
+
+    ``` { .python .no-copy }
+    def maximum(arbre):
+        if arbre is None:
+            return None
+        elif arbre.droit is None:
+            return arbre.valeur
+        else:
+            return maximum(arbre.droit)
+    ```
+
 
 ``` { .python .no-copy }
-def maximum(arbre: Noeud):
-    if arbre is None:
-        return None
-    elif arbre.droit is None:
-        return arbre.valeur
-    else:
-        return maximum(arbre.droit)
-```
-</div>
-
-``` { .python .no-copy }
-def rechercher(arbre: Noeud, x):
+def rechercher(arbre, x):
     if arbre is None:
         return None
     elif arbre.valeur == x:
         return arbre
-    elif arbre.valeur < x:
+    elif x < arbre.valeur:
         return rechercher(arbre.gauche, x) 
     else:
         return rechercher(arbre.droit, x) 
 ```
 
-``` { .python .no-copy }
-def inserer(arbre: Noeud, x):
-    if x < arbre.valeur:
-        if arbre.gauche is None:
-            arbre.gauche = Noeud(x, None, None)
+=== "Insertion fonctionnelle" 
+
+    ```{.python .no-copy}
+    def inserer(arbre, x):
+        """ Insère la valeur x dans l'ABR arbre et renvoie l'arbre modifié. """
+        if arbre is None:
+            return Noeud(x, None, None)
+        if x < arbre.valeur:
+            arbre.gauche = inserer(arbre.gauche, x)
         else:
-            inserer(arbre.gauche, x)
-    else:
-        if arbre.droit is None:
-            arbre.droit = Noeud(x, None, None)
+            arbre.droit  = inserer(arbre.droit,  x)
+        return arbre
+    ```
+
+=== "Insertion en place" 
+
+    ```{.python .no-copy}
+    def inserer(arbre, x):
+        """ Insère la valeur x dans l'ABR arbre. """
+        if x < arbre.valeur:
+            if arbre.gauche is None:
+                arbre.gauche = Noeud(x, None, None)
+            else:
+                inserer(arbre.gauche, x)
         else:
-            inserer(arbre.droit, x)
-```
+            if arbre.droit is None:
+                arbre.droit = Noeud(x, None, None)
+            else:
+                inserer(arbre.droit, x)
+    ```

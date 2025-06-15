@@ -5,7 +5,7 @@ icon: material/dots-triangle
 
 ## Introduction
 
-La **programmation dynamique** est une puissante méthode utilisée pour résoudre des problèmes d’optimisation, où l’on cherche à maximiser ou minimiser une valeur. Elle permet d’obtenir une solution optimale avec, souvent, une excellente complexité en temps.
+La **programmation dynamique** est une méthode utilisée pour résoudre des problèmes d'optimisation, où l'on cherche à maximiser ou minimiser une valeur. Elle permet d'obtenir une solution optimale avec une excellente complexité en temps.
 
 Cette approche consiste à décomposer le problème en sous-problèmes, de les résoudre **récursivement**, et mémoriser leurs solutions pour éviter de recalculer ceux déjà rencontrés à l'aide d'un cache (**mémoïsation**).
 
@@ -14,7 +14,7 @@ Cette approche consiste à décomposer le problème en sous-problèmes, de les r
 <!-- 
 ## Intuition avec le problème du rendu de monnaie
 
-Imaginons que l’on souhaite rendre 50 € à l’aide des pièces suivantes : 1 €, 10 €, 25 € et 33 €. L'objectif est de rendre le moins de pièces possible pour rendre cette somme.
+Imaginons que l'on souhaite rendre 50 € à l'aide des pièces suivantes : 1 €, 10 €, 25 € et 33 €. L'objectif est de rendre le moins de pièces possible pour rendre cette somme.
 
 On peut constater que **si on sait rendre optimalement 49€, 40€, 25€ et 17€, alors on sait rendre optimalement 50€**. En effet, pour rendre 50€, on peut au choix :
 
@@ -23,7 +23,7 @@ On peut constater que **si on sait rendre optimalement 49€, 40€, 25€ et 17
 * Rendre une pièce de 25 € et rendre ensuite 25 €
 * Rendre une pièce de 33 € et rendre ensuite 17 €
 
-Nous avons ainsi décomposé notre problème en 4 sous-problèmes, c'est-à-dire 4 problèmes de même nature, mais plus petits. Supposons que l’on ait résolu optimalement les sous-problèmes :
+Nous avons ainsi décomposé notre problème en 4 sous-problèmes, c'est-à-dire 4 problèmes de même nature, mais plus petits. Supposons que l'on ait résolu optimalement les sous-problèmes :
 
 $$\begin{align*}
 c^\star(49€) &= 7 \text{ pièces} \\

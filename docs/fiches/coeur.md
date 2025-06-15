@@ -374,7 +374,7 @@ Une chaîne de caractères est une **liste** de caractères, tous les algorithme
 
 ```{.python .no-copy}
 class Noeud:
-    def __init__(self, v, g=None, d=None):
+    def __init__(self, v, g, d):
         self.valeur = v
         self.gauche = g  # sous-arbre gauche
         self.droit  = d  # sous-arbre droit
@@ -384,9 +384,9 @@ class Noeud:
 
     ```{.python .no-copy}
     def inserer(arbre, x):
-        """ Insère une valeur x dans un ABR arbre et renvoie l’arbre modifié. """
+        """ Insère la valeur x dans l'ABR arbre et renvoie l'arbre modifié. """
         if arbre is None:
-            return Noeud(x)
+            return Noeud(x, None, None)
         if x < arbre.valeur:
             arbre.gauche = inserer(arbre.gauche, x)
         else:
@@ -398,15 +398,15 @@ class Noeud:
 
     ```{.python .no-copy}
     def inserer(arbre, x):
-        """ Insère une valeur x dans un ABR arbre. """
+        """ Insère la valeur x dans l'ABR arbre. """
         if x < arbre.valeur:
             if arbre.gauche is None:
-                arbre.gauche = Noeud(x)
+                arbre.gauche = Noeud(x, None, None)
             else:
                 inserer(arbre.gauche, x)
         else:
             if arbre.droit is None:
-                arbre.droit = Noeud(x)
+                arbre.droit = Noeud(x, None, None)
             else:
                 inserer(arbre.droit, x)
     ```

@@ -32,10 +32,10 @@ title: 24-NSIJ1ME1-2
     * La clé étrangère `nom_croisiere` de la relation `reservations` fait référence à la clé primaire `nom` de la relation `croisieres`.
     * Les clés étrangères `escale_1`, `escale_2`, `escale_3` et `escale_4` de la relation `croisieres` font référence à la clé primaire `nom` de la relation `villes`.
 
-6. L’erreur s’explique par le fait qu’au moins une de ces nouvelles villes n’est pas présente dans la relation `villes`. Or, une clé étrangère doit obligatoirement faire référence à une clé primaire existante. Une solution serait d'ajouter au préalable ces villes dans la relation `villes` avant d'effectuer la requête d'insertion.
+6. L'erreur s'explique par le fait qu'au moins une de ces nouvelles villes n'est pas présente dans la relation `villes`. Or, une clé étrangère doit obligatoirement faire référence à une clé primaire existante. Une solution serait d'ajouter au préalable ces villes dans la relation `villes` avant d'effectuer la requête d'insertion.
 
 7. 
-    * La première requête permet d’obtenir l’identifiant (`id`) de Jean Barc à partir de la table `clients`.
+    * La première requête permet d'obtenir l'identifiant (`id`) de Jean Barc à partir de la table `clients`.
     * La seconde requête utilise cet identifiant pour récupérer les identifiants des réservations de Jean Barc depuis la table `reservations`.
 
 8. 

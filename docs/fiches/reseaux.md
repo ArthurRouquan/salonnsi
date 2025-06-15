@@ -24,7 +24,7 @@ icon: material/web
 
 * Chaque **hôte** (machine) est localisé sur le réseau par une **adresse IP**. Elle est composée de 4 octets (donc 4 × 8 = 32 bits). Par exemple, Alice a pour adresse IP `192.168.150.200`. 
 
-* Une adresse IP peut se couper en deux : <span class="blue-text">**l’adresse réseau**</span> (ou de sous-réseau) et <span class="red-text">**le numéro de l’hôte**</span> sur ce réseau. Chaque hôte définit les <span class="purple-text">**$k$ premiers bits**</span> qui correspondent à leur adresse réseau. Par exemple, Alice choisit `/21` (notation CIDR du masque) :
+* Une adresse IP peut se couper en deux : <span class="blue-text">**l'adresse réseau**</span> (ou de sous-réseau) et <span class="red-text">**le numéro de l'hôte**</span> sur ce réseau. Chaque hôte définit les <span class="purple-text">**$k$ premiers bits**</span> qui correspondent à leur adresse réseau. Par exemple, Alice choisit `/21` (notation CIDR du masque) :
 
     ![](assets/adresse-ip.svg){ .center-img style="padding: 1rem 0 1rem 0;"}
 
@@ -32,36 +32,36 @@ icon: material/web
 
     ![](assets/masque.svg){ .center-img style="padding: 1rem 0 1rem 0;"}
 
-* Le masque permet d’extraire l’adresse de sous-réseau d’une adresse IP en masquant la partie du numéro de l’hôte. Pour cela, on effectue un **ET Logique bit à bit** (opérateur <tt>&</tt>) entre l’adresse IP et le masque. Les 1 du masque laissent passer les bits de l’adresse réseau tandis que les 0 masquent le numéro de l’hôte :
+* Le masque permet d'extraire l'adresse de sous-réseau d'une adresse IP en masquant la partie du numéro de l'hôte. Pour cela, on effectue un **ET Logique bit à bit** (opérateur <tt>&</tt>) entre l'adresse IP et le masque. Les 1 du masque laissent passer les bits de l'adresse réseau tandis que les 0 masquent le numéro de l'hôte :
 
     ![](assets/masque-et-logique.svg){ .center-img style="padding: 1rem 0 1rem 0;"}
 
-* S’il y a $n = 32 − k$ bits réservés pour le numéro de l’hôte, alors il y a $2^n$ numéro d’hôtes possibles. Cependant, on perd l’adresse réseau (numéro d’hôte à 0) et l’adresse de broadcast IP (numéro d’hôte maximal). Ainsi, le nombre de machines que l’on peut connecter à ce sous-réseau est $2^n − 2$ :
+* S'il y a $n = 32 − k$ bits réservés pour le numéro de l'hôte, alors il y a $2^n$ numéro d'hôtes possibles. Cependant, on perd l'adresse réseau (numéro d'hôte à 0) et l'adresse de broadcast IP (numéro d'hôte maximal). Ainsi, le nombre de machines que l'on peut connecter à ce sous-réseau est $2^n − 2$ :
 
     ![](assets/plage-ip.svg){ .center-img style="padding: 1rem 0 1rem 0;"}
 
-    Ainsi la plage des adresses IP sur le réseau d’Alice :
+    Ainsi la plage des adresses IP sur le réseau d'Alice :
     
     * Première adresse IP utilisable du réseau : `192.168.144.1`
     * Dernière adresse IP utilisable du réseau : `192.168.151.254`
     
-* Une machine ne peut pas communiquer directement avec une autre machine qui n’est pas sur son réseau. Pour établir la communication entre ces deux réseaux, on les relie par un ou plusieurs **routeurs** (aussi appelés **passerelles**).
+* Une machine ne peut pas communiquer directement avec une autre machine qui n'est pas sur son réseau. Pour établir la communication entre ces deux réseaux, on les relie par un ou plusieurs **routeurs** (aussi appelés **passerelles**).
 
 ??? tip "Astuces de calculs"
 
-    * Un octet du masque ayant la valeur 255 (`11111111` en binaire) ne modifie pas l’octet correspondant de l’adresse IP. Et un octet du masque ayant la valeur 0 aboutit systématiquement à 0. Pour les autres valeurs du masque comme 248, elles peuvent rester sous la forme d’une somme de puissances de 2 :
+    * Un octet du masque ayant la valeur 255 (`11111111` en binaire) ne modifie pas l'octet correspondant de l'adresse IP. Et un octet du masque ayant la valeur 0 aboutit systématiquement à 0. Pour les autres valeurs du masque comme 248, elles peuvent rester sous la forme d'une somme de puissances de 2 :
 
         ![](assets/calcul-adresse.svg){ .center-img style="padding: 1rem 0 1rem 0;" }
 
-    * Pour **déterminer toutes les adresses IP d’hôtes utilisables** d’un réseau sachant son adresse réseau et son masque, on commence par calculer le numéro d’hôte maximal à partir du masque :
+    * Pour **déterminer toutes les adresses IP d'hôtes utilisables** d'un réseau sachant son adresse réseau et son masque, on commence par calculer le numéro d'hôte maximal à partir du masque :
 
         ![](assets/calcul-hote-max.svg){ .center-img style="padding: 1rem 0 1rem 0;" }
 
-        On ajoute à l’adresse réseau ce numéro d’hôte pour obtenir la dernière adresse (broadcast) :
+        On ajoute à l'adresse réseau ce numéro d'hôte pour obtenir la dernière adresse (broadcast) :
 
         ![](assets/calcul-broadcast.svg){ .center-img style="padding: 1rem 0 1rem 0;" }
 
-        En excluant les adresses IP inutilisables — l’adresse réseau et l’adresse broadcast — les adresses IP utilisables du réseau vont ici de `192.168.144.1` à `192.168.151.254`.
+        En excluant les adresses IP inutilisables — l'adresse réseau et l'adresse broadcast — les adresses IP utilisables du réseau vont ici de `192.168.144.1` à `192.168.151.254`.
 
 
 ## Protocoles de routage

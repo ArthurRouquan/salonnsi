@@ -59,6 +59,6 @@ def strategie_2(maisons, r):
 	return antennes
 ```
 
-9. Les deux stratégies examinent chaque maison une seule fois, en effectuant des comparaisons et des ajouts simples. Le coût en nombre d’opérations pour ces deux stratégies est donc **linéaire**, soit $\boxed{O(n)}$.
+9. Les deux stratégies examinent chaque maison une seule fois, en effectuant des comparaisons et des ajouts simples. Le coût en nombre d'opérations pour ces deux stratégies est donc **linéaire**, soit $\boxed{O(n)}$.
 
 </div>

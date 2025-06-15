@@ -13,13 +13,13 @@ title: 24-NSIJ1PO1-1
 
 <div class="circle-ol" markdown>
 
-1. Le masque `255.255.255.0` réserve 8 bits pour le numéro d’hôte, donc on peut connecter au maximum $2^8 - 2 = \boxed{254}$ machines. On enlève bien les deux adresses réservées : celle du réseau et celle de diffusion générale.
+1. Le masque `255.255.255.0` réserve 8 bits pour le numéro d'hôte, donc on peut connecter au maximum $2^8 - 2 = \boxed{254}$ machines. On enlève bien les deux adresses réservées : celle du réseau et celle de diffusion générale.
 
 2. $217 = 128 + 64 + 16 + 8 + 1 = \boxed{(11011001)_2}$
 
 3. $(110010)_2 = 2 + 16 + 32 = \boxed{50}$
 
-4. Avec le masque `255.255.255.0`, l’adresse réseau de `110.217.53.22` est `110.217.53.0`. Comme cela ne correspond pas à l’adresse du réseau pédagogie 2 `110.217.52.0`, **cette machine n’en fait pas partie**.
+4. Avec le masque `255.255.255.0`, l'adresse réseau de `110.217.53.22` est `110.217.53.0`. Comme cela ne correspond pas à l'adresse du réseau pédagogie 2 `110.217.52.0`, **cette machine n'en fait pas partie**.
 
 
 5. 

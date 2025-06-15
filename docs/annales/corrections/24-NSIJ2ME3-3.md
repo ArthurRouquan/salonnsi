@@ -21,7 +21,7 @@ title: 24-NSIJ2ME3-3
 
 3. La commande `ping` permet de tester la **connectivité** entre deux hôtes sur un réseau.
    
-4. Le poste `PC_A1` est mal configuré. La passerelle par défaut `192.168.0.254` n’est pas accessible car elle n’est pas dans le même sous-réseau que le poste (`192.168.1.0`). Il suffit de modifier sa passerelle en `192.168.1.254`, conformément au schéma.
+4. Le poste `PC_A1` est mal configuré. La passerelle par défaut `192.168.0.254` n'est pas accessible car elle n'est pas dans le même sous-réseau que le poste (`192.168.1.0`). Il suffit de modifier sa passerelle en `192.168.1.254`, conformément au schéma.
 
 5. Les paquets suivent le chemin **<tt>PC_A1</tt> → Routeur <tt>A</tt> → Routeur <tt>B</tt> → Routeur <tt>C</tt> → Routeur <tt>D</tt> → <tt>Serveur_impression</tt>**.
 
@@ -46,7 +46,7 @@ title: 24-NSIJ2ME3-3
 
 8. Les paquets suivent le chemin **<tt>PC_A1</tt> → <tt>A</tt> → <tt>B</tt> → <tt>C</tt> → <tt>D</tt> → <tt>Serveur_impression</tt>**.
 
-9. La liaison entre les routeurs C et D offrant un faible débit de 10 Mb/s, il serait ainsi préférable d’emprunter l’itinéraire C → D → E, où chaque liaison bénéficie d’un débit supérieur de 1 Gb/s.
+9. La liaison entre les routeurs C et D offrant un faible débit de 10 Mb/s, il serait ainsi préférable d'emprunter l'itinéraire C → D → E, où chaque liaison bénéficie d'un débit supérieur de 1 Gb/s.
 
 10. Après la coupure de la liaison C–D, les lignes suivantes de la table du routeur C sont ainsi modifiées :
 
@@ -73,7 +73,7 @@ WHERE poids > 1000;
 
 14.  Cette requête renvoie les numéros de parution contenant au moins une image dont le titre comporte le mot « Appolo ». Un même numéro de parution peut apparaître plusieurs fois si plusieurs images correspondantes y sont associées.
 
-15. Cette requête ajoute l’image portant le numéro 2923 à la relation <tt>image</tt>. Son titre est « Volcans du massif central », ses dimensions sont de 400×400 pixels et son poids est de 1430 Ko. Aucune description n'est renseignée.
+15. Cette requête ajoute l'image portant le numéro 2923 à la relation <tt>image</tt>. Son titre est « Volcans du massif central », ses dimensions sont de 400×400 pixels et son poids est de 1430 Ko. Aucune description n'est renseignée.
 
 16. 
 ```sql

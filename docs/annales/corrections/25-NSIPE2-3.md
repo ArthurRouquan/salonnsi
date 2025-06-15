@@ -17,14 +17,14 @@ title: 25-NSIPE2-3
 
 2. L'expression `#!py a2.voisines[2][1]` renvoie `#!py 4`.
 
-3. La ligne 7 renseigne pour l’attraction « Train fantôme » (`a3`) la liste de ses attractions voisines ainsi que leur distance (en minutes) respective :
+3. La ligne 7 renseigne pour l'attraction « Train fantôme » (`a3`) la liste de ses attractions voisines ainsi que leur distance (en minutes) respective :
     * `a1` (Grand huit) à 5 minutes
     * `a2` (Petits chevaux) à 3 minutes
     * `a4` (Grande roue) à 6 minutes
 
 4. `#!py a4.voisines = [(a2, 4), (a3, 6)]`
 
-5. On peut supposer que le temps de trajet entre deux attractions est le même dans les deux sens. Il n’est donc pas utile de modéliser cette situation avec un graphe orienté, sauf en cas d’asymétrie dans les trajets, par exemple s’il existe des pentes.
+5. On peut supposer que le temps de trajet entre deux attractions est le même dans les deux sens. Il n'est donc pas utile de modéliser cette situation avec un graphe orienté, sauf en cas d'asymétrie dans les trajets, par exemple s'il existe des pentes.
 
 6. La durée de la balade est la somme de la durée totale des attractions (11 + 6 + 9 = 26) et des trajets intermédiaires (7 + 3 = 10), soit 26 + 10 = **36 minutes**.
 
@@ -54,7 +54,7 @@ def est_balade(attractions):
 
 12. Après exécution, le tableau `tableau` contient `#!py [a3, a1, a2, None]`.
 
-13. La variable `deja_vues` est un dictionnaire dont les clés sont les sommets (attractions) visités lors du parcours, afin d'éviter de les revisiter. Puisque la valeur associée à chaque clé n’a pas d’importance, on aurait tout aussi bien pu utiliser un ensemble (`#!py set`) à la place.
+13. La variable `deja_vues` est un dictionnaire dont les clés sont les sommets (attractions) visités lors du parcours, afin d'éviter de les revisiter. Puisque la valeur associée à chaque clé n'a pas d'importance, on aurait tout aussi bien pu utiliser un ensemble (`#!py set`) à la place.
 
 14. Une clé primaire est un ou plusieurs attributs qui identifient de manière unique un enregistrement d'une relation. Une clé étrangère est un ou plusieurs attributs qui fait référence à une clé primaire d'une autre relation.
 
@@ -86,6 +86,6 @@ WHERE visiteur.prenom = 'Alan'
     * La table `commande` qui modélise les différentes commandes :
         <center><tt style="font-size: .8em">commande(<u>id</u>: INT, #id_photo: INT, #id_format: INT, quantite: INT)</tt></center>
 
-    La table `photo` n’a alors plus besoin de l'attribut `prix`.
+    La table `photo` n'a alors plus besoin de l'attribut `prix`.
 
 </div>

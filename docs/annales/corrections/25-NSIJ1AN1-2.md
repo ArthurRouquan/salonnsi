@@ -64,7 +64,7 @@ def chargement_glouton(liste, rang, capacite):
         return chargement_glouton(liste, rang + 1, capacite)
 ```
 
-9. En python, le nombre d’appels récursifs est limité à 1000 par défaut. Lorsque `chargement_glouton` dépasse ce seuil, Python affiche cette erreur.
+9. En python, le nombre d'appels récursifs est limité à 1000 par défaut. Lorsque `chargement_glouton` dépasse ce seuil, Python affiche cette erreur.
 
 10.  
 ```python
