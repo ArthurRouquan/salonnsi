@@ -126,6 +126,7 @@ Une liste chaînée a un seul sens de parcours, on la parcours toujours en parta
             self.element = element
             self.suivant = chainon_suivant
 
+
     class ListeChainee:
         def __init__(self):
             self.tete = None  # référence vers le premier chaînon
