@@ -32,7 +32,7 @@ WHERE nom_patient = 'Heartman';
 SELECT COUNT(*)
 FROM Diagnostic
 JOIN Symptome ON Symptome.nom_patient = Diagnostic.nom_patient
-WHERE nom_maladie = 'Covid-19' and toux = 'Oui';
+WHERE nom_maladie = 'Covid-19' AND toux = 'Oui';
 ```
 
 4. Cette requête renvoie une erreur car elle tente d'insérer un nouvel enregistrement dont la valeur de la clé primaire (`#!sql 'Douglas'`) est déjà présente dans la table `Patients`. Or, une clé primaire doit identifier chaque enregistrement de manière unique : deux enregistrements ne peuvent partager la même valeur de clé primaire.
@@ -69,12 +69,12 @@ def reduire(self):
     if self.est_feuille():
         return
     self.gauche.reduire()
-    self.droite.reduire()
-    if self.gauche.est_feuille() and self.droite.est_feuille() \ 
-       and self.gauche.valeur == self.droite.valeur:
+    self.droit.reduire()
+    if self.gauche.est_feuille() and self.droit.est_feuille() \ 
+       and self.gauche.valeur == self.droit.valeur:
         self.valeur = self.gauche.valeur
         self.gauche = None
-        self.droite = None
+        self.droit  = None
 ```
 
 13. 
