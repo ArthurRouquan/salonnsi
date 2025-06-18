@@ -17,7 +17,7 @@ title: 25-NSIJ1ME1-3
 
 2. **192.168.20.255** est l'adresse de diffusion du réseau du café 1.
 
-3. En prenant en compte les 4 machines connectées et les 2 adresses réservées, il est encore possible de connecter $255 - 4 - 2 = \boxed{249}$ machines à ce réseau.
+3. En prenant en compte les 4 machines connectées et les 2 adresses réservées, il est encore possible de connecter $256 - 4 - 2 = \boxed{250}$ machines à ce réseau.
 
 4. Puisque $8 = 2^3$, le numéro d'hôte peut s'écrire sur 3 bits, donc la longueur maximale du masque de sous-réseau est de $32 - 3 = \boxed{29}$ bits.
 
