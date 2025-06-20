@@ -23,14 +23,14 @@ title: 25-NSIJ1ME1-1
 
 3. 
 ```sql
-SELECT DISTINCT annee
+SELECT annee
 FROM inventaire
 WHERE modele = 'Les Paul Standard';
 ```
 
 4. 
 ```sql
-SELECT modele, annee
+SELECT modele
 FROM inventaire
 WHERE marque = 'Gibson'
 ORDER BY annee;

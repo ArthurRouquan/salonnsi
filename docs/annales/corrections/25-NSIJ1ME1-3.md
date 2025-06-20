@@ -86,7 +86,7 @@ def modifie(self, adresse_ip, interface, passerelle, cout):
 
 17.  
 ```python
-elif precede(adresse_ip, self.adresse_ip):
+elif precede(ip_bin(adresse_ip), ip_bin(self.adresse_ip)):
 ```
 
 </div>

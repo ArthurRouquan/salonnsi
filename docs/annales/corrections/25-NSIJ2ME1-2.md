@@ -15,7 +15,7 @@ title: 25-NSIJ2ME1-2
 
 1. Plusieurs adhérents peuvent partager le même nom, cet attribut ne permet donc pas d'identifier de manière unique un enregistrement de la table. Il ne peut donc pas servir de clé primaire.
 
-2. La requête affiche les noms des jeux ainsi que leurs éditeurs, triés par ordre alphabétique des noms de jeux. 
+2. La requête affiche le nom et l'éditeur correspondant de tous les jeux présents dans la ludothèque, triés par ordre alphabétique des noms de jeux. 
 
 3. 
 ```sql
@@ -46,12 +46,12 @@ FROM jeu
 WHERE anneeSortie >= 2010 AND ageMinimum < 10;
 ```
 
-1. On peut proposer les clés étrangères suivantes à ajouter à la relation `participation` :
+7. On peut proposer les clés étrangères suivantes à ajouter à la relation `participation` :
     
-    * `nom` qui fait référence à la clé primaire `nom` de la relation `evenement`.  
+    * `nomEvenement` qui fait référence à la clé primaire `nom` de la relation `evenement`.  
     * `idAdherent` qui fait référence à la clé primaire  `idAdherent` de la relation `adherent`.  
 
-2. 
+8. 
 ```python
 dict_emprunts = {}
 for jeu in liste:
@@ -61,7 +61,7 @@ for jeu in liste:
         dict_emprunts[jeu] = 1
 ```
 
-1. Bien des variantes existent, la plus « simple » me semble être :
+9. Bien des variantes existent, la plus « simple » me semble être :
 
     ```python
     def max3(dico):
@@ -75,25 +75,6 @@ for jeu in liste:
                 c = n
         return [[jeu for jeu, n in dico.items() if n == m] for m in (c, b, a)]
 
-    print(max3(dict_emprunts))
-    ```
-
-    Ou bien :
-
-    ```python
-    def max3(dico):
-        podium = []
-        seuil = float('inf')
-        for _ in range(3):
-            maxi = 0
-            for n in dico.values():
-                if maxi < n < seuil:
-                    maxi = n
-            # append aurait été préférable, mais on respecte l'ordre donné en exemple
-            podium.insert(0, [jeu for jeu, n in dico.items() if n == maxi])
-            seuil = maxi
-        return podium
-    
     print(max3(dict_emprunts))
     ```
 

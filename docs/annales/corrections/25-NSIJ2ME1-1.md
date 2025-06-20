@@ -22,7 +22,7 @@ title: 25-NSIJ2ME1-1
 4. Le total des occurrences est identique dans les deux groupes :
 $1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 = \boxed{11}$ et $3 + 4 + 4 = \boxed{11}$. La séparation illustrée respecte donc bien l'étape 2 qui consiste à former deux groupes aux totaux les plus proches possibles.
 
-1. L'arbre a ici une hauteur de **5**, ce qui correspond à la taille (en bits) maximale d'un mot binaire utilisé pour coder un symbole.
+1. L'arbre a ici une hauteur de **5**, soit le nombre maximum de bits utilisé pour coder un symbole.
 
 2. * Le texte « <tt style="font-size: .95em">je pense, donc je suis</tt> » comporte 22 caractères, son codage ASCII nécessite donc 22 octets. 
     * Son codage Shannon-Fano nécessite $4 + 4 + 4 + 5 + 5 + 4 + 4 + 2 \times 4 + 2 \times 4 + 3 + 3 \times 3 + 4 \times 3 + 4 \times 2 = 78$ bits, soit 10 octets.

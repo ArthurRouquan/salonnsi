@@ -1,9 +1,9 @@
 site_name: Salon NSI
 
 site_url: https://salonnsi.fr
-
 repo_url: https://github.com/arthurrouquan/salonnsi
 repo_name: arthurrouquan/salonnsi
+edit_uri: vscode://file/Users/arthur/Documents/SalonNSI/docs
 
 theme:
   logo: assets/salon-lion.png
@@ -33,12 +33,12 @@ theme:
   features:
     - navigation.instant
     - navigation.instant.prefetch
-    
     - navigation.tabs
     - navigation.indexes
     - search.suggest
-    - content.code.copy
+    # - content.code.copy
     - content.code.annotate
+    - content.action.edit
 
 plugins:
   - open-in-new-tab
