@@ -53,7 +53,7 @@ def chiffrement(msg, cle):
     return msg_chiffre
 ```
 
-5. L'appel lève ici l'erreur `#!py AssertionError` car l'assertion en début de fonction n'est pas vérifiée, la longueur de la clé n'est pas ici au moins égale à longueur du texte.
+5. L'appel lève ici l'erreur `#!py AssertionError` (avec le message `#!py 'impossible'`) car l'assertion en début de fonction n'est pas vérifiée, la longueur de la clé n'est pas ici au moins égale à longueur du texte.
 
 6. On peut d'abord déduire la somme masque + message et enfin le message clair : 
    
@@ -96,9 +96,9 @@ def dechiffrement(msg, cle):
 
 12. Le protocole HTTPS sécurise les communications entre deux hôtes sur un réseau en combinant chiffrement asymétrique et symétrique. Le serveur envoie sa clé publique accompagnée d'un **certificat d'authenticité** délivré par une autorité de confiance, que le client vérifie pour s'assurer de l'identité du serveur. Il chiffre ensuite une clé symétrique temporaire avec cette clé publique. Le serveur la déchiffre avec sa clé privée, et toute la communication qui suit utilise cette clé symétrique.
 
-13. Le chiffrement asymétrique est **trop lent** pour tout le trafic. HTTPS l'utilise juste pour échanger une clé symétrique, qui sert ensuite à chiffrer efficacement la communication.
+13. Le chiffrement asymétrique requiert **un plus grand temps de calcul** que le chiffrement symmétrique. HTTPS l'utilise juste pour échanger une clé symétrique, qui sert ensuite à chiffrer efficacement la communication.
 
-14. **Bob a mal saisi l'adresse IP de Marc** : il a tapé <tt style="font-size: .95em">192.168.100.115</tt> au lieu de <tt style="font-size: .95em">192.168.**110**.115</tt>. Cette adresse erronée ne fait pas partie de son réseau local. Comme l'erreur affichée n'est pas « destination inaccessible », cela signifie qu'une passerelle est bien configurée sur le réseau de Bob, et que la machine a tenté d'envoyer les paquets vers un autre réseau. Aucun hôte ne répondant à cette adresse, tous les paquets ont été perdus.
+14. **Marc a mal saisi l'adresse IP de Bob** : il a tapé <tt style="font-size: .95em">192.168.100.115</tt> au lieu de <tt style="font-size: .95em">192.168.**110**.115</tt>. Cette adresse erronée ne fait pas partie de son réseau local. Comme l'erreur affichée n'est pas « destination inaccessible », cela signifie qu'une passerelle est bien configurée sur le réseau de Marc, et que la machine a tenté d'envoyer les paquets vers un autre réseau. Aucun hôte ne répondant à cette adresse, tous les paquets ont été perdus.
 
 15. Ce masque s'écrit <tt style="font-size: .95em">**255.255.255.224**</tt> en notation décimale.
 

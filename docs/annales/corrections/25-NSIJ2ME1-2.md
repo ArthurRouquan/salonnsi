@@ -46,10 +46,8 @@ FROM jeu
 WHERE anneeSortie >= 2010 AND ageMinimum < 10;
 ```
 
-7. On peut proposer les clés étrangères suivantes à ajouter à la relation `participation` :
-    
-    * `nomEvenement` qui fait référence à la clé primaire `nom` de la relation `evenement`.  
-    * `idAdherent` qui fait référence à la clé primaire  `idAdherent` de la relation `adherent`.  
+7. ![](assets/25-NSIJ2ME1-2-Q7.svg){ .center-img }
+
 
 8. 
 ```python
