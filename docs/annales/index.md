@@ -56,6 +56,12 @@ L'épreuve **écrite** (15 points) dure 3h30 et est composée de 3 exercices. Le
 | [:fontawesome-solid-file-pdf: <tt>J2ME1-1</tt>](exercices/25-NSIJ2ME1-1.pdf) | <span class="tags-container"><span class="tag">Algorithmique</span><span class="tag">Arbre binaire</span></span> | [:material-open-in-new:](corrections/25-NSIJ2ME1-1.md) |
 | [:fontawesome-solid-file-pdf: <tt>J2ME1-2</tt>](exercices/25-NSIJ2ME1-2.pdf) | <span class="tags-container"><span class="tag">Algorithmique</span><span class="tag">Dictionnaire</span><span class="tag">SQL</span></span> | [:material-open-in-new:](corrections/25-NSIJ2ME1-2.md) |
 | [:fontawesome-solid-file-pdf: <tt>J2ME1-3</tt>](exercices/25-NSIJ2ME1-3.pdf) | <span class="tags-container"><span class="tag">Algorithmique</span><span class="tag">Chiffrement</span><span class="tag">Réseau</span></span> | [:material-open-in-new:](corrections/25-NSIJ2ME1-3.md) |
+| [:fontawesome-solid-file-pdf: <tt>J1PO1-1</tt>](exercices/25-NSIJ1PO1-1.pdf) | <span class="tags-container"><span class="tag">POO</span><span class="tag">Réseau</span></span> | [:material-open-in-new:](corrections/25-NSIJ1PO1-1.md) |
+| [:fontawesome-solid-file-pdf: <tt>J1PO1-2</tt>](exercices/25-NSIJ1PO1-2.pdf) | <span class="tags-container"><span class="tag">Algorithmique</span><span class="tag">Récursivité</span></span> | [:material-open-in-new:](corrections/25-NSIJ1PO1-2.md) |
+| [:fontawesome-solid-file-pdf: <tt>J1PO1-3</tt>](exercices/25-NSIJ1PO1-3.pdf) | <span class="tags-container"><span class="tag">Algorithmique</span><span class="tag">SQL</span></span> | [:material-open-in-new:](corrections/25-NSIJ1PO1-3.md) |
+| [:fontawesome-solid-file-pdf: <tt>J2PO1-1</tt>](exercices/25-NSIJ2PO1-1.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIJ2PO1-1.md) |
+| [:fontawesome-solid-file-pdf: <tt>J2PO1-2</tt>](exercices/25-NSIJ2PO1-2.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIJ2PO1-2.md) |
+| [:fontawesome-solid-file-pdf: <tt>J2PO1-3</tt>](exercices/25-NSIJ2PO1-3.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIJ2PO1-3.md) |
 </div>
 
 

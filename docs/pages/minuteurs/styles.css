@@ -76,7 +76,7 @@ body {
 .global-clock-pill {
     display: flex;
     align-items: center;
-    color: var(--color-text-muted);
+    color: var(--color-text-main);
     font-size: 4rem;
     font-weight: var(--font-weight-bold);
     letter-spacing: 1px;
@@ -198,7 +198,6 @@ body {
     border-radius: 0;
     background: transparent;
     font-size: var(--font-size-md);
-    font-weight: var(--font-weight-bold);
     color: var(--color-text-main);
     text-align: center;
     outline: none;
@@ -279,11 +278,11 @@ body {
 
 /* Individual Timer Styles */
 .timer-card {
-    background: var(--color-white);
+    background: var(--color-bg);
     border-radius: var(--radius-main);
     padding: 10px 10px;
-    box-shadow: var(--color-shadow);
-    border: 3px solid transparent;
+    box-shadow: none;
+    border: 3px solid #E9E9ED;
     transition: var(--transition-border);
     min-height: 140px;
     display: flex;
@@ -309,7 +308,7 @@ body {
     outline: none;
     font-size: 2.4rem;
     font-weight: var(--font-weight-semi);
-    color: var(--color-text-main);
+    color: var(--color-text-muted);
     width: 100%;
     padding: 2px 4px;
     border-radius: 3px;
@@ -416,12 +415,13 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--color-success);
-    color: var(--color-white);
+    background-color: #E9E9ED;
+    color: var(--color-text-muted);
 }
 
 .btn-primary:hover {
-    background-color: #219150;
+    background-color: var(--color-success);
+    color: var(--color-white);
 }
 
 .btn-secondary {
@@ -439,9 +439,11 @@ body {
 .timer-card.completed
 {
     transition: var(--transition-border);
+    background: var(--color-white);
 }
 
 .timer-card.running {
+    
     border-color: var(--color-accent);
 }
 
@@ -678,4 +680,30 @@ body {
 
 .mute-btn:hover .material-icons {
     color: var(--color-white);
-} 
+}
+
+.editable-title {
+    margin: 0 16px;
+    padding: 4px 12px;
+    font-size: 2.5rem;
+    font-weight: 500;
+    border-radius: 6px;
+    background: transparent;
+    outline: none;
+    border: none;
+    min-width: 120px;
+    text-align: center;
+    transition: border 0.2s;
+    cursor: text;
+}
+
+.timer-card.running .timer-name-input {
+    color: var(--color-accent);
+}
+.timer-card.completed .timer-name-input {
+    color: var(--color-danger);
+}
+
+.timer-card.soonest .timer-time {
+    color: var(--color-success);
+}

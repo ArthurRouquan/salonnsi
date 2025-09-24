@@ -30,6 +30,9 @@
     --md-code-font: "MapleMono NF", monospace;
 }
 
+.mac-shadow {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15), 0px 15px 20px rgba(0, 0, 0, 0.20);
+}
 
 .rounded {
     border-radius: 0.3rem;
@@ -328,4 +331,15 @@ tt {
 .no-bullet ul {
     list-style: none;
     padding-left: 0;
+}
+
+.md-typeset div.arithmatex>* {
+    padding: 0 !important;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.25rem auto !important;
 }

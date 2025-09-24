@@ -25,7 +25,7 @@ $1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 = \boxed{11}$ et $3 + 4 + 4 = \boxed{11}$. La
 1. L'arbre a ici une hauteur de **5**, soit le nombre maximum de bits utilisé pour coder un symbole.
 
 2. * Le texte « <tt style="font-size: .95em">je pense, donc je suis</tt> » comporte 22 caractères, son codage ASCII nécessite donc 22 octets. 
-    * Son codage Shannon-Fano nécessite $4 + 4 + 4 + 5 + 5 + 4 + 4 + 2 \times 4 + 2 \times 4 + 3 + 3 \times 3 + 4 \times 3 + 4 \times 2 = 78$ bits, soit 10 octets.
+    * Son codage Shannon-Fano nécessite $4 × 9 + 3 × 7 + 2 × 4 + 5 × 2 = 75$ bits, ce qui nécessite 10 octets.
      
     Puisque $22 / 10 ≈ 2$, on peut affirmer que le codage Shannon-Fano necéssite pour ce texte environ deux fois moins d'octets que le codage ASCII.
 

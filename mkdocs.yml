@@ -10,6 +10,7 @@ theme:
   favicon: assets/salon-lion-favicon-block.svg
   language: fr
   name: material
+  custom_dir: overrides
 
   palette:
     # Palette toggle for light mode
@@ -40,8 +41,26 @@ theme:
     - content.code.annotate
     - content.action.edit
 
+extra:
+  social:
+      - icon: custom/atrium-rounded
+        link: https://atrium-sud.fr
+        name: Atrium
+      - icon: custom/pronote
+        link: https://0130160d.index-education.net/pronote/eleve.html?login=true
+        name: Pronote
+      - icon: custom/moodle
+        link: https://lgt-emperi-13657-moodle.atrium-sud.fr/
+        name: Moodle
+      - icon: material/snake
+        link: https://capytale2.ac-paris.fr/
+        name: Capytale  
+      
+      
+
 plugins:
   - open-in-new-tab
+  - mkdocs-video
 
 markdown_extensions:
   - admonition
@@ -96,6 +115,9 @@ nav:
       - fiches/architecture.md
       - fiches/os.md
       - fiches/coeur.md
+  - "Projets":
+      - projets/index.md
+      - projets/flappy.md
 
 not_in_nav: |
   /annales/corrections/*

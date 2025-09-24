@@ -14,6 +14,7 @@ class TimerApp {
         this.loadTimers();
         this.loadDefaultSettings();
         this.startGlobalTick();
+        this.setupEditableTitle();
     }
 
     startGlobalTick() {
@@ -306,6 +307,26 @@ class TimerApp {
         element.className = 'timer-card';
         if (timer.isCompleted) element.classList.add('completed');
         else if (timer.isRunning) element.classList.add('running');
+
+        // Highlight soonest timer
+        this.updateSoonestTimerClass();
+    }
+
+    updateSoonestTimerClass() {
+        // Find the running timer with the least remaining time
+        const soonest = this.timers
+            .filter(t => t.isRunning && !t.isCompleted)
+            .sort((a, b) => a.remaining - b.remaining)[0];
+        // Remove 'soonest' from all
+        this.timers.forEach(timer => {
+            const el = document.querySelector(`[data-timer-id="${timer.id}"]`);
+            if (el) el.classList.remove('soonest');
+        });
+        // Add 'soonest' to the one with the least remaining
+        if (soonest) {
+            const el = document.querySelector(`[data-timer-id="${soonest.id}"]`);
+            if (el) el.classList.add('soonest');
+        }
     }
 
     removeTimerElement(id) {
@@ -442,6 +463,26 @@ class TimerApp {
         Array.from(container.querySelectorAll('.timer-card')).forEach(card => card.remove());
         // Render all timers in order
         this.timers.forEach(timer => this.renderTimer(timer));
+        // After rendering, update soonest class
+        this.updateSoonestTimerClass();
+    }
+
+    setupEditableTitle() {
+        const titleDiv = document.getElementById('editableTitle');
+        if (!titleDiv) return;
+        // Load from localStorage
+        const savedTitle = localStorage.getItem('minuteurTitle') || 'Titre du minuteur';
+        titleDiv.textContent = savedTitle;
+        // Save on blur or Enter
+        titleDiv.addEventListener('blur', () => {
+            localStorage.setItem('minuteurTitle', titleDiv.textContent.trim() || 'Titre du minuteur');
+        });
+        titleDiv.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                titleDiv.blur();
+            }
+        });
     }
 }
 
