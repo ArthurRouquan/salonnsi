@@ -11,7 +11,7 @@ Concernant les **clés étrangères** :
 
 * Les clés étrangères permettent de relier des tables, et ainsi, d'éviter les **redondances** et faciliter les modifications.
 
-* Une clé étrangère doit toujours être une référence **valide**. Ainsi, pour supprimer un auteur, il faut d'abord supprimer tous les livres qui lui sont associés.
+* Une clé étrangère doit toujours être une référence **valide** (*contrainte d'intégrité référentielle*). Ainsi, pour supprimer un auteur, il faut d'abord supprimer tous les livres qui lui sont associés.
 
 Le **schéma relationnel** s'écrit comme :
 

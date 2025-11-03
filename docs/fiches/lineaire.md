@@ -36,7 +36,7 @@ Contrairement à un tableau dynamique (`#!py list`), les éléments d'une liste 
 
 ![](assets/liste-doublement-chainee.svg){ .center-img }
 
-Une liste chaînée a un seul sens de parcours, on la parcours toujours en partant de la tête. Pour remédier à ce problème, on peut inclure une référence au chaînon précédent dans chaque chaînon : on aboutit alors à une nouvelle structure de données linéaire appelée **liste doublement chaînée**.
+Une liste chaînée a un seul sens de parcours, on la parcourt toujours en partant de la tête. Pour remédier à ce problème, on peut inclure une référence au chaînon précédent dans chaque chaînon : on aboutit alors à une nouvelle structure de données linéaire appelée **liste doublement chaînée**.
 
 ## Comparaison des différents conteneurs
 
