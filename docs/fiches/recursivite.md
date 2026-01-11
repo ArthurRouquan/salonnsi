@@ -14,7 +14,7 @@ icon: fontawesome/solid/rotate
 
 * La **condition d'arrêt** située au début de toute fonction récursive, définit le **cas de base** et permet d'arrêter la chaîne des appels.
 
-* Si un programme récursif peut se traduire dans un style itératif (avec de simples boucles), et inversement, aborder de manière récursive un problème est parfois plus facile.
+* Si un programme récursif peut ([pas toujours !](https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann)) se traduire dans un style itératif (avec de simples boucles), et inversement, aborder de manière récursive un problème est parfois plus facile.
     <div class="grid" markdown>
     ```{ .python .no-copy title="Style récursif" } 
     def factorielle(n):
@@ -60,3 +60,4 @@ icon: fontawesome/solid/rotate
 * Un **arbre d'appels** permet de visualiser l'ordre des appels récursifs :
 
 ![](assets/fibonacci.svg){ width="100%" .center-img .invert}
+

@@ -60,7 +60,6 @@ extra:
 
 plugins:
   - open-in-new-tab
-  - mkdocs-video
 
 markdown_extensions:
   - admonition
@@ -103,6 +102,7 @@ nav:
   - "Exposition": exposition/index.md
   - "Fiches":
       - fiches/index.md
+      - fiches/python.md
       - fiches/poo.md
       - fiches/lineaire.md
       - fiches/recursivite.md
@@ -121,4 +121,3 @@ nav:
 
 not_in_nav: |
   /annales/corrections/*
-  fiches/python.md

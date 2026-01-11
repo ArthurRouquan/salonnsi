@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horloge Épreuve Bac</title>
+    <style>
+        /* --- Style général --- */
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        /* --- Horloge géante --- */
+        #clock {
+            font-size: 20vw;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        /* --- Consignes --- */
+        #consignes {
+            text-align: center;
+            max-width: 80%;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ddd;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            font-size: 1.6rem;
+            color: #bbb;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        /* --- Barre de progression (Minuteur) --- */
+        #timer-wrapper {
+            width: 85%; /* Un peu plus large pour bien voir les heures */
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        /* Labels Heure Début / Fin */
+        #timer-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #888;
+        }
+        
+        #start-time-display, #end-time-display {
+            visibility: hidden; /* Caché tant que pas démarré */
+        }
+
+        #progress-bar {
+            width: 100%;
+            height: 30px;
+            border: 2px solid white;
+            border-radius: 4px;
+            position: relative;
+            background: #111;
+            overflow: hidden;
+        }
+
+        #progress-fill {
+            height: 100%;
+            background-color: white;
+            width: 0%;
+            transition: width 1s linear;
+        }
+
+        /* Les graduations (ticks) */
+        .tick {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            z-index: 10;
+        }
+        /* Partie visible sur fond blanc */
+        .tick {
+            background-color: black; 
+        }
+        /* Partie visible sur fond noir (via pseudo-élément sous la barre blanche) */
+        .tick::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            background-color: #555;
+            z-index: -1;
+        }
+        
+        /* Label sous le tick (1h, 2h...) */
+        .tick-label {
+            position: absolute;
+            top: 35px; /* Sous la barre */
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        #timer-text {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-top: 25px; /* Espace pour les labels des ticks */
+            font-family: monospace;
+            color: #aaa;
+        }
+
+        /* --- Contrôles (en bas) --- */
+        #controls {
+            position: fixed;
+            bottom: 20px;
+            background: #222;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            opacity: 0.2;
+            transition: opacity 0.3s;
+        }
+
+        #controls:hover {
+            opacity: 1;
+        }
+
+        input {
+            background: #333;
+            border: 1px solid #555;
+            color: white;
+            padding: 5px;
+            width: 60px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        button {
+            background: #fff;
+            color: black;
+            border: none;
+            padding: 5px 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background: #ddd;
+        }
+
+        button.secondary {
+            background: #333;
+            color: white;
+            border: 1px solid #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="clock">00:00</div>
+
+    <div id="consignes">
+        <h1>Consignes</h1>
+        <ul>
+            <li>Téléphone éteint et trousse dans le sac.</li>
+            <li>Sacs et vestes à l'avant de la salle.</li>
+            <li>Aucune sortie autorisée durant la première heure.</li>
+        </ul>
+    </div>
+
+    <div id="timer-wrapper">
+        <div id="timer-labels">
+            <span id="start-time-display">--:--</span>
+            <span id="end-time-display">--:--</span>
+        </div>
+
+        <div id="progress-bar">
+            <div id="progress-fill"></div>
+            <div id="ticks-container"></div>
+        </div>
+        <div id="timer-text">Temps écoulé: 0h 00m</div>
+    </div>
+
+    <div id="controls">
+        <label>Durée (h): <input type="number" id="duration-input" value="4" min="1" max="6" step="0.5"></label>
+        <button onclick="toggleTimer()" id="play-btn">▶ Démarrer</button>
+        <button class="secondary" onclick="resetTimer()">↺ Reset</button>
+        <button class="secondary" onclick="toggleFullScreen()">⛶ Plein écran</button>
+    </div>
+
+    <script>
+        // --- HORLOGE RÉELLE ---
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').textContent = formatTime(now);
+        }
+        
+        function formatTime(dateObj) {
+            const h = String(dateObj.getHours()).padStart(2, '0');
+            const m = String(dateObj.getMinutes()).padStart(2, '0');
+            return `${h}:${m}`;
+        }
+        
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // --- MINUTEUR & BARRE ---
+        let totalTimeSeconds = 0;
+        let currentTimeSeconds = 0;
+        let intervalId = null;
+        let isRunning = false;
+
+        const progressBar = document.getElementById('progress-fill');
+        const timerText = document.getElementById('timer-text');
+        const playBtn = document.getElementById('play-btn');
+        const ticksContainer = document.getElementById('ticks-container');
+        const durationInput = document.getElementById('duration-input');
+        const startTimeDisplay = document.getElementById('start-time-display');
+        const endTimeDisplay = document.getElementById('end-time-display');
+
+        function setupTicks() {
+            // Nettoyer les anciens ticks
+            ticksContainer.innerHTML = '';
+            
+            const hours = parseFloat(durationInput.value);
+            totalTimeSeconds = hours * 3600;
+            
+            // Calculer combien d'heures complètes (1h = 3600 sec)
+            const hourSegments = Math.floor(totalTimeSeconds / 3600);
+
+            for (let i = 1; i < (totalTimeSeconds / 3600); i++) { // Strictement inférieur pour ne pas marquer la fin
+                // Création du tick visuel
+                const tick = document.createElement('div');
+                tick.className = 'tick';
+                
+                // Position en pourcentage
+                const positionPct = (i * 3600 / totalTimeSeconds) * 100;
+                tick.style.left = `${positionPct}%`;
+                
+                // Petit label "1h", "2h"...
+                const label = document.createElement('div');
+                label.className = 'tick-label';
+                label.textContent = i + "h";
+                tick.appendChild(label); // On met le label dans le tick pour qu'il soit positionné relatif à lui
+
+                ticksContainer.appendChild(tick);
+            }
+        }
+
+        function toggleTimer() {
+            if (isRunning) {
+                // Pause
+                clearInterval(intervalId);
+                playBtn.textContent = "▶ Reprendre";
+                isRunning = false;
+            } else {
+                // Start
+                if (currentTimeSeconds === 0) {
+                    setupTicks();
+                    // Calculer et figer les heures de début/fin seulement au premier démarrage
+                    const now = new Date();
+                    const durationHours = parseFloat(durationInput.value);
+                    const endTime = new Date(now.getTime() + durationHours * 60 * 60 * 1000);
+                    
+                    startTimeDisplay.textContent = formatTime(now);
+                    endTimeDisplay.textContent = formatTime(endTime);
+                    startTimeDisplay.style.visibility = 'visible';
+                    endTimeDisplay.style.visibility = 'visible';
+                }
+                
+                // Recalcul de sécurité
+                if(totalTimeSeconds === 0) setupTicks(); 
+
+                intervalId = setInterval(() => {
+                    currentTimeSeconds++;
+                    updateBar();
+                    
+                    if (currentTimeSeconds >= totalTimeSeconds) {
+                        clearInterval(intervalId);
+                        playBtn.textContent = "Terminé";
+                        isRunning = false;
+                    }
+                }, 1000);
+                
+                playBtn.textContent = "⏸ Pause";
+                isRunning = true;
+            }
+        }
+
+        function updateBar() {
+            const pct = (currentTimeSeconds / totalTimeSeconds) * 100;
+            progressBar.style.width = `${pct}%`;
+            
+            // Formatage texte temps écoulé
+            const h = Math.floor(currentTimeSeconds / 3600);
+            const m = Math.floor((currentTimeSeconds % 3600) / 60);
+            timerText.textContent = `Temps écoulé: ${h}h ${String(m).padStart(2, '0')}m`;
+        }
+
+        function resetTimer() {
+            clearInterval(intervalId);
+            isRunning = false;
+            currentTimeSeconds = 0;
+            totalTimeSeconds = 0;
+            
+            progressBar.style.width = "0%";
+            timerText.textContent = "Temps écoulé: 0h 00m";
+            playBtn.textContent = "▶ Démarrer";
+            
+            // Cacher les heures début/fin
+            startTimeDisplay.style.visibility = 'hidden';
+            endTimeDisplay.style.visibility = 'hidden';
+            
+            setupTicks();
+        }
+
+        // --- PLEIN ÉCRAN ---
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Initialisation
+        setupTicks();
+        
+        durationInput.addEventListener('change', () => {
+            if(!isRunning) setupTicks();
+        });
+
+    </script>
+
+</body>
+</html>
