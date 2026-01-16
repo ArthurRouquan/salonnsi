@@ -62,6 +62,15 @@ L'épreuve **écrite** (15 points) dure 3h30 et est composée de 3 exercices. Le
 | [:fontawesome-solid-file-pdf: <tt>J2PO1-1</tt>](exercices/25-NSIJ2PO1-1.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIJ2PO1-1.md) |
 | [:fontawesome-solid-file-pdf: <tt>J2PO1-2</tt>](exercices/25-NSIJ2PO1-2.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIJ2PO1-2.md) |
 | [:fontawesome-solid-file-pdf: <tt>J2PO1-3</tt>](exercices/25-NSIJ2PO1-3.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIJ2PO1-3.md) |
+| [:fontawesome-solid-file-pdf: <tt>J1ME3-1</tt>](exercices/25-NSIJ1ME3-1.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIJ1ME3-1.md) |
+| [:fontawesome-solid-file-pdf: <tt>J1ME3-2</tt>](exercices/25-NSIJ1ME3-2.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIJ1ME3-2.md) |
+| [:fontawesome-solid-file-pdf: <tt>J1ME3-3</tt>](exercices/25-NSIJ1ME3-3.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIJ1ME3-3.md) |
+| [:fontawesome-solid-file-pdf: <tt>J2ME3-1</tt>](exercices/25-NSIJ2ME3-1.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIJ2ME3-1.md) |
+| [:fontawesome-solid-file-pdf: <tt>J2ME3-2</tt>](exercices/25-NSIJ2ME3-2.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIJ2ME3-2.md) |
+| [:fontawesome-solid-file-pdf: <tt>J2ME3-3</tt>](exercices/25-NSIJ2ME3-3.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIJ2ME3-3.md) |
+| [:fontawesome-solid-file-pdf: <tt>PE4-1</tt>](exercices/25-NSIPE4-1.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIPE4-1.md) |
+| [:fontawesome-solid-file-pdf: <tt>PE4-2</tt>](exercices/25-NSIPE4-2.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIPE4-2.md) |
+| [:fontawesome-solid-file-pdf: <tt>PE4-3</tt>](exercices/25-NSIPE4-3.pdf) | <span class="tags-container"><span class="tag"></span></span> | [:material-open-in-new:](corrections/25-NSIPE4-3.md) |
 </div>
 
 

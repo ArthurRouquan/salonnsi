@@ -13,14 +13,14 @@ title: 25-NSIJ2AN1-2
 
 <div class="circle-ol" markdown>
 
-1. Dans le cas où le collier possède 8 bonbons, Bob les mange dans l'ordre **0 — 3 — 6 — 4 — 2 — 5 — 1**.
+1. Dans le cas où le collier possède 8 bonbons, Bob les mange dans l'ordre **0 — 3 — 6 — 2 — 7 — 5 — 1**. Le bonbon restant est celui d'indice **4**.
 
 2. Une erreur de type `NameError` signifie que l'on utilise un nom (variable ou fonction) qui n'a pas été défini ou initialisé. Ici, Bob a écrit `true` au lieu de `#!py True`.
 
 3. 
-```python
+```python hl_lines="2 7 9 11 13"
 def dernier(n):
-    collier = [True for i in range(8)]
+    collier = [True for i in range(n)]
     indice = 0
     collier[indice] = False
     for etape in range(n - 1):
@@ -57,7 +57,7 @@ def dernier_file(n):
 8. La variable `a` contient 1 et la variable `b` contient 2.
 
 9. 
-```python
+```python hl_lines="5 6 7 9 10"
 def creer_collier(n):
     premier = Bonbon(0)
     actuel = premier
@@ -76,7 +76,7 @@ def creer_collier(n):
 11. Seule la **proposition C** s'évalue à `#!py True`, la syntaxe des autres propositions est erronée.
 
 12. 
-```python
+```python hl_lines="3 4 5 6"
 def dernier_chaine(n):
     bonbon = creer_collier(n)
     while bonbon.valeur != bonbon.succ.valeur:  # question 11
