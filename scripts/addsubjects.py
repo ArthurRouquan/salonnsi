@@ -8,7 +8,7 @@ Utilisation :
         24-NSIJ2PO1;2-5,16;6-9;10-15;File,Pile,Graphe;ABR,POO,Récursivité;Réseau,SQL,Programmation
         ...
 
-    3. Exécuter la commande `$ python scripts/addsujects.py`
+    3. Exécuter la commande `$ python scripts/addsubjects.py`
 
 Le script, pour chaque sujet comme 25-NSIJ2G11.pdf :
     1. Sépare le sujet en trois exercices, 25-NSIJ2G11-1.pdf, 25-NSIJ2G11-2.pdf etc. dans docs/annales/exercices/ (ne fait rien si existe déjà)

@@ -27,7 +27,10 @@ repere;page1;page2;page3;theme1;theme2;theme3
 25-NSIJ2ME1;2-6;7-10;10-15;Arbre binaire,Algorithmique;SQL,Algorithmique,Dictionnaire;Algorithmique,Chiffrement,Réseau
 25-NSIJ1PO1;2-7;8-11;12-19;Réseau,POO;Algorithmique,Récursivité;Algorithmique,SQL
 25-NSIJ2PO1;2-5;6-9;10-14;;;
-
 25-NSIJ1ME3;2-7;8-13;14-19;;;
 25-NSIJ2ME3;2-7;8-12;13-19;;;
 25-NSIPE4;2-4;5-9;10-14;;;
+25-NSIJ1AS1;2-7;8-12;13-21;;;
+25-NSIJ2AS1;2-7;8-12;13-19;;;
+25-NSIJ1NC1;2-6;7-10;11-15;;;
+25-NSIJ2NC1;2-6;7-11;12-18;;;
