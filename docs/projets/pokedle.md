@@ -34,13 +34,13 @@ Vous recevez ici toutes les données concernant Pikachu au format **JSON** (*Jav
       * Les **points de vie** de Pikachu
       * Le **type** de Pikachu
 
-    Rechercher les données d'un **autre Pokémon**. Attention les noms sont en anglais !
+    Rechercher les données d'un **autre Pokémon**.
 
 ![](https://img.pokemondb.net/sprites/red-blue/normal/pikachu.png){ .center-img .pixelart width="156px" }
 
 ## Utiliser l'API avec Python
 
-Pour que Python puisse effectuer des requêtes sur Internet, nous avons besoin d'installer le module `requests` (il est préinstallé sur Capytale). Une fois installé, assuez-vous que le code suivant fonctionne :
+Pour que Python puisse effectuer des requêtes sur Internet, nous avons besoin d'installer le module `requests` (il est préinstallé sur Capytale). Une fois installé, assurez-vous que le code suivant fonctionne :
 
 ```python
 import requests
