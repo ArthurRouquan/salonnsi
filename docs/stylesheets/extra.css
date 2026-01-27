@@ -343,3 +343,9 @@ tt {
     align-items: center;
     margin: 1.25rem auto !important;
 }
+
+
+.hl-link {
+background-color: color-mix(in srgb, var(--md-typeset-a-color), transparent 90%);    border-radius: 0.2em;
+    padding: 0.2em 0.4em;
+}

@@ -118,6 +118,7 @@ nav:
   - "Projets":
       - projets/index.md
       - projets/flappy.md
+      - projets/pokedle.md
 
 not_in_nav: |
   /annales/corrections/*
