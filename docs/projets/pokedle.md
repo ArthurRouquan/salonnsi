@@ -8,10 +8,11 @@ icon: custom/pokeball
 
 Une **API** (*Application Programming Interface*) web, c'est comme un serveur dans un restaurant :
 
-* Vous (le **client**) : Vous passez une commande (une **requête**).
+* Vous (le **client**) : Vous passez une commande (une **requête*G*).
     
 * L'API (le **serveur**) : Elle prend votre commande, va en cuisine, et vous ramène le plat (la **réponse** / les données).
 
+![](assets/client-serveur.svg)
 
 On se propose d'utiliser l'API Web [Tyradex](https://tyradex.app/), une base de données gratuite (et française !) qui contient tout sur les Pokémon. Elle nous permettra de coder un jeu de type [Pokédle](https://pokedle.net/classic) en Python.
 
