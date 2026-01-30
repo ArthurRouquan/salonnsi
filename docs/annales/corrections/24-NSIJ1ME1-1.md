@@ -18,7 +18,7 @@ title: 24-NSIJ1ME1-1
 2. 
 ```python
 s4.predecesseurs = [(s1, 1), (s2, 2)]
-s5.predecesseurs = [(s1, 1), (s3, 3), (s4, 6)]
+s5.predecesseurs = [(s1, 2), (s3, 3), (s4, 6)]
 ```
 
 3. `#!py s2.successeurs[1][1]` renvoie la valeur associée au second successeur de `s2`, soit le nombre de citations de `s2` vers `s3`, soit `#!py 5`.
@@ -52,7 +52,7 @@ def lePlusPopulaire(listeSites):
 	return siteLePlusPopulaire
 ```
 
-1.   L'expression `lePlusPopulaire(parcoursGraphe(s1)).nom` renvoie `#!py 'site5'`.
+1.   L'expression `lePlusPopulaire(parcoursGraphe(s1)).nom` renvoie `#!py 'site3'`.
 
 2.   Quelques points :
 	* L'implémentation actuelle du parcours en largeur est sous-optimale en raison de l'utilisation de `.pop(0)` — de complexité linéaire — pour défiler un sommet de la file. Dans le pire des cas, cette opération est effectuée jusqu'à $n$ fois, la complexité finale atteint $O(n² + m)$.
