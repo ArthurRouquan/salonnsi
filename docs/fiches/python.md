@@ -124,6 +124,18 @@ for variable_d_iteration
 
 ## Structures de données
 
+
+|                 | Chaine `#!py str`   | Liste  `#!py list`                                            | Tuple `#!py tuple`     | Dictionnaire  `#!py dict` |
+| :-------------- | :------------------ | :------------------------------------------------------------ | :--------------------- | :------------------------ |
+| **Initialiser** | `#!py ch = 'képi'`  | `#!py tab = [42, 67, 88]`                                     | `#!py tup = (17, 21)`  | `#!py dico = {'a': 42}`   |
+| **Accéder**     | `#!py ch[2] # 'p'`  | `#!py tab[1] # 88`                                            | `#!py tup[0] # 17`     | `#!py dico['a'] # 42`     |
+| **Modifier**    | —                   | `#!py tab[0] = 99`                                            | —                      | `#!py dico['a'] = 99`     |
+| **Ajouter**     | —                   | `#!py tab.append(5)`                                          | —                      | `#!py dico['b'] = 2`      |
+| **Retirer**     | —                   | `#!py tab.pop(0) # indice`<br>`#!py tab.remove(67) # élément` | —                      | `#!py dico.pop('a')`      |
+| **Taille**      | `#!py len(ch)`      | `#!py len(tab)`                                               | `#!py len(tup)`        | `#!py len(dico)`          |
+| **Parcourir**   | Idem que les listes. | `#!py for val in tab:`<br>`#!py for i in range(len(tab)):`    | Idem que les listes. | `#!py for clé in dico:`   |
+
+<!-- 
 ### Tableaux dynamiques  `#!py list`
 
 ```python
@@ -144,4 +156,4 @@ for valeur in tab:  # parcours par élément
 
 for i in range(len(tab)):  # parcours par indice
     print(i, tab[i])
-```
+``` -->

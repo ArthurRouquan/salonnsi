@@ -1,5 +1,4 @@
 repere;page1;page2;page3;theme1;theme2;theme3
-
 24-NSI0A;2-5;6-9;10-14;Architecture,OS,Réseau;Liste,Dictionnaire,Dichotomie;Graphe,SQL
 24-NSI0B;2-4;5-8;9-14;Récursivité,Programmation Dynamique;OS,Processus;Liste,Dictionnaire,POO,SQL
 24-NSIJ1AN1;2-5;6-8;9-13;Processus,POO,File;Graphe,Récursivité;Liste,Dictionnaire,SQL
@@ -15,7 +14,6 @@ repere;page1;page2;page3;theme1;theme2;theme3
 24-NSIJ2PO1;2-5,16;6-9;10-15;Graphe,File,Pile,Algorithmique;ABR,POO,Récursivité;Réseau,SQL,Algorithmique
 24-NSIJ1ME3;2-5;6-10;11-16;SQL,Algorithmique;Réseau,Graphe;Base,POO,Algorithmique
 24-NSIJ2ME3;2-3;4-6;7-12;Décidabilité,Récursivité;Pile,POO,Algorithmique;Réseau,SQL
-
 25-NSIJ1AN1;2-6;7-9;10-15;Arbre binaire,POO,Récursivité;POO,Glouton,Tri;SQL,Graphe,Tri,Algorithmique
 25-NSIJ2AN1;2-7;8-13;14-21;Binaire,Dictionnaire,Arbre binaire,Récursivité;Algorithmique,File,Liste chaînée,POO;SQL,Graphe,Récursivité
 25-NSIPE2;2-8;9-13;14-18;Programmation Dynamique,Algorithmique;Binaire,Arbre binaire,POO,Tri;POO,Graphe,SQL
@@ -26,11 +24,11 @@ repere;page1;page2;page3;theme1;theme2;theme3
 25-NSIJ1ME1;2-5;6-10;11-17;SQL;Algorithmique,Processus,POO,File;Réseau,ABR,POO,Algorithmique
 25-NSIJ2ME1;2-6;7-10;10-15;Arbre binaire,Algorithmique;SQL,Algorithmique,Dictionnaire;Algorithmique,Chiffrement,Réseau
 25-NSIJ1PO1;2-7;8-11;12-19;Réseau,POO;Algorithmique,Récursivité;Algorithmique,SQL
-25-NSIJ2PO1;2-5;6-9;10-14;;;
-25-NSIJ1ME3;2-7;8-13;14-19;;;
-25-NSIJ2ME3;2-7;8-12;13-19;;;
-25-NSIPE4;2-4;5-9;10-14;;;
-25-NSIJ1AS1;2-7;8-12;13-21;;;
-25-NSIJ2AS1;2-7;8-12;13-19;;;
-25-NSIJ1NC1;2-6;7-10;11-15;;;
-25-NSIJ2NC1;2-6;7-11;12-18;;;
+25-NSIJ2PO1;2-5;6-9;10-14;POO,Algorithmique;SQL,POO;Dictionnaire,Liste,Graphe,Pile,File,POO
+25-NSIJ1ME3;2-7;8-13;14-19;Réseau,Programmation;Programmation Dynamique,Liste,Algorithmique;SQL,Recherche textuelle,Programmation
+25-NSIJ2ME3;2-7;8-12;13-19;Programmation;OS,POO;SQL,Graphe,Programmation
+25-NSIPE4;2-4;5-9;10-14;SQL;Réseau,Graphe,Programmation;Liste,POO,Pile
+25-NSIJ1AS1;2-7;8-12;13-21;SQL,Arbre binaire;OS,Processus,POO;OS,Réseau,Programmation
+25-NSIJ2AS1;2-7;8-12;13-19;SQL,Liste,Programmation;Pile,POO,Algorithmique;Programmation,Graphe,Réseau
+25-NSIJ1NC1;2-6;7-10;11-15;Réseau,POO,Graphe;SQL,POO;Binaire,Algorithmique,Programmation
+25-NSIJ2NC1;2-6;7-11;12-18;Chiffrement,Programmation;SQL,Programmation;Programmation,Graphe
