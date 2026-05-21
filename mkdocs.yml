@@ -32,8 +32,8 @@ theme:
     repo: fontawesome/brands/github
 
   features:
-    - navigation.instant
-    - navigation.instant.prefetch
+    # - navigation.instant
+    # - navigation.instant.prefetch
     - navigation.tabs
     - navigation.indexes
     - search.suggest
@@ -118,7 +118,9 @@ nav:
   - "Projets":
       - projets/index.md
       - projets/flappy.md
-      - projets/pokedle.md
+      - projets/game.md
+      
 
 not_in_nav: |
   /annales/corrections/*
+  /projets/pokedle.md
