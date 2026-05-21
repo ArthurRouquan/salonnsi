@@ -1,0 +1,63 @@
+:root,
+[data-md-color-scheme="default"] {
+    --custom-blue: 0, 122, 255;
+    --custom-red: 255, 69, 58;
+    --custom-green: 40, 205, 65;
+    --custom-yellow: 255, 204, 0;
+    --custom-orange: 255, 140, 0;
+    --custom-purple: 175, 82, 222;
+}
+
+:root,
+[data-md-color-scheme="slate"] {
+    --custom-blue: 64, 156, 255;
+    --custom-red: 255, 105, 97;
+    --custom-green: 49, 222, 75;
+    --custom-yellow: 255, 212, 38;
+    --custom-orange: 255, 179, 64;
+    --custom-purple: 218, 143, 255;
+}
+
+.blue-text {
+    color: rgb(var(--custom-blue));
+}
+
+.red-text {
+    color: rgb(var(--custom-red));
+}
+
+.green-text {
+    color: rgb(var(--custom-green));
+}
+
+.yellow-text {
+    color: rgb(var(--custom-yellow));
+}
+
+.purple-text {
+    color: rgb(var(--custom-purple));
+}
+
+.hl-blue {
+    background-color: rgba(var(--custom-blue), 0.25);
+    border-radius: 0.2em;
+    padding: 0.2em 0.2em;
+}
+
+.hl-green {
+    background-color: rgba(var(--custom-green), 0.25);
+    border-radius: 0.2em;
+    padding: 0.2em 0.2em;
+}
+
+.hl-yellow {
+    background-color: rgba(var(--custom-yellow), 0.25);
+    border-radius: 0.2em;
+    padding: 0.2em 0.2em;
+}
+
+.hl-red {
+    background-color: rgba(var(--custom-red), 0.25);
+    border-radius: 0.2em;
+    padding: 0.2em 0.2em;
+}
