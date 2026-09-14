@@ -1,0 +1,35 @@
+name: Déploiement du site
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: gh-pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - run: pip install zensical
+      - run: zensical build --clean
+      # Même mécanisme qu'avant (mkdocs gh-deploy) : le contenu de `site/` est
+      # poussé sur la branche `gh-pages`, que GitHub Pages sert sur salonnsi.fr.
+      # `docs/CNAME` et `docs/.nojekyll` sont copiés dans `site/` par zensical.
+      - name: Publier sur la branche gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd site
+          git init -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Déploiement de ${GITHUB_SHA}"
+          git push --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages

@@ -1,6 +1,5 @@
 site
+.cache
 .vscode
 .DS_Store
-*.DS_Store
 **/.DS_Store
-scratchpad.py
