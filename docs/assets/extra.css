@@ -122,10 +122,10 @@
 }
 
 /* match admonition font size to normal text */
-.md-typeset .admonition,
+/* .md-typeset .admonition,
 .md-typeset details {
     font-size: inherit;
-}
+} */
 
 /* macOS window recording */
 .rounded-video {
