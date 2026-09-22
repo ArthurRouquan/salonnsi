@@ -1,6 +1,6 @@
 ---
 title: Fiches
-icon: material/file-document-multiple-outline
+icon: lucide/files
 ---
 
 Des fiches pour bien réviser !

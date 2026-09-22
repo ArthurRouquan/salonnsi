@@ -1,5 +1,5 @@
 ---
-icon: fontawesome/solid/chess-queen
+icon: lucide/chess-queen
 ---
 
 # Le problème des reines

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{#
+  Police de texte : Inter via Google Fonts (comme par défaut).
+  Police de code : Maple Mono auto-hébergée (docs/assets/fonts/, @font-face
+  dans docs/assets/extra.css). La graisse Regular est préchargée pour que le
+  code s'affiche directement dans la bonne police, sans flash.
+#}
+{% block fonts %}
+  {% set text = config.theme.font.text | d("Inter", true) %}
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
+      text | replace(' ', '+') + ':300,300i,400,400i,500,500i,700,700i'
+    }}&amp;display=fallback">
+  <link rel="preload" href="{{ 'assets/fonts/MapleMono-Regular.woff2' | url }}" as="font" type="font/woff2" crossorigin>
+  <style>:root{--md-text-font:"{{ text }}";--md-code-font:"Maple Mono"}</style>
+{% endblock %}

@@ -1,6 +1,6 @@
 ---
 title: Programmes à connaître
-icon: octicons/file-code-16
+icon: lucide/file-code-corner
 ---
 
 ## Général

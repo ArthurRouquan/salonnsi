@@ -1,6 +1,6 @@
 ---
 title: Récursivité
-icon: fontawesome/solid/rotate
+icon: lucide/repeat-2
 ---
 
 * Une fonction est dite **récursive** si elle s'appelle elle-même au cours de son exécution.

@@ -1,6 +1,6 @@
 ---
 title: Accueil
-icon: lucide/rocket
+icon: lucide/home
 hide:
     - navigation
     - toc
