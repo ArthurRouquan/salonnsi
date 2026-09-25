@@ -17,4 +17,5 @@ title: Terminale NSI
 
 ## Diviser pour régner
 
-* [TP Capytale – Diviser pour régner](https://capytale2.ac-paris.fr/web/c/de79-4049709/atr) On coupe un problème en deux récursivement... jusqu'à combiner récursivement les solutions.
+* [TP Capytale – Diviser pour régner (tri fusion)](https://capytale2.ac-paris.fr/web/c/de79-4049709/atr) On coupe un problème en deux récursivement... jusqu'à combiner récursivement les solutions.
+* [TP Capytale – Les plus proches points](https://capytale2.ac-paris.fr/web/c/7552-7174528/atr) Une belle application de diviser pour régner. Ce TP est un vrai challenge, son taux de succès doit avoisiner les 1%.

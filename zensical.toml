@@ -18,17 +18,17 @@ extra_javascript = [
 # can be defined using TOML syntax.
 #
 # Read more: https://zensical.org/docs/setup/navigation/
-nav = [
-  { "Accueil" = "index.md" },
-  { "Fiches" = ["fiches/index.md", "fiches/coeur.md", "fiches/recursivite.md"] },
-  { "Projets" = ["projets/reines.md"] },
-  { "Ressources" = [
-    "ressources/index.md",
-    "ressources/snt.md",
-    "ressources/premiere.md",
-    "ressources/terminale.md",
-  ] },
-]
+# nav = [
+#   { "Accueil" = "index.md" },
+#   { "Fiches" = ["fiches/index.md", "fiches/coeur.md", "fiches/recursivite.md"] },
+#   { "Projets" = ["projets/reines.md"] },
+#   { "Ressources" = [
+#     "ressources/index.md",
+#     "ressources/snt.md",
+#     "ressources/premiere.md",
+#     "ressources/terminale.md",
+#   ] },
+# ]
 
 
 # ----------------------------------------------------------------------------
