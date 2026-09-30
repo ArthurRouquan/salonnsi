@@ -4,4 +4,4 @@ title: Seconde SNT
 
 # Seconde SNT
 
-*Les ressources arrivent bientôt.*
+* [TP Capytale – Premier pas en Python](https://capytale2.ac-paris.fr/web/c/557a-11939519/atr)
