@@ -11,4 +11,4 @@ title: Première NSI
 * [TP Capytale – Boucle bornée `for`](https://capytale2.ac-paris.fr/web/c/d086-11585391/atr)
 * [TP Capytale – Boucle non-bornée `while`](https://capytale2.ac-paris.fr/web/c/9084-11889256/atr)
 * [TP Capytale – Fonctions](https://capytale2.ac-paris.fr/web/c/14ea-12050878/atr)
-
+* [TP Capytale - Jeu du pendu](https://capytale2.ac-paris.fr/web/c/ed4d-7691152/atr)
