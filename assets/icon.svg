@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 576 576">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <style>
+    @media (prefers-color-scheme: dark) {
+      #bg { fill: transparent; }
+    }
+  </style>
+  <path id="bg" d="M36,0h504c19.88,0,36,16.12,36,36v504c0,19.88-16.12,36-36,36H36c-19.88,0-36-16.12-36-36V36C0,16.12,16.12,0,36,0Z"/>
+  <path id="bg1" data-name="bg" d="M64,32h448c17.67,0,32,14.33,32,32v448c0,17.67-14.33,32-32,32H64c-17.67,0-32-14.33-32-32V64c0-17.67,14.33-32,32-32Z" display="none" fill="url(#Dégradé_sans_nom_17)"/>
+  <g>
+    <path d="M480,128v-32h-224v32h-96v64h32v32h96v32h-96v32h64v32h-96v32h-64v128h288v-96h32v-64h32v-32h-32v-32h32v-32h-32v-32h32v-32h-32v-32h64ZM224,384h-32v-32h32v32ZM288,416h-32v-32h32v32ZM288,160h32v32h-32v-32ZM352,416h-32v-32h32v32Z" fill="#fff"/>
+    <rect x="96" y="224" width="96" height="32" fill="#fff"/>
+  </g>
+</svg>
