@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_2" data-name="Calque 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 448 1271.34">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Dégradé_sans_nom_195);
+      }
+
+      .cls-2 {
+        fill: url(#Dégradé_sans_nom_198);
+      }
+
+      .cls-3 {
+        fill: url(#Dégradé_sans_nom_195-2);
+      }
+
+      .cls-4 {
+        fill: url(#Dégradé_sans_nom_195-3);
+      }
+
+      .cls-5 {
+        fill: url(#Dégradé_sans_nom_195-4);
+      }
+    </style>
+    <linearGradient id="Dégradé_sans_nom_198" data-name="Dégradé sans nom 198" x1="224" y1="0" x2="224" y2="1271.34" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffb81a"/>
+      <stop offset="1" stop-color="#f4921e"/>
+    </linearGradient>
+    <linearGradient id="Dégradé_sans_nom_195" data-name="Dégradé sans nom 195" x1="74.67" y1="0" x2="74.67" y2="1251.56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ed2e33"/>
+      <stop offset="1" stop-color="#bf1d3d"/>
+    </linearGradient>
+    <linearGradient id="Dégradé_sans_nom_195-2" data-name="Dégradé sans nom 195" x1="174.22" x2="174.22" y2="1194.67" xlink:href="#Dégradé_sans_nom_195"/>
+    <linearGradient id="Dégradé_sans_nom_195-3" data-name="Dégradé sans nom 195" x1="273.78" x2="273.78" y2="1194.67" xlink:href="#Dégradé_sans_nom_195"/>
+    <linearGradient id="Dégradé_sans_nom_195-4" data-name="Dégradé sans nom 195" x1="373.33" x2="373.33" xlink:href="#Dégradé_sans_nom_195"/>
+  </defs>
+  <g id="Calque_1-2" data-name="Calque 1">
+    <path class="cls-2" d="M448,12v1247.32c0,9.21-9.95,14.99-17.95,10.42l-31.83-18.18-49.77-28.44-49.78-28.45-42.67-24.38-7.11-4.06-18.93-10.82c-3.69-2.11-8.22-2.11-11.91,0l-18.93,10.82-7.11,4.06-42.67,24.38-49.77,28.44-49.78,28.45-31.83,18.18c-8,4.57-17.95-1.21-17.95-10.42V12C0,5.37,5.37,0,12,0h424c6.63,0,12,5.37,12,12Z"/>
+    <g>
+      <polygon class="cls-1" points="99.56 0 99.56 1223.11 49.78 1251.56 49.78 0 99.56 0"/>
+      <polygon class="cls-3" points="199.11 0 199.11 1166.23 192 1170.29 149.33 1194.67 149.33 0 199.11 0"/>
+      <polygon class="cls-4" points="298.67 0 298.67 1194.67 256 1170.29 248.89 1166.23 248.89 0 298.67 0"/>
+      <polygon class="cls-5" points="398.22 0 398.22 1251.56 348.45 1223.12 348.45 0 398.22 0"/>
+    </g>
+  </g>
+</svg>

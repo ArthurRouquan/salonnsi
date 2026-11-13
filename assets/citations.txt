@@ -1,0 +1,12 @@
+"Les ordinateurs sont inutiles. Ils ne savent que donner des réponses." ~ Pablo Picasso
+"L'informatique n'a pas plus à voir avec les ordinateurs que l'astronomie avec les télescopes." ~ Edsger Dijkstra
+"Le code ne ment jamais, les commentaires parfois si." ~ Ron Jeffries
+"Un algorithme doit être vu pour être cru." ~ Donald Knuth
+"La programmation est une compétence qui s'acquiert mieux par la pratique et l'exemple que dans les livres." ~ Alan Turing
+"Je crois que la tentative de fabriquer une machine pensante nous aidera grandement à découvrir comment nous pensons nous-mêmes." ~ Alan Turing
+"Les programmes doivent être écrits pour être lus par des humains, et seulement accessoirement pour être exécutés par des machines." ~ Hal Abelson
+"Maîtriser la complexité est l'essence même de l'informatique." ~ Brian Kernighan
+"En mathématiques, on ne comprend pas les choses. On s'y habitue, c'est tout." ~ John von Neumann
+"L'optimisation prématurée est la source de tous les maux." ~ Donald Knuth
+"La phrase la plus excitante à entendre en science n'est pas « Eurêka ! » mais « Tiens, c'est curieux… »" ~ Isaac Asimov
+"Si l'on attend d'une machine qu'elle soit infaillible, elle ne peut pas être intelligente en même temps." ~ Alan Turing
