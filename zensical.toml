@@ -83,7 +83,7 @@ features = [
   # "JavaScript", "Cobol"), this feature causes all of them to switch to
   # at the same time when the user chooses their language in one.
   # https://zensical.org/docs/authoring/content-tabs/#linked-content-tabs
-  "content.tabs.link",
+  # "content.tabs.link",
 
   # With this feature enabled users can add tooltips to links that will be
   # displayed when the mouse pointer hovers the link.

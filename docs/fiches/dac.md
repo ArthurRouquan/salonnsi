@@ -1,6 +1,6 @@
 ---
 title: Diviser pour régner
-icon: material/content-cut
+icon: lucide/scissors
 ---
 
 ## Définition
