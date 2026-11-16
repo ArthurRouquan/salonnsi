@@ -30,3 +30,5 @@ title: Terminale NSI
 ## Programmation Orientée Objet
 
 * [TP Capytale – Introduction à la POO](https://capytale2.ac-paris.fr/web/c/960e-12600886/atr)
+
+* [TP Capytale – Les méthodes spéciales](https://capytale2.ac-paris.fr/web/c/b5a0-12846729/atr)
