@@ -32,3 +32,8 @@ title: Terminale NSI
 * [TP Capytale – Introduction à la POO](https://capytale2.ac-paris.fr/web/c/960e-12600886/atr)
 
 * [TP Capytale – Les méthodes spéciales](https://capytale2.ac-paris.fr/web/c/b5a0-12846729/atr)
+
+
+## Hors-Programme
+
+* [TP Capytale – Casser chiffrement par substitution](https://capytale2.ac-paris.fr/web/c/a107-10081815/atr) On y aborde une technique de « *descente de gradient* » (ou *recherche locale*): partir d'une solution quelconque, puis l'améliorer progressivement en lui apportant de petites modifications, en ne conservant que celles qui la rendent meilleure.
