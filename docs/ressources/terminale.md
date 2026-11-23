@@ -13,7 +13,7 @@ title: Terminale NSI
 * [TP Capytale – Introduction à la récursivité](https://capytale2.ac-paris.fr/web/c/e4cc-11455431/atr) Une fonction qui s'appelle elle-même ? C'est possible ! 
 * [TP Capytale – Résoudre (vraiment) les tours de Hanoï](https://capytale2.ac-paris.fr/web/c/cdd9-7054550/atr) Le nombre minimal de mouvements calculé précédemment vous laisse de marbre ? Voyons alors à quoi ressemble concrètement la solution des tours de Hanoï.
 * [Cours Hors-Programme – Backtracking : Résoudre une grille de Sudoku](assets/presentation-backtracking.pdf) La récursivité permet de coder facilement une recherche exhaustive (*bruteforce*). La technique du backtracking l'enrichit en ne conservant qu'un seul état de la solution en cours de construction, ce qui réduit la consommation mémoire.
-* [Projet – Le problème des reines](../projets/reines.md) Application du backtracking sur un problème vieux de 200 ans&nbsp;!
+* [Projet – Le problème des dames](../projets/reines.md) Application du backtracking sur un problème vieux de 200 ans&nbsp;!
 
 ## Diviser pour régner
 
@@ -33,7 +33,9 @@ title: Terminale NSI
 
 * [TP Capytale – Les méthodes spéciales](https://capytale2.ac-paris.fr/web/c/b5a0-12846729/atr)
 
+* [Projet – Cellules, un Agar.io simplifié](../projets/agario.md) Des centaines d'objets d'une même classe, puis l'héritage pour distinguer le joueur des bots, le tout dans un jeu Pyxel.
+
 
 ## Hors-Programme
 
-* [TP Capytale – Casser chiffrement par substitution](https://capytale2.ac-paris.fr/web/c/a107-10081815/atr) On y aborde une technique de « *descente de gradient* » (ou *recherche locale*): partir d'une solution quelconque, puis l'améliorer progressivement en lui apportant de petites modifications, en ne conservant que celles qui la rendent meilleure.
+* [TP Capytale – Casser le chiffrement par substitution](https://capytale2.ac-paris.fr/web/c/a107-10081815/atr) On y aborde une technique de « *descente de gradient* » (ou *recherche locale*): partir d'une solution quelconque, puis l'améliorer progressivement en lui apportant de petites modifications, en ne conservant que celles qui la rendent meilleure.

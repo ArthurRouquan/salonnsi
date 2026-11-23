@@ -107,7 +107,7 @@
     counter-increment: steps-counter;
     position: relative;
     padding-inline-start: calc(var(--sl-bullet-size) + 1rem);
-    padding-bottom: 1px;
+    padding-bottom: 0.75rem;
     margin-bottom: 0;
     margin-left: 0;
     min-height: calc(var(--sl-bullet-size) + var(--sl-bullet-margin));
@@ -171,6 +171,11 @@
     border-radius: .4rem;
 }
 
+/* Pixel art (captures Pyxel…) : agrandie sans flou, pixels nets */
+.pixel-img {
+    image-rendering: pixelated;
+}
+
 /* table */
 
 .center-table {
@@ -224,6 +229,7 @@ mark {
         display: none;
     }
 }
+
 /* Rangée de boutons centrés : <div class="center-buttons" markdown> */
 .md-typeset .center-buttons,
 .md-typeset .center-buttons p {
@@ -255,4 +261,249 @@ mark {
    remplirait les icônes Lucide, qui sont dessinées au trait. */
 .md-tabs__link svg.lucide {
     fill: none;
+}
+/* Schéma interactif « avancer vers la cible » (docs/assets/extra.js) */
+.md-typeset .schema-vecteur {
+    --sv-bleu: var(--clr-blue-a200);
+    --sv-orange: var(--clr-orange-a400);
+    --sv-rouge: var(--clr-red-a400);
+    --sv-vert: var(--clr-green-a700);
+    max-width: 30rem;
+    margin: .8em auto;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: .4rem;
+    background-color: var(--md-default-bg-color);
+}
+
+.schema-vecteur .sv-figure {
+    position: relative;
+}
+
+.schema-vecteur svg {
+    display: block;
+    width: 100%;
+    touch-action: none;
+}
+
+/* Tous les traits ont des bouts arrondis */
+.schema-vecteur line,
+.schema-vecteur path {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Grille de points, très légère */
+.schema-vecteur .sv-point-grille {
+    fill: var(--md-default-fg-color--lighter);
+    fill-opacity: .28;
+}
+
+.schema-vecteur .sv-pointille {
+    stroke: var(--md-default-fg-color--lighter);
+    stroke-width: 1;
+    stroke-dasharray: 3 4;
+}
+
+.schema-vecteur .sv-angle {
+    fill: none;
+    stroke: var(--md-default-fg-color--lighter);
+    stroke-width: 1;
+}
+
+/* Vecteurs : même épaisseur, sauf le vecteur unité, un peu plus épais */
+.schema-vecteur .sv-vecteur {
+    stroke: var(--md-default-fg-color--light);
+    stroke-width: 2;
+}
+
+.schema-vecteur .sv-deplacement {
+    stroke: var(--sv-orange);
+    stroke-width: 2;
+}
+
+.schema-vecteur .sv-unite {
+    stroke: var(--sv-bleu);
+    stroke-width: 3;
+}
+
+.schema-vecteur .sv-tete-gris {
+    fill: var(--md-default-fg-color--light);
+}
+
+.schema-vecteur .sv-tete-vitesse {
+    fill: var(--sv-orange);
+}
+
+.schema-vecteur .sv-tete-unite {
+    fill: var(--sv-bleu);
+}
+
+.schema-vecteur .sv-cellule {
+    fill: var(--sv-vert);
+    fill-opacity: .2;
+    stroke: var(--sv-vert);
+    stroke-width: 1.5;
+}
+
+.schema-vecteur .sv-fantome {
+    fill: var(--sv-vert);
+    fill-opacity: .2;
+    stroke: var(--sv-vert);
+    stroke-width: 1.5;
+    opacity: .35;
+}
+
+.schema-vecteur .sv-cible {
+    fill: var(--sv-rouge);
+    stroke: var(--sv-rouge);
+    stroke-width: 1;
+}
+
+/* Étiquettes LaTeX posées par-dessus le SVG */
+.schema-vecteur .sv-etiquette {
+    position: absolute;
+    color: var(--md-default-fg-color--light);
+    font-size: .85rem;
+    line-height: 1;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Légendes en texte normal, dans la police du site */
+.schema-vecteur .sv-legende {
+    font-family: var(--md-text-font-family);
+    font-size: .65rem;
+}
+
+.schema-vecteur .sv-legende-cellule {
+    color: var(--sv-vert);
+}
+
+.schema-vecteur .sv-legende-cible {
+    color: var(--sv-rouge);
+}
+
+.schema-vecteur .sv-legende-nouvelle {
+    color: var(--sv-vert);
+}
+
+
+.schema-vecteur .sv-bleu {
+    color: var(--sv-bleu);
+}
+
+.schema-vecteur .sv-orange {
+    color: var(--sv-orange);
+}
+
+.schema-vecteur .sv-avertissement {
+    color: var(--sv-rouge);
+}
+
+/* Glissière de la vitesse : rail fin, bouton rond orange */
+.md-typeset .schema-vecteur .sv-controle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .8em;
+    padding: .4em .8em;
+    border-top: 1px solid var(--md-default-fg-color--lightest);
+    font-size: .75rem;
+    color: var(--md-default-fg-color--light);
+}
+
+.schema-vecteur .sv-controle input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12em;
+    height: 16px;
+    margin: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.schema-vecteur .sv-controle input[type="range"]:focus {
+    outline: none;
+}
+
+.schema-vecteur .sv-controle input[type="range"]::-webkit-slider-runnable-track {
+    height: 3px;
+    border-radius: 2px;
+    background: var(--md-default-fg-color--lightest);
+}
+
+.schema-vecteur .sv-controle input[type="range"]::-moz-range-track {
+    height: 3px;
+    border-radius: 2px;
+    background: var(--md-default-fg-color--lightest);
+}
+
+.schema-vecteur .sv-controle input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    margin-top: -5.5px;
+    border: none;
+    border-radius: 50%;
+    background: var(--sv-orange);
+    transition: box-shadow .15s;
+}
+
+.schema-vecteur .sv-controle input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border: none;
+    border-radius: 50%;
+    background: var(--sv-orange);
+    transition: box-shadow .15s;
+}
+
+.schema-vecteur .sv-controle input[type="range"]:hover::-webkit-slider-thumb,
+.schema-vecteur .sv-controle input[type="range"]:focus-visible::-webkit-slider-thumb {
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--sv-orange) 20%, transparent);
+}
+
+.schema-vecteur .sv-controle input[type="range"]:hover::-moz-range-thumb,
+.schema-vecteur .sv-controle input[type="range"]:focus-visible::-moz-range-thumb {
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--sv-orange) 20%, transparent);
+}
+
+/* Ligne de calcul */
+.md-typeset .schema-vecteur .sv-lecture {
+    margin: 0;
+    padding: .5em .8em;
+    border-top: 1px solid var(--md-default-fg-color--lightest);
+    text-align: center;
+    font-size: .8rem;
+    line-height: 2;
+    color: var(--md-default-fg-color--light);
+}
+
+/* Deuxième ligne : passe à la ligne si la place manque */
+.schema-vecteur .sv-ligne {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 1.5em;
+}
+
+/* Échantillons de trait dans la ligne de calcul (légende) */
+.schema-vecteur .sv-puce {
+    display: inline-block;
+    width: 1.6em;
+    margin-right: .5em;
+    vertical-align: middle;
+    border-radius: 2px;
+}
+
+.schema-vecteur .sv-bleu .sv-puce {
+    height: 3px;
+    background-color: var(--sv-bleu);
+}
+
+.schema-vecteur .sv-orange .sv-puce {
+    height: 2px;
+    background-color: var(--sv-orange);
 }
