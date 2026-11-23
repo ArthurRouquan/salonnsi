@@ -171,20 +171,14 @@ On écrit maintenant la classe `#!py Cellule`, puis on modifie `#!py Jeu` pour c
 
 ## Le joueur mange les grains
 
-![](assets/agario-2.gif){ .rounded-img .pixel-img }
+![](assets/capture-manger.gif){ .rounded-img .pixel-img }
 /// caption
 Le joueur suit la souris, mange les grains et grossit.
 ///
 
 <div class="sl-steps" start="4" markdown>
 
-4. **Créer le joueur.** Dans le constructeur de `#!py Jeu`, afficher le curseur avec `#!py pyxel.mouse(True)` et créer le joueur, une simple `#!py Cellule` placée au centre (avec une constante `#!py MASSE_DEPART = 10`)&nbsp;:
-
-    ```python
-    self.joueur = Cellule(LARGEUR_ECRAN / 2, HAUTEUR_ECRAN / 2, MASSE_DEPART, 11)
-    ```
-
-    L'afficher dans `#!py Jeu.draw`, **après** les grains.
+4. **Créer le joueur.** Dans le constructeur de `#!py Jeu`, afficher le curseur avec `#!py pyxel.mouse(True)` et créer le joueur, une simple `#!py Cellule` placée au centre (avec une constante `#!py MASSE_DEPART = 10`). L'afficher dans `#!py Jeu.draw` **après** les grains.
 
 5. **Suivre la souris.** Ajouter à `#!py Cellule`&nbsp;:
 
@@ -207,7 +201,7 @@ Le joueur suit la souris, mange les grains et grossit.
 
 6. **Manger.** Ajouter à `#!py Cellule` un attribut `#!py vivante`, initialisé à `#!py True` dans le constructeur, puis les méthodes suivantes&nbsp;:
 
-    * `#!py peut_manger(self, autre)` qui renvoie `#!py True` si les **deux** cellules sont vivantes, si `#!py self` est plus plus massive que `#!py autre` et si **le centre** de `#!py autre` est dans le disque de `#!py self`&nbsp;;
+    * `#!py peut_manger(self, autre)` qui renvoie `#!py True` si les **deux** cellules sont vivantes, si `#!py self` est plus massive que `#!py autre` et si **le centre** de `#!py autre` est dans le disque de `#!py self`&nbsp;;
     * `#!py manger(self, autre)` qui ajoute la masse de `#!py autre` à celle de `#!py self` et passe `#!py autre.vivante` à `#!py False`.
 
     Dans `#!py Jeu.update`, faire manger au joueur les grains qu'il peut manger.
@@ -215,7 +209,9 @@ Le joueur suit la souris, mange les grains et grossit.
     !!! info "Indication&nbsp;: éviter la racine carrée"
         Le jeu teste des centaines de grains à chaque image, et la racine carrée est un calcul coûteux. Or $d < r \iff d^2 < r^2$, et $r^2 = m$&nbsp;: le test sur la distance devient simplement `#!py dx * dx + dy * dy < self.masse`.
 
-7. **Faire réapparaître les grains.** Les grains mangés doivent disparaître de la liste (lire l'encadré ci-dessous) et être remplacés pour qu'il y en ait toujours `#!py NB_GRAINS`. Créer dans `#!py Jeu` une méthode `#!py nouveau_grain(self)` qui **renvoie** un grain placé au hasard, et l'utiliser dans le constructeur et pour les remplacements.
+7. **Faire réapparaître les grains.** Ajouter à `#!py Jeu` une méthode `#!py update_grains(self)`, appelée à la fin de `#!py Jeu.update`, **après** la boucle des repas&nbsp;: elle retire les grains mangés de la liste (lire l'encadré ci-dessous), puis ajoute des grains placés au hasard jusqu'à en avoir `#!py NB_GRAINS`.
+
+    Elle peut aussi servir dans le constructeur&nbsp;: en partant d'une liste vide, elle la remplit entièrement.
 
     ??? danger "Point de vigilance&nbsp;: ne jamais supprimer pendant qu'on parcourt"
         Ce code est faux&nbsp;:
@@ -241,18 +237,19 @@ Le joueur suit la souris, mange les grains et grossit.
         La bonne méthode se fait en deux temps&nbsp;: **pendant** la boucle, on **marque** les cellules mangées (c'est le rôle de l'attribut `#!py vivante`)&nbsp;; **après** la boucle, on ne garde que les vivantes&nbsp;:
 
         ```python
-        def garder_vivantes(cellules):
-            resultat = []
-            for cellule in cellules:
-                if cellule.vivante:
-                    resultat.append(cellule)
-            return resultat
+        class Jeu:
+            def update_grains(self):
+                vivants = []
+                for grain in self.grains:
+                    if grain.vivante:
+                        vivants.append(grain)
+                self.grains = vivants
+                ...  # compléter la liste
         ```
 
-        Cette fonction (placée en dehors des classes) s'utilise après la boucle des repas&nbsp;: `#!py self.grains = garder_vivantes(self.grains)`.
+        On ne modifie jamais la liste qu'on parcourt&nbsp;: on en construit une **nouvelle**, qui remplace l'ancienne à la fin.
 </div>
 
-[À continuer]
 
 <!-- 
 
@@ -263,87 +260,113 @@ Le joueur suit la souris, mange les grains et grossit.
 Les bots chassent ce qu'ils peuvent manger… y compris le joueur.
 ///
 
-On ajoute une dizaine d'adversaires, les **bots**, qui se dirigent vers la cellule mangeable la plus proche. Le joueur et les bots sont des cellules comme les autres&nbsp;; ils ne diffèrent que par **leur façon de choisir où aller**. Les classes `#!py Joueur` et `#!py Bot` vont donc **hériter** de `#!py Cellule` et **redéfinir** une seule méthode, `#!py deplacer`.
+On ajoute une dizaine d'adversaires, les **bots**, qui se dirigent vers la cellule mangeable la plus proche. Le joueur et les bots sont des cellules comme les autres&nbsp;; ils ne diffèrent que par **leur façon de choisir où aller**. Les classes `#!py Joueur` et `#!py Bot` vont donc **hériter** de `#!py Cellule` et **redéfinir** une seule méthode, `#!py update`.
+
+??? info "L'héritage ?"
+    Écrire `#!py class Joueur(Cellule):` crée une **nouvelle classe** `#!py Joueur` qui **hérite** de `#!py Cellule`&nbsp;: **elle récupère automatiquement tous ses attributs et toutes ses méthodes, sans rien recopier.** On dit que `#!py Cellule` est la classe **mère** et `#!py Joueur` la classe **fille**.
+
+    Dans la classe fille, on peut **redéfinir** une méthode de la classe mère&nbsp;: c'est alors cette nouvelle version qui est utilisée pour les objets `#!py Joueur`.
+
+    ```python
+    class Animal:
+        def __init__(self, nom):
+            self.nom = nom
+
+        def presenter(self):
+            print("Je suis", self.nom)
+
+        def crier(self):
+            print("...")
+
+
+    class Chat(Animal):  # Chat hérite d'Animal
+        def crier(self):  # redéfinition
+            print("Miaou")
+
+
+    class Chien(Animal):  # Chien hérite d'Animal
+        def crier(self):  # redéfinition
+            print("Wouf!")
+    ```
+
+    ```pycon
+    >>> c = Chat("Tom")  # le constructeur d'Animal est utilisé
+    >>> c.presenter()  # méthode héritée
+    Je suis Tom
+    >>> c.crier()  # méthode redéfinie
+    Miaou
+    >>> r = Chien("Rex")
+    >>> r.presenter()  # même méthode héritée
+    Je suis Rex
+    >>> r.crier()  # même appel, autre comportement
+    Wouf!
+    ```
+
+    Dans le diagramme ci-dessous, la flèche à pointe creuse va de la classe fille vers la classe mère.
 
 ```mermaid
+%%{init: {"markdownAutoWrap": false}}%%
 classDiagram
     Cellule <|-- Joueur
     Cellule <|-- Bot
     class Cellule {
-        x, y, masse, couleur, vivante
+        x
+        y
+        masse
+        couleur
+        vivante
         rayon()
         vitesse()
-        distance(autre)
         peut_manger(autre)
         manger(autre)
         deplacer_vers(cible_x, cible_y)
-        deplacer(jeu)
         update(jeu)
         draw()
     }
     class Joueur {
-        deplacer(jeu)
+        update(jeu)
     }
     class Bot {
-        deplacer(jeu)
+        update(jeu)
     }
 ```
-
-On ajoute deux méthodes à `#!py Cellule`. Par défaut, une cellule ne bouge pas (c'est le cas des grains)&nbsp;:
-
-```python
-class Cellule:
-    ...
-
-    def deplacer(self, jeu):
-        pass
-
-    def update(self, jeu):
-        self.deplacer(jeu)
-```
-
-Puis on crée la classe `#!py Joueur`, qui redéfinit `#!py deplacer`&nbsp;:
-
-```python
-class Joueur(Cellule):
-    def deplacer(self, jeu):
-        self.deplacer_vers(pyxel.mouse_x, pyxel.mouse_y)
-```
-
-Le paramètre `#!py jeu` donne accès à tout le jeu (grains, bots, joueur). Dans `#!py Jeu.update`, on écrira `#!py self.joueur.update(self)`&nbsp;: ici, `#!py self` désigne le jeu.
 
 <div class="sl-steps" start="8" markdown>
 
-8. La classe `#!py Joueur` n'a pas de constructeur `#!py __init__`. Comment Python fait-il pour créer `#!py Joueur(120, 80, MASSE_DEPART, 11)`&nbsp;?
+8. **Le joueur.** Ajouter à `#!py Cellule` une méthode `#!py update(self, jeu)` qui ne fait rien (un grain ne bouge pas), puis créer la classe `#!py Joueur`&nbsp;:
 
-9. **Organiser le jeu.** Ajouter d'abord à `#!py Cellule` une méthode `#!py distance(self, autre)` qui renvoie la distance entre les centres de deux cellules (même calcul que dans `#!py deplacer_vers`). Puis, dans `#!py Jeu`&nbsp;:
+    ```python
+    class Joueur(Cellule):
+        def update(self, jeu):
+            self.deplacer_vers(pyxel.mouse_x, pyxel.mouse_y)
+    ```
 
-    * déplacer la création des objets dans une méthode `#!py reset(self)`, appelée par le constructeur juste **avant** `#!py pyxel.run`&nbsp;; le joueur devient un `#!py Joueur`&nbsp;;
-    * ajouter une constante `#!py NB_BOTS = 10`, une liste `#!py self.bots` et une méthode `#!py nouveau_bot(self)` qui renvoie un `#!py Bot` placé au hasard, de masse `#!py pyxel.rndi(4, 30)` et de couleur `#!py 8`. Pour éviter une défaite immédiate, retirer sa position avec une boucle `#!py while` tant que `#!py bot.distance(self.joueur) < 60`&nbsp;;
-    * ajouter une méthode `#!py cellules(self)` qui renvoie `#!py self.grains + self.bots + [self.joueur]`.
+    Le joueur devient un `#!py Joueur`, et `#!py Jeu.update` appelle `#!py self.joueur.update(self)`&nbsp;: le paramètre `#!py jeu` donne ainsi accès à tout le jeu. Le jeu doit fonctionner comme avant.
 
-10. **Le bot chasseur.** Écrire la classe `#!py Bot(Cellule)`, dont la méthode `#!py deplacer(self, jeu)` cherche parmi `#!py jeu.cellules()` la cellule **vivante** la plus proche qu'il est assez massif pour manger, et s'en approche avec `#!py deplacer_vers`.
+    `#!py Joueur` n'a pas de constructeur `#!py __init__`&nbsp;: comment Python fait-il pour créer un `#!py Joueur`&nbsp;?
 
-    !!! info "Indications"
-        * Isolez la condition sur les masses dans une méthode `#!py assez_grosse_pour(self, autre)` de `#!py Cellule`, et réutilisez-la dans `#!py peut_manger`.
-        * Pour trouver la plus proche, c'est une recherche de minimum&nbsp;: on mémorise la meilleure cellule et sa distance.
+9. **Les bots.** Créer une classe `#!py Bot(Cellule)`, vide pour l'instant (`#!py pass`), et ajouter au jeu une dizaine de bots immobiles, de masses variées et placés au hasard. Attention à ne pas en faire apparaître un sur le joueur&nbsp;!
 
-            ```python
-            cible = None
-            distance_min = 0
-            for autre in jeu.cellules():
-                ...
-            ```
-
-11. **Les repas.** Dans `#!py Jeu.update`, appeler `#!py update(self)` sur le joueur et sur chaque bot. Puis, avec `#!py mangeurs = [self.joueur] + self.bots` et deux boucles imbriquées, chaque mangeur essaie de manger les grains **et** les autres mangeurs. Après les boucles, filtrer les grains et les bots avec `#!py garder_vivantes` et compléter les deux listes.
+10. **Les repas.** Le joueur et les bots mangent les grains, mais aussi **toutes** les cellules plus petites qu'eux, joueur compris. Comme les grains, les bots mangés sont remplacés.
 
     Pourquoi n'est-il pas nécessaire de vérifier qu'une cellule n'essaie pas de se manger elle-même&nbsp;?
 
-12. **Partie perdue.** Si le joueur a été mangé, `#!py Jeu.update` attend seulement un clic (`#!py pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT)`) pour appeler `#!py self.reset()`, et `#!py Jeu.draw` affiche « Perdu ! » et « Cliquez pour rejouer ».
+11. **Le bot chasseur.** Redéfinir `#!py update` dans `#!py Bot`&nbsp;: le bot se dirige vers la cellule la plus proche qu'il peut manger.
 
-13. `#!py self.joueur.update(self)` et `#!py bot.update(self)` exécutent le même code de `#!py Cellule.update`. Pourtant, le bot et le joueur ne se déplacent pas de la même façon. Expliquer.
+    ??? tip "Indication"
+        C'est une recherche de minimum&nbsp;: on parcourt les cellules en mémorisant la meilleure trouvée jusqu'ici et sa distance.
 
-</div>
+12. **Partie perdue.** Quand le joueur est mangé, le jeu s'arrête, affiche « Perdu ! » et un clic relance une nouvelle partie.
+
+    ??? tip "Indication"
+        `#!py pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT)` vaut `#!py True` à l'image où l'on clique. Pour relancer une partie, il faut recréer tous les objets du jeu&nbsp;: une méthode évitera de dupliquer le code du constructeur.
+
+13. Dans `#!py Jeu.update`, on écrit la même chose pour le joueur et pour les bots&nbsp;: `#!py self.joueur.update(self)` et `#!py bot.update(self)`. Pourtant, ils ne se déplacent pas de la même façon. Expliquer.
+
+</div> -->
+
+
+<!-- 
 
 ## Un monde plus grand que l'écran
 
@@ -378,9 +401,9 @@ x_monde = x_ecran + camera_x  # la conversion inverse
 17. **Convertir la souris.** Tester le jeu&nbsp;: le joueur file vers le coin supérieur gauche du monde. Pourquoi&nbsp;?
 
     !!! warning "Indication essentielle"
-        `#!py pyxel.mouse_x` et `#!py pyxel.mouse_y` sont des **coordonnées écran**, alors que `#!py deplacer_vers` attend une cible en **coordonnées monde**. Il faut convertir la position de la souris dans `#!py Joueur.deplacer`, avec `#!py jeu.camera_x` et `#!py jeu.camera_y`.
+        `#!py pyxel.mouse_x` et `#!py pyxel.mouse_y` sont des **coordonnées écran**, alors que `#!py deplacer_vers` attend une cible en **coordonnées monde**. Il faut convertir la position de la souris dans `#!py Joueur.update`, avec `#!py jeu.camera_x` et `#!py jeu.camera_y`.
 
-18. **Rester dans le monde.** Compléter `#!py Cellule.update` pour que, après le déplacement, `#!py x` reste entre `0` et `#!py LARGEUR_MONDE` et `#!py y` entre `0` et `#!py HAUTEUR_MONDE` (avec `#!py min` et `#!py max`).
+18. **Rester dans le monde.** Compléter `#!py Cellule.deplacer_vers` pour que, après le déplacement, `#!py x` reste entre `0` et `#!py LARGEUR_MONDE` et `#!py y` entre `0` et `#!py HAUTEUR_MONDE` (avec `#!py min` et `#!py max`).
 
 </div>
 

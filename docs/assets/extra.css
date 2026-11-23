@@ -507,3 +507,22 @@ mark {
     height: 2px;
     background-color: var(--sv-orange);
 }
+
+/* ---------- Diagrammes Mermaid : couleurs du site ---------- */
+
+/* Variables sur :root, pour que Mermaid mesure le texte avec la bonne police. */
+:root,
+[data-md-color-scheme] {
+    --md-mermaid-font-family: var(--md-code-font-family), monospace;
+    --md-mermaid-node-bg-color: color-mix(in srgb, var(--clr-blue-a200) 8%, transparent);
+    --md-mermaid-node-fg-color: var(--clr-blue-a200);
+    --md-mermaid-edge-color: var(--md-default-fg-color--light);
+    --md-mermaid-label-bg-color: var(--md-default-bg-color);
+    --md-mermaid-label-fg-color: var(--md-default-fg-color);
+}
+
+.md-typeset .mermaid {
+    width: 12rem;
+    max-width: 100%;
+    margin: 1.2em auto;
+}

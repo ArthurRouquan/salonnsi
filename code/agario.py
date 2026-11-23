@@ -30,29 +30,20 @@ class Cellule:
         # donc le rayon est proportionnel à la racine carrée de la masse.
         return math.sqrt(self.masse)
 
-    def vitesse(self):
-        # En pixels par image : environ 1,1 au départ (masse 10),
-        # 0,6 pour une masse 100, 0,45 pour une masse 400.
-        return 2 / math.sqrt(self.rayon())
-
-    def distance(self, autre):
-        dx = autre.x - self.x
-        dy = autre.y - self.y
-        return math.sqrt(dx * dx + dy * dy)
-
-    def assez_grosse_pour(self, autre):
-        return self.masse >= 1.2 * autre.masse
-
     def peut_manger(self, autre):
         if not self.vivante or not autre.vivante:
             return False
-        if not self.assez_grosse_pour(autre):
+        if self.masse <= autre.masse:
             return False
         # Le centre de l'autre doit être dans notre disque : d < r,
         # c'est-à-dire d² < r². Or r² = masse : pas besoin de racine carrée.
         dx = autre.x - self.x
         dy = autre.y - self.y
         return dx * dx + dy * dy < self.masse
+
+    def vitesse(self):
+        # En pixels par image.
+        return 1
 
     def manger(self, autre):
         self.masse = self.masse + autre.masse
@@ -62,32 +53,28 @@ class Cellule:
         dx = cible_x - self.x
         dy = cible_y - self.y
         d = math.sqrt(dx * dx + dy * dy)
-        v = self.vitesse()
-        if d > v:
+        if d > self.vitesse():
             # (dx / d, dy / d) est un vecteur de longueur 1 :
             # on le multiplie par la vitesse.
-            self.x = self.x + dx / d * v
-            self.y = self.y + dy / d * v
+            self.x = self.x + dx / d * self.vitesse()
+            self.y = self.y + dy / d * self.vitesse()
         else:
             self.x = cible_x
             self.y = cible_y
-
-    def deplacer(self, jeu):
-        # Un grain de nourriture ne bouge pas.
-        pass
-
-    def update(self, jeu):
-        self.deplacer(jeu)
         # On reste dans le monde.
         self.x = max(0, min(LARGEUR_MONDE, self.x))
         self.y = max(0, min(HAUTEUR_MONDE, self.y))
+
+    def update(self, jeu):
+        # Un grain de nourriture ne bouge pas.
+        pass
 
     def draw(self):
         pyxel.circ(self.x, self.y, self.rayon(), self.couleur)
 
 
 class Joueur(Cellule):
-    def deplacer(self, jeu):
+    def update(self, jeu):
         # La souris donne des coordonnées écran : on les convertit
         # en coordonnées monde en ajoutant la position de la caméra.
         cible_x = pyxel.mouse_x + jeu.camera_x
@@ -96,25 +83,20 @@ class Joueur(Cellule):
 
 
 class Bot(Cellule):
-    def deplacer(self, jeu):
+    def update(self, jeu):
+        # Recherche de la cellule mangeable la plus proche.
         cible = None
         distance_min = 0
-        for autre in jeu.cellules():
-            if autre.vivante and self.assez_grosse_pour(autre):
-                d = self.distance(autre)
+        for autre in jeu.grains + jeu.bots + [jeu.joueur]:
+            if autre.vivante and self.masse > autre.masse:
+                dx = autre.x - self.x
+                dy = autre.y - self.y
+                d = math.sqrt(dx * dx + dy * dy)
                 if cible is None or d < distance_min:
                     cible = autre
                     distance_min = d
         if cible is not None:
             self.deplacer_vers(cible.x, cible.y)
-
-
-def garder_vivantes(cellules):
-    resultat = []
-    for cellule in cellules:
-        if cellule.vivante:
-            resultat.append(cellule)
-    return resultat
 
 
 class Jeu:
@@ -127,32 +109,12 @@ class Jeu:
     def reset(self):
         self.joueur = Joueur(LARGEUR_MONDE / 2, HAUTEUR_MONDE / 2, MASSE_DEPART, 11)
         self.grains = []
-        for i in range(NB_GRAINS):
-            self.grains.append(self.nouveau_grain())
+        self.update_grains()
         self.bots = []
-        for i in range(NB_BOTS):
-            self.bots.append(self.nouveau_bot())
+        self.update_bots()
         self.camera_x = 0
         self.camera_y = 0
         self.placer_camera()
-
-    def nouveau_grain(self):
-        x = pyxel.rndf(0, LARGEUR_MONDE)
-        y = pyxel.rndf(0, HAUTEUR_MONDE)
-        return Cellule(x, y, 1, pyxel.rndi(1, 15))
-
-    def nouveau_bot(self):
-        x = pyxel.rndf(0, LARGEUR_MONDE)
-        y = pyxel.rndf(0, HAUTEUR_MONDE)
-        bot = Bot(x, y, pyxel.rndi(4, 30), 8)
-        # On évite de faire apparaître un bot juste à côté du joueur.
-        while bot.distance(self.joueur) < 60:
-            bot.x = pyxel.rndf(0, LARGEUR_MONDE)
-            bot.y = pyxel.rndf(0, HAUTEUR_MONDE)
-        return bot
-
-    def cellules(self):
-        return self.grains + self.bots + [self.joueur]
 
     def placer_camera(self):
         self.camera_x = self.joueur.x - LARGEUR_ECRAN / 2
@@ -180,14 +142,35 @@ class Jeu:
                 if mangeur.peut_manger(autre):
                     mangeur.manger(autre)
 
-        # 3. Après les boucles seulement : on retire les cellules mangées
-        #    et on en fait apparaître de nouvelles.
-        self.grains = garder_vivantes(self.grains)
+        # 3. Après les boucles seulement : on retire les cellules mangées.
+        self.update_grains()
+        self.update_bots()
+
+    def update_grains(self):
+        """Retire les grains mangés et en fait apparaître de nouveaux."""
+        vivants = []
+        for grain in self.grains:
+            if grain.vivante:
+                vivants.append(grain)
+        self.grains = vivants
         while len(self.grains) < NB_GRAINS:
-            self.grains.append(self.nouveau_grain())
-        self.bots = garder_vivantes(self.bots)
+            x = pyxel.rndf(0, LARGEUR_MONDE)
+            y = pyxel.rndf(0, HAUTEUR_MONDE)
+            self.grains.append(Cellule(x, y, 1, pyxel.rndi(1, 15)))
+
+    def update_bots(self):
+        """Retire les bots mangés et en fait apparaître de nouveaux."""
+        vivants = []
+        for bot in self.bots:
+            if bot.vivante:
+                vivants.append(bot)
+        self.bots = vivants
         while len(self.bots) < NB_BOTS:
-            self.bots.append(self.nouveau_bot())
+            x = pyxel.rndf(0, LARGEUR_MONDE)
+            y = pyxel.rndf(0, HAUTEUR_MONDE)
+            # On évite de faire apparaître un bot juste à côté du joueur.
+            if abs(x - self.joueur.x) > 60 or abs(y - self.joueur.y) > 60:
+                self.bots.append(Bot(x, y, pyxel.rndi(4, 30), 8))
 
     def draw(self):
         pyxel.cls(0)
