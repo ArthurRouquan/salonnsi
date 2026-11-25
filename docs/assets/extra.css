@@ -150,12 +150,6 @@
     background-color: transparent;
 }
 
-/* remove code block background inside admonitions */
-.md-typeset .admonition code,
-.md-typeset details code {
-    background-color: transparent;
-}
-
 /* match admonition font size to normal text */
 /* .md-typeset .admonition,
 .md-typeset details {
@@ -176,6 +170,18 @@
     image-rendering: pixelated;
 }
 
+/* Séparateur --- : même espace visible au-dessus et au-dessous.
+   Un paragraphe a un interligne de 1.8 : il y a 0.4em de vide au-dessus des
+   lettres, qu'on retire de la marge du bas. */
+.md-typeset hr:has(+ p) {
+    margin-bottom: 1.1em;
+}
+
+/* --- sert seulement à espacer : pas de trait */
+.md-typeset hr {
+    border-bottom: none;
+}
+
 /* table */
 
 .center-table {
@@ -188,7 +194,19 @@
 
 .md-typeset table:not([class]) th,
 .md-typeset table:not([class]) td {
-    padding: .2rem .6rem;
+    padding: .15rem .6rem;
+    vertical-align: middle;
+}
+
+/* code inline centré sur la ligne (sinon il paraît trop haut) */
+.md-typeset table:not([class]) td > code {
+    vertical-align: middle;
+}
+
+/* coins arrondis comme les blocs de code */
+.md-typeset table:not([class]) {
+    border-radius: .4rem;
+    overflow: hidden;
 }
 
 mark {
@@ -525,4 +543,163 @@ mark {
     width: 12rem;
     max-width: 100%;
     margin: 1.2em auto;
+}
+
+/* ---------- Blocs de code : bordure fine ----------
+   --code-border-color : couleur de bordure du code (celle des tables).
+   En mode sombre, elle est semi-transparente et ne rendrait pas pareil sur le
+   fond du code et sur le fond noir de la console : on la précalcule en opaque.
+   Vraie bordure (pas d'ombre, qui se superpose dans les coins arrondis), et
+   padding réduit d'autant pour que le texte ne bouge pas. */
+:root {
+    --code-border-color: var(--md-typeset-table-color);
+    --code-border-width: 0.05rem;
+}
+
+[data-md-color-scheme="slate"] {
+    --code-border-color: color-mix(in srgb, hsl(var(--md-hue) 15% 95%) 12%, var(--md-code-bg-color));
+}
+
+.md-typeset .highlight pre > code,
+.md-typeset pre.console > code {
+    border: var(--code-border-width) solid var(--code-border-color);
+    padding: calc(.8203125em - var(--code-border-width)) calc(1.25em - var(--code-border-width));
+}
+
+/* Bloc de code avec titre : la bordure entoure titre + code, et le trait sous
+   le titre reprend la même couleur */
+.md-typeset .highlight span.filename {
+    border: var(--code-border-width) solid var(--code-border-color);
+    padding: calc(.6617647059em - var(--code-border-width)) calc(1.1764705882em - var(--code-border-width)) .6617647059em;
+}
+
+.md-typeset .highlight span.filename + pre > code {
+    border-top: 0;
+    padding-top: .8203125em;
+}
+
+/* Ligne sous les onglets : même couleur que la bordure du code */
+.md-typeset .tabbed-labels {
+    box-shadow: 0 calc(-1 * var(--code-border-width)) var(--code-border-color) inset;
+}
+
+/* Bloc de code en tête d'un onglet : la ligne des onglets sert déjà de trait
+   du haut, pas de double bordure */
+.md-typeset .tabbed-block > .highlight:first-child > pre > code {
+    border-top: 0;
+    padding-top: .8203125em;
+}
+
+.md-typeset .tabbed-block > .highlight:first-child > span.filename {
+    border-top: 0;
+    padding-top: .6617647059em;
+}
+
+/* ---------- Bloc « console » : affichage d'un programme ----------
+   Usage en Markdown : une fence ```console placée juste après un bloc de code.
+   Fond noir dans les deux thèmes (teinte --md-hue du site), accroché au bloc
+   précédent. */
+.md-typeset pre.console > code {
+    background-color: hsla(var(--md-hue, 225deg), 15%, 6%, 1);
+    color: hsla(var(--md-hue, 225deg), 15%, 90%, 0.85);
+    /* texte clair sur fond noir : sans ça macOS l'affiche plus gras */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* En mode clair, bordure discrète : la couleur du code ne se voit pas sur le noir */
+[data-md-color-scheme="default"] .md-typeset pre.console > code {
+    border-color: var(--md-default-fg-color--lightest);
+}
+
+/* Accroche sous le bloc de code qui précède : pas de marge, pas de coins
+   arrondis ni de bordure entre les deux */
+.md-typeset .highlight:has(+ pre.console) pre {
+    margin-bottom: 0;
+}
+
+.md-typeset .highlight:has(+ pre.console) pre > code {
+    border-bottom: 0;
+    padding-bottom: .8203125em;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.md-typeset .highlight + pre.console {
+    margin-top: 0;
+}
+
+.md-typeset .highlight + pre.console > code {
+    border-top: 0;
+    padding-top: .8203125em;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* ---------- Deux colonnes : contenu à gauche, encart étroit à droite ----------
+   Usage : //// html | div.grid-aside  contenant deux /// html | div */
+.md-typeset .grid-aside {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1.5rem;
+    align-items: center;
+    margin: 1em 0;
+}
+
+/* Pas de marge résiduelle en haut ou en bas des colonnes, sinon le centrage
+   vertical est faussé (marge du <pre> dans .highlight, marge sous la table) */
+.md-typeset .grid-aside > div > :first-child,
+.md-typeset .grid-aside > div > .highlight:first-child > pre {
+    margin-top: 0;
+}
+
+.md-typeset .grid-aside > div > :last-child,
+.md-typeset .grid-aside > div > .highlight:last-child > pre,
+.md-typeset .grid-aside .md-typeset__table {
+    margin-bottom: 0;
+}
+
+/* la table est en inline-block : sans ça, espace de jambage sous elle */
+.md-typeset .grid-aside table {
+    vertical-align: top;
+}
+
+@media screen and (max-width: 44.9375em) {
+    .md-typeset .grid-aside {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* ---------- Liste à cocher (icônes Lucide) ----------
+   Usage :
+   /// html | div.check-list
+   * :lucide-circle-check:{ .done } [Fait](…)
+   * :lucide-circle: [Pas encore fait](…)
+   ///
+   Fait : icône et texte gris. Pas fait : cercle et texte en noir. */
+.md-typeset .check-list ul {
+    list-style: none;
+    margin-left: 0;
+}
+
+.md-typeset .check-list li {
+    margin-left: 0;
+    color: var(--md-default-fg-color);
+}
+
+.md-typeset .check-list li .twemoji {
+    margin-right: .4em;
+}
+
+.md-typeset .check-list li a {
+    color: inherit;
+}
+
+.md-typeset .check-list li:has(.done) {
+    color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .check-list li a code,
+.md-typeset .check-list li a code * {
+    color: inherit;
 }
