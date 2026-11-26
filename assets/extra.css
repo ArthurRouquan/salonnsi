@@ -1,0 +1,740 @@
+/* Police de code : Maple Mono, auto-hébergée (WOFF2, sous-ensemble Latin).
+   font-display: swap => le texte n'est jamais invisible pendant le chargement ;
+   la graisse Regular est en plus préchargée dans overrides/main.html. */
+@font-face {
+    font-family: "Maple Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/MapleMono-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Maple Mono";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/MapleMono-Italic.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Maple Mono";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/MapleMono-Bold.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Maple Mono";
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/MapleMono-BoldItalic.woff2") format("woff2");
+}
+
+:root {
+    --clr-blue-a200: #448aff;
+    --clr-light-blue-a400: #26c6da;
+    --clr-cyan-a700: #00b8d4;
+    --clr-teal-a700: #00bfa5;
+    --clr-green-a700: #00c853;
+    --clr-light-green-a700: #64dd17;
+    --clr-orange-a400: #ff9100;
+    --clr-red-a200: #ff5252;
+    --clr-red-a400: #ff1744;
+    --clr-pink-a400: #f50057;
+    --clr-deep-purple-a200: #7c4dff;
+    --clr-grey: #9e9e9e;
+}
+
+.green-text {
+    color: var(--clr-green-a700);
+}
+
+.red-text {
+    color: var(--clr-red-a400);
+}
+
+.cyan-text {
+    color: var(--clr-cyan-a700);
+}
+
+.md-typeset p,
+.md-typeset li {
+    text-align: justify;
+}
+
+.center-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.md-typeset figcaption,
+.md-typeset figcaption p {
+    text-align: center;
+}
+
+.md-typeset .icon-list dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.3em 0.7em;
+    margin-left: .625em;
+}
+
+.md-typeset .icon-list dd {
+    margin: 0;
+}
+
+/* Numbered steps: <div class="sl-steps" markdown> wrapping an ordered list */
+.md-typeset .sl-steps {
+    --sl-bullet-size: calc(var(--md-typeset-line-height, 1.3) * 1rem);
+    --sl-bullet-margin: 0.375rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.md-typeset .sl-steps>ol {
+    list-style: none;
+    counter-reset: steps-counter var(--sl-steps-start, 0);
+    padding-inline-start: 0;
+
+}
+
+.md-typeset .sl-steps>ol>li {
+    counter-increment: steps-counter;
+    position: relative;
+    padding-inline-start: calc(var(--sl-bullet-size) + 1rem);
+    padding-bottom: 0.75rem;
+    margin-bottom: 0;
+    margin-left: 0;
+    min-height: calc(var(--sl-bullet-size) + var(--sl-bullet-margin));
+}
+
+.md-typeset .sl-steps>ol>li>p {
+    margin-top: 0;
+}
+
+.md-typeset .sl-steps>ol>li::before {
+    content: counter(steps-counter);
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    width: var(--sl-bullet-size);
+    height: var(--sl-bullet-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 600;
+    border: 0.05rem solid var(--md-typeset-table-color);
+    border-radius: 99rem;
+    background-color: var(--md-code-bg-color);
+}
+
+.md-typeset .sl-steps>ol>li::after {
+    content: '';
+    position: absolute;
+    top: calc(var(--sl-bullet-size) + var(--sl-bullet-margin));
+    bottom: var(--sl-bullet-margin);
+    inset-inline-start: calc(var(--sl-bullet-size) / 2);
+    width: 0.05rem;
+    background-color: var(--md-typeset-table-color);
+}
+
+/* remove background from code block buttons toolbar */
+.md-code__nav,
+:hover>.md-code__nav {
+    background-color: transparent;
+}
+
+/* match admonition font size to normal text */
+/* .md-typeset .admonition,
+.md-typeset details {
+    font-size: inherit;
+} */
+
+/* macOS window recording */
+.rounded-video {
+    border-radius: .4rem;
+}
+
+.rounded-img {
+    border-radius: .4rem;
+}
+
+/* Pixel art (captures Pyxel…) : agrandie sans flou, pixels nets */
+.pixel-img {
+    image-rendering: pixelated;
+}
+
+/* Séparateur --- : même espace visible au-dessus et au-dessous.
+   Un paragraphe a un interligne de 1.8 : il y a 0.4em de vide au-dessus des
+   lettres, qu'on retire de la marge du bas. */
+.md-typeset hr:has(+ p) {
+    margin-bottom: 1.1em;
+}
+
+/* --- sert seulement à espacer : pas de trait */
+.md-typeset hr {
+    border-bottom: none;
+}
+
+/* table */
+
+.center-table {
+    text-align: center;
+}
+
+.md-typeset .center-table :is(td, th):not([align]) {
+    text-align: initial;
+}
+
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+    padding: .15rem .6rem;
+    vertical-align: middle;
+}
+
+/* code inline centré sur la ligne (sinon il paraît trop haut) */
+.md-typeset table:not([class]) td > code {
+    vertical-align: middle;
+}
+
+/* coins arrondis comme les blocs de code */
+.md-typeset table:not([class]) {
+    border-radius: .4rem;
+    overflow: hidden;
+}
+
+mark {
+    background: color-mix(in srgb, #ffcc00 35%, transparent) !important;
+    padding: .1em .25em;
+    border-radius: .2em;
+    font-weight: 600;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: auto minmax(0, 32rem) auto;
+    justify-content: center;
+    align-items: start;
+    gap: 5rem;
+}
+
+.home-grid>p {
+    margin: 0;
+    line-height: 0;
+}
+
+.flag {
+    width: 5rem;
+    height: auto;
+    opacity: 0.95;
+    pointer-events: none;
+}
+
+@media screen and (max-width: 76.234375em) {
+    .home-grid {
+        display: block;
+    }
+
+    .flag {
+        display: none;
+    }
+}
+
+/* Rangée de boutons centrés : <div class="center-buttons" markdown> */
+.md-typeset .center-buttons,
+.md-typeset .center-buttons p {
+    text-align: center;
+}
+
+.md-typeset .center-buttons {
+    margin: 1.5em 0;
+}
+
+.md-typeset .center-buttons .md-button {
+    margin: .3rem;
+}
+
+/* Icônes dans les onglets de navigation (overrides/partials/tabs-item.html) */
+.md-tabs__link {
+    align-items: center;
+}
+
+.md-tabs__link svg {
+    flex-shrink: 0;
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: .4em;
+    fill: currentcolor;
+}
+
+/* extra.css est chargé après le thème : sans cette règle, le `fill` ci-dessus
+   remplirait les icônes Lucide, qui sont dessinées au trait. */
+.md-tabs__link svg.lucide {
+    fill: none;
+}
+/* Schéma interactif « avancer vers la cible » (docs/assets/extra.js) */
+.md-typeset .schema-vecteur {
+    --sv-bleu: var(--clr-blue-a200);
+    --sv-orange: var(--clr-orange-a400);
+    --sv-rouge: var(--clr-red-a400);
+    --sv-vert: var(--clr-green-a700);
+    max-width: 30rem;
+    margin: .8em auto;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: .4rem;
+    background-color: var(--md-default-bg-color);
+}
+
+.schema-vecteur .sv-figure {
+    position: relative;
+}
+
+.schema-vecteur svg {
+    display: block;
+    width: 100%;
+    touch-action: none;
+}
+
+/* Tous les traits ont des bouts arrondis */
+.schema-vecteur line,
+.schema-vecteur path {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Grille de points, très légère */
+.schema-vecteur .sv-point-grille {
+    fill: var(--md-default-fg-color--lighter);
+    fill-opacity: .28;
+}
+
+.schema-vecteur .sv-pointille {
+    stroke: var(--md-default-fg-color--lighter);
+    stroke-width: 1;
+    stroke-dasharray: 3 4;
+}
+
+.schema-vecteur .sv-angle {
+    fill: none;
+    stroke: var(--md-default-fg-color--lighter);
+    stroke-width: 1;
+}
+
+/* Vecteurs : même épaisseur, sauf le vecteur unité, un peu plus épais */
+.schema-vecteur .sv-vecteur {
+    stroke: var(--md-default-fg-color--light);
+    stroke-width: 2;
+}
+
+.schema-vecteur .sv-deplacement {
+    stroke: var(--sv-orange);
+    stroke-width: 2;
+}
+
+.schema-vecteur .sv-unite {
+    stroke: var(--sv-bleu);
+    stroke-width: 3;
+}
+
+.schema-vecteur .sv-tete-gris {
+    fill: var(--md-default-fg-color--light);
+}
+
+.schema-vecteur .sv-tete-vitesse {
+    fill: var(--sv-orange);
+}
+
+.schema-vecteur .sv-tete-unite {
+    fill: var(--sv-bleu);
+}
+
+.schema-vecteur .sv-cellule {
+    fill: var(--sv-vert);
+    fill-opacity: .2;
+    stroke: var(--sv-vert);
+    stroke-width: 1.5;
+}
+
+.schema-vecteur .sv-fantome {
+    fill: var(--sv-vert);
+    fill-opacity: .2;
+    stroke: var(--sv-vert);
+    stroke-width: 1.5;
+    opacity: .35;
+}
+
+.schema-vecteur .sv-cible {
+    fill: var(--sv-rouge);
+    stroke: var(--sv-rouge);
+    stroke-width: 1;
+}
+
+/* Étiquettes LaTeX posées par-dessus le SVG */
+.schema-vecteur .sv-etiquette {
+    position: absolute;
+    color: var(--md-default-fg-color--light);
+    font-size: .85rem;
+    line-height: 1;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Légendes en texte normal, dans la police du site */
+.schema-vecteur .sv-legende {
+    font-family: var(--md-text-font-family);
+    font-size: .65rem;
+}
+
+.schema-vecteur .sv-legende-cellule {
+    color: var(--sv-vert);
+}
+
+.schema-vecteur .sv-legende-cible {
+    color: var(--sv-rouge);
+}
+
+.schema-vecteur .sv-legende-nouvelle {
+    color: var(--sv-vert);
+}
+
+
+.schema-vecteur .sv-bleu {
+    color: var(--sv-bleu);
+}
+
+.schema-vecteur .sv-orange {
+    color: var(--sv-orange);
+}
+
+.schema-vecteur .sv-avertissement {
+    color: var(--sv-rouge);
+}
+
+/* Glissière de la vitesse : rail fin, bouton rond orange */
+.md-typeset .schema-vecteur .sv-controle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .8em;
+    padding: .4em .8em;
+    border-top: 1px solid var(--md-default-fg-color--lightest);
+    font-size: .75rem;
+    color: var(--md-default-fg-color--light);
+}
+
+.schema-vecteur .sv-controle input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12em;
+    height: 16px;
+    margin: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.schema-vecteur .sv-controle input[type="range"]:focus {
+    outline: none;
+}
+
+.schema-vecteur .sv-controle input[type="range"]::-webkit-slider-runnable-track {
+    height: 3px;
+    border-radius: 2px;
+    background: var(--md-default-fg-color--lightest);
+}
+
+.schema-vecteur .sv-controle input[type="range"]::-moz-range-track {
+    height: 3px;
+    border-radius: 2px;
+    background: var(--md-default-fg-color--lightest);
+}
+
+.schema-vecteur .sv-controle input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    margin-top: -5.5px;
+    border: none;
+    border-radius: 50%;
+    background: var(--sv-orange);
+    transition: box-shadow .15s;
+}
+
+.schema-vecteur .sv-controle input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border: none;
+    border-radius: 50%;
+    background: var(--sv-orange);
+    transition: box-shadow .15s;
+}
+
+.schema-vecteur .sv-controle input[type="range"]:hover::-webkit-slider-thumb,
+.schema-vecteur .sv-controle input[type="range"]:focus-visible::-webkit-slider-thumb {
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--sv-orange) 20%, transparent);
+}
+
+.schema-vecteur .sv-controle input[type="range"]:hover::-moz-range-thumb,
+.schema-vecteur .sv-controle input[type="range"]:focus-visible::-moz-range-thumb {
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--sv-orange) 20%, transparent);
+}
+
+/* Ligne de calcul */
+.md-typeset .schema-vecteur .sv-lecture {
+    margin: 0;
+    padding: .5em .8em;
+    border-top: 1px solid var(--md-default-fg-color--lightest);
+    text-align: center;
+    font-size: .8rem;
+    line-height: 2;
+    color: var(--md-default-fg-color--light);
+}
+
+/* Deuxième ligne : passe à la ligne si la place manque */
+.schema-vecteur .sv-ligne {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 1.5em;
+}
+
+/* Échantillons de trait dans la ligne de calcul (légende) */
+.schema-vecteur .sv-puce {
+    display: inline-block;
+    width: 1.6em;
+    margin-right: .5em;
+    vertical-align: middle;
+    border-radius: 2px;
+}
+
+.schema-vecteur .sv-bleu .sv-puce {
+    height: 3px;
+    background-color: var(--sv-bleu);
+}
+
+.schema-vecteur .sv-orange .sv-puce {
+    height: 2px;
+    background-color: var(--sv-orange);
+}
+
+/* ---------- Diagrammes Mermaid : couleurs du site ---------- */
+
+/* Variables sur :root, pour que Mermaid mesure le texte avec la bonne police. */
+:root,
+[data-md-color-scheme] {
+    --md-mermaid-font-family: var(--md-code-font-family), monospace;
+    --md-mermaid-node-bg-color: color-mix(in srgb, var(--clr-blue-a200) 8%, transparent);
+    --md-mermaid-node-fg-color: var(--clr-blue-a200);
+    --md-mermaid-edge-color: var(--md-default-fg-color--light);
+    --md-mermaid-label-bg-color: var(--md-default-bg-color);
+    --md-mermaid-label-fg-color: var(--md-default-fg-color);
+}
+
+.md-typeset .mermaid {
+    width: 12rem;
+    max-width: 100%;
+    margin: 1.2em auto;
+}
+
+/* ---------- Blocs de code : bordure fine ----------
+   --code-border-color : couleur de bordure du code (celle des tables).
+   En mode sombre, elle est semi-transparente et ne rendrait pas pareil sur le
+   fond du code et sur le fond noir de la console : on la précalcule en opaque.
+   Vraie bordure (pas d'ombre, qui se superpose dans les coins arrondis), et
+   padding réduit d'autant pour que le texte ne bouge pas. */
+:root {
+    --code-border-color: var(--md-typeset-table-color);
+    --code-border-width: 0.05rem;
+}
+
+[data-md-color-scheme="slate"] {
+    --code-border-color: color-mix(in srgb, hsl(var(--md-hue) 15% 95%) 12%, var(--md-code-bg-color));
+}
+
+.md-typeset .highlight pre > code,
+.md-typeset pre.console > code {
+    border: var(--code-border-width) solid var(--code-border-color);
+    padding: calc(.8203125em - var(--code-border-width)) calc(1.25em - var(--code-border-width));
+}
+
+/* Code inline : même bordure. Ombre intérieure (une seule, sur les 4 côtés) :
+   la taille ne change pas, donc pas de décalage dans le texte. */
+.md-typeset :not(pre) > code {
+    box-shadow: inset 0 0 0 var(--code-border-width) var(--code-border-color);
+}
+
+/* Bloc de code avec titre : la bordure entoure titre + code, et le trait sous
+   le titre reprend la même couleur */
+.md-typeset .highlight span.filename {
+    border: var(--code-border-width) solid var(--code-border-color);
+    padding: calc(.6617647059em - var(--code-border-width)) calc(1.1764705882em - var(--code-border-width)) .6617647059em;
+}
+
+.md-typeset .highlight span.filename + pre > code {
+    border-top: 0;
+    padding-top: .8203125em;
+}
+
+/* Ligne sous les onglets : même couleur que la bordure du code */
+.md-typeset .tabbed-labels {
+    box-shadow: 0 calc(-1 * var(--code-border-width)) var(--code-border-color) inset;
+}
+
+/* Bloc de code en tête d'un onglet : la ligne des onglets sert déjà de trait
+   du haut, pas de double bordure */
+.md-typeset .tabbed-block > .highlight:first-child > pre > code {
+    border-top: 0;
+    padding-top: .8203125em;
+}
+
+.md-typeset .tabbed-block > .highlight:first-child > span.filename {
+    border-top: 0;
+    padding-top: .6617647059em;
+}
+
+/* ---------- Bloc « console » : affichage d'un programme ----------
+   Usage en Markdown : une fence ```console placée juste après un bloc de code.
+   Fond noir dans les deux thèmes (teinte --md-hue du site), accroché au bloc
+   précédent. */
+.md-typeset pre.console > code {
+    background-color: hsla(var(--md-hue, 225deg), 15%, 6%, 1);
+    color: hsla(var(--md-hue, 225deg), 15%, 90%, 0.85);
+    /* texte clair sur fond noir : sans ça macOS l'affiche plus gras */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* En mode clair, bordure discrète : la couleur du code ne se voit pas sur le noir */
+[data-md-color-scheme="default"] .md-typeset pre.console > code {
+    border-color: var(--md-default-fg-color--lightest);
+}
+
+/* Accroche sous le bloc de code qui précède : pas de marge, pas de coins
+   arrondis ni de bordure entre les deux */
+.md-typeset .highlight:has(+ pre.console) pre {
+    margin-bottom: 0;
+}
+
+.md-typeset .highlight:has(+ pre.console) pre > code {
+    border-bottom: 0;
+    padding-bottom: .8203125em;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.md-typeset .highlight + pre.console {
+    margin-top: 0;
+}
+
+.md-typeset .highlight + pre.console > code {
+    border-top: 0;
+    padding-top: .8203125em;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* ---------- Deux colonnes : contenu à gauche, encart étroit à droite ----------
+   Usage : //// html | div.grid-aside  contenant deux /// html | div */
+.md-typeset .grid-aside {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1.5rem;
+    align-items: center;
+    margin: 1em 0;
+}
+
+/* Pas de marge résiduelle en haut ou en bas des colonnes, sinon le centrage
+   vertical est faussé (marge du <pre> dans .highlight, marge sous la table) */
+.md-typeset .grid-aside > div > :first-child,
+.md-typeset .grid-aside > div > .highlight:first-child > pre {
+    margin-top: 0;
+}
+
+.md-typeset .grid-aside > div > :last-child,
+.md-typeset .grid-aside > div > .highlight:last-child > pre,
+.md-typeset .grid-aside .md-typeset__table {
+    margin-bottom: 0;
+}
+
+/* la table est en inline-block : sans ça, espace de jambage sous elle */
+.md-typeset .grid-aside table {
+    vertical-align: top;
+}
+
+@media screen and (max-width: 44.9375em) {
+    .md-typeset .grid-aside {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* ---------- Liste à cocher (icônes Lucide) ----------
+   Usage :
+   /// html | div.check-list
+   * :lucide-circle-check:{ .done } [Fait](…)
+   * :lucide-circle: [Pas encore fait](…)
+   ///
+   Fait : icône et texte gris. Pas fait : cercle et texte en noir. */
+.md-typeset .check-list ul {
+    list-style: none;
+    margin-left: 0;
+}
+
+.md-typeset .check-list li {
+    margin-left: 0;
+    color: var(--md-default-fg-color);
+}
+
+.md-typeset .check-list li .twemoji {
+    margin-right: .4em;
+}
+
+.md-typeset .check-list li a {
+    color: inherit;
+}
+
+.md-typeset .check-list li:has(.done) {
+    color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .check-list li a code,
+.md-typeset .check-list li a code * {
+    color: inherit;
+}
+
+/* ---------- Code dans les callouts : couleurs du callout ----------
+   --admo-color : couleur de l'icône du callout. Son fond (--admo-bg) est cette
+   couleur à 10 % sur le fond de la page. Le code part de ce fond, assombri
+   (clair) ou éclairci (sombre) comme le code l'est par rapport à la page :
+   +4 % pour le fond, +12 % pour la bordure. */
+.md-typeset :is(.admonition, details)            { --admo-color: #448aff; }
+.md-typeset :is(.admonition, details).abstract   { --admo-color: #00b0ff; }
+.md-typeset :is(.admonition, details).info       { --admo-color: #00b8d4; }
+.md-typeset :is(.admonition, details).tip        { --admo-color: #00bfa5; }
+.md-typeset :is(.admonition, details).success    { --admo-color: #00c853; }
+.md-typeset :is(.admonition, details).question   { --admo-color: #64dd17; }
+.md-typeset :is(.admonition, details).warning    { --admo-color: #ff9100; }
+.md-typeset :is(.admonition, details).failure    { --admo-color: #ff5252; }
+.md-typeset :is(.admonition, details).danger     { --admo-color: #ff1744; }
+.md-typeset :is(.admonition, details).bug        { --admo-color: #f50057; }
+.md-typeset :is(.admonition, details).example    { --admo-color: #7c4dff; }
+.md-typeset :is(.admonition, details).quote      { --admo-color: #9e9e9e; }
+
+.md-typeset :is(.admonition, details) {
+    --admo-shade: black;
+    --admo-bg: color-mix(in srgb, var(--admo-color) 10%, var(--md-default-bg-color));
+    --md-code-bg-color: color-mix(in srgb, var(--admo-bg), var(--admo-shade) 4%);
+    --code-border-color: color-mix(in srgb, var(--admo-bg), var(--admo-shade) 12%);
+}
+
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details) {
+    --admo-shade: white;
+}

@@ -1,0 +1,1695 @@
+
+
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Un site dedié à la spécialité NSI au lycée de l&#x27;Empéri à Salon-de-Provence.">
+      
+      
+        <meta name="author" content="Arthur Rouquan">
+      
+      
+        <link rel="canonical" href="https://salonnsi.fr/projets/agario/">
+      
+      
+      
+      
+        <link rel="prev" href="../../fiches/sql/">
+      
+      
+        <link rel="next" href="../reines/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.svg">
+      <meta name="generator" content="zensical-0.1.3">
+    
+    
+      
+        <title>Cellules, un Agar.io simplifié - Salon NSI</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.e2cf241e.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+      
+
+
+    
+    
+      
+    
+    
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i&amp;display=fallback">
+  <link rel="preload" href="../../assets/fonts/MapleMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <style>:root{--md-text-font:"Inter";--md-code-font:"Maple Mono"}</style>
+
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Aller au contenu
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="Salon NSI" class="md-header__button md-logo" aria-label="Salon NSI" data-md-component="logo">
+      
+  <img src="../../assets/icon.svg" alt="Salon NSI">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Salon NSI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cellules, un Agar.io simplifié
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Recherche</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Recherche">
+  <button type="button" class="md-search__button">
+    Recherche
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-home" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+  
+  <span class="md-ellipsis">Accueil</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../fiches/" class="md-tabs__link">
+          
+  
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-files" viewBox="0 0 24 24"><path d="M15 2h-4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/><path d="M16.706 2.706A2.4 2.4 0 0 0 15 2v5a1 1 0 0 0 1 1h5a2.4 2.4 0 0 0-.706-1.706zM5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1"/></svg>
+  
+  <span class="md-ellipsis">Fiches</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+      
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="././" class="md-tabs__link">
+          
+  
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-blend" viewBox="0 0 24 24"><circle cx="15" cy="9" r="7"/><circle cx="9" cy="15" r="7"/></svg>
+  
+  <span class="md-ellipsis">Projets</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ressources/" class="md-tabs__link">
+          
+  
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open-text" viewBox="0 0 24 24"><path d="M12 5v16M16 13h2M16 9h2M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2zM6 13h2M6 9h2"/></svg>
+  
+  <span class="md-ellipsis">Ressources</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Salon NSI" class="md-nav__button md-logo" aria-label="Salon NSI" data-md-component="logo">
+      
+  <img src="../../assets/icon.svg" alt="Salon NSI">
+
+    </a>
+    Salon NSI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-home" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  Accueil
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../fiches/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-files" viewBox="0 0 24 24"><path d="M15 2h-4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/><path d="M16.706 2.706A2.4 2.4 0 0 0 15 2v5a1 1 0 0 0 1 1h5a2.4 2.4 0 0 0-.706-1.706zM5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  Fiches
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Fiches
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/coeur/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-file-code-corner" viewBox="0 0 24 24"><path d="M4 12.15V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2h-3.35"/><path d="M14 2v5a1 1 0 0 0 1 1h5M5 16l-3 3 3 3M9 22l3-3-3-3"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  Programmes à connaître
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/dac/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  Diviser pour régner
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/poo/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-boxes" viewBox="0 0 24 24"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3zM7 16.5l-4.74-2.85M7 16.5l5-3M7 16.5v5.17M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5zM17 16.5l-5-3M17 16.5l4.74-2.85M17 16.5v5.17"/><path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0zM12 8 7.26 5.15M12 8l4.74-2.85M12 13.5V8"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  POO
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/recursivite/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-repeat-2" viewBox="0 0 24 24"><path d="m2 9 3-3 3 3"/><path d="M13 18H7a2 2 0 0 1-2-2V6M22 15l-3 3-3-3"/><path d="M11 6h6a2 2 0 0 1 2 2v10"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  Récursivité
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/sql/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  SQL & BDD
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Projets
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Projets
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-blend" viewBox="0 0 24 24"><circle cx="15" cy="9" r="7"/><circle cx="9" cy="15" r="7"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  Cellules, un Agar.io simplifié
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-blend" viewBox="0 0 24 24"><circle cx="15" cy="9" r="7"/><circle cx="9" cy="15" r="7"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  Cellules, un Agar.io simplifié
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Description
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rendu-attendu" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Rendu attendu
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#le-programme-minimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Le programme minimal
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#une-classe-des-centaines-dobjets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Une classe, des centaines d'objets
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#le-joueur-mange-les-grains" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Le joueur mange les grains
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#des-adversaires-grace-a-lheritage" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Des adversaires grâce à l'héritage
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#un-monde-plus-grand-que-lecran" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Un monde plus grand que l'écran
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-votre-sauce" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        À votre sauce
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reines/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-chess-queen" viewBox="0 0 24 24"><path d="m10.68 5.499-.996 4.982a.65.65 0 0 1-1.131.295L5.885 7.663M13.32 5.5l.995 4.98a.65.65 0 0 0 1.131.296l2.668-3.113M20.428 8.952 17.5 18M4 20a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM6.5 18 3.571 8.952"/><circle cx="12" cy="4" r="2"/><circle cx="20" cy="7" r="2"/><circle cx="4" cy="7" r="2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  Le problème des dames
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ressources/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open-text" viewBox="0 0 24 24"><path d="M12 5v16M16 13h2M16 9h2M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2zM6 13h2M6 9h2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  Ressources
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Ressources
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ressources/premiere/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Première NSI
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ressources/snt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Seconde SNT
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ressources/terminale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Terminale NSI
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Description
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rendu-attendu" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Rendu attendu
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#le-programme-minimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Le programme minimal
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#une-classe-des-centaines-dobjets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Une classe, des centaines d'objets
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#le-joueur-mange-les-grains" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Le joueur mange les grains
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#des-adversaires-grace-a-lheritage" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Des adversaires grâce à l'héritage
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#un-monde-plus-grand-que-lecran" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Un monde plus grand que l'écran
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-votre-sauce" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        À votre sauce
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="cellules-un-agario-simplifie">Cellules, un Agar.io simplifié<a class="headerlink" href="#cellules-un-agario-simplifie" title="Permanent link">&para;</a></h1>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p>Dans le jeu <a href="https://fr.wikipedia.org/wiki/Agar.io">Agar.io</a>, chaque joueur dirige une cellule dans une boîte de Petri. Le principe du jeu est simple&nbsp;: <strong>on mange ce qui est plus petit que soi, on se fait manger par ce qui est plus gros.</strong> Chaque repas fait grossir, mais plus on est gros, plus on est lent.</p>
+<p><img alt="" class="rounded-img pixel-img center-img" src="../assets/capture-agario.gif" /></p>
+<p>Le but de ce mini-projet est d'en programmer une version simplifiée avec le module <strong>Pyxel</strong> en <strong>programmation orientée objet</strong>.</p>
+<p>Grains, joueur et bots sont <strong>tous des cellules</strong>&nbsp;: une seule classe <code class="language-py highlight"><span class="n">Cellule</span></code> suffit pour créer des centaines d'objets. Le joueur et les bots ne diffèrent que par leur déplacement&nbsp;: on utilisera l'<strong>héritage</strong> (hors-programme).</p>
+<h2 id="rendu-attendu">Rendu attendu<a class="headerlink" href="#rendu-attendu" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Un <strong>fichier <code>.py</code></strong> contenant la version la plus avancée de votre jeu. Il doit s'exécuter sans erreur, et chaque méthode doit être commentée.</p>
+</li>
+<li>
+<p>Un <strong>compte rendu</strong> qui répond aux questions numérotées et décrit les améliorations ajoutées dans la section « <em>À votre sauce</em> ».</p>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Documentation Pyxel</p>
+<p>Toutes les fonctions de Pyxel utilisées dans ce projet (<code class="language-py highlight"><span class="n">pyxel</span><span class="o">.</span><span class="n">circ</span></code>, <code class="language-py highlight"><span class="n">pyxel</span><span class="o">.</span><span class="n">rndf</span></code>, <code class="language-py highlight"><span class="n">pyxel</span><span class="o">.</span><span class="n">mouse_x</span></code>, <code class="language-py highlight"><span class="n">pyxel</span><span class="o">.</span><span class="n">camera</span></code>…) sont décrites dans la <a href="https://kitao.dev/pyxel/api-reference/">documentation de Pyxel</a>.</p>
+</div>
+<h2 id="le-programme-minimal">Le programme minimal<a class="headerlink" href="#le-programme-minimal" title="Permanent link">&para;</a></h2>
+<p>Pyxel fonctionne avec une <strong>boucle de jeu</strong>&nbsp;: tant que la fenêtre est ouverte, Pyxel appelle la méthode <code class="language-py highlight"><span class="n">update</span></code> (mettre à jour les données du jeu), puis la méthode <code class="language-py highlight"><span class="n">draw</span></code> (dessiner l'image), et recommence.</p>
+<p><img alt="" class="center-img" src="../assets/boucle-jeu.svg" /></p>
+<p>On regroupe tout le jeu dans une classe <code class="language-py highlight"><span class="n">Jeu</span></code>. Les entités du jeu (grains, joueur, adversaires…) seront des <strong>attributs</strong> de cette classe.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Code</label><label for="__tabbed_1_2">Rendu</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pyxel</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">LARGEUR_ECRAN</span> <span class="o">=</span> <span class="mi">240</span>  <span class="c1"># (1)!</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">HAUTEUR_ECRAN</span> <span class="o">=</span> <span class="mi">160</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">Jeu</span><span class="p">:</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="n">pyxel</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">LARGEUR_ECRAN</span><span class="p">,</span> <span class="n">HAUTEUR_ECRAN</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Cellules"</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>  <span class="c1"># (2)!</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="n">pyxel</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">draw</span><span class="p">)</span>  <span class="c1"># (3)!</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="k">pass</span>  <span class="c1"># (4)!</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="n">pyxel</span><span class="o">.</span><span class="n">cls</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># (5)!</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="n">Jeu</span><span class="p">()</span>  <span class="c1"># (6)!</span>
+</span></code></pre></div>
+<ol>
+<li>
+<p>Les dimensions de l'écran sont des <strong>constantes</strong>, écrites en majuscules. Elles resserviront pour placer les objets dans la fenêtre.</p>
+</li>
+<li>
+<p>On crée une <strong>fenêtre</strong> de 240 × 160 pixels, intitulée « Cellules », qui s'actualise <strong>60 fois par seconde</strong>.</p>
+</li>
+<li>
+<p>On démarre la boucle de jeu. Les méthodes <code class="language-py highlight"><span class="bp">self</span><span class="o">.</span><span class="n">update</span></code> et <code class="language-py highlight"><span class="bp">self</span><span class="o">.</span><span class="n">draw</span></code> sont écrites <strong>sans parenthèses</strong>&nbsp;: on ne les appelle pas, on les <strong>donne</strong> à Pyxel, qui les appellera à chaque image.</p>
+</li>
+<li>
+<p>Pour l'instant, il n'y a rien à mettre à jour.</p>
+</li>
+<li>
+<p>On efface l'écran en le remplissant avec la couleur 0 (noir).</p>
+</li>
+<li>
+<p>On crée <strong>un seul</strong> objet <code class="language-py highlight"><span class="n">Jeu</span></code>&nbsp;: cela exécute <code class="language-py highlight"><span class="fm">__init__</span></code>, donc ouvre la fenêtre et lance la boucle de jeu.</p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p><img alt="" class="center-img pixel-img" src="../assets/capture-minimal.png" /></p>
+</div>
+</div>
+</div>
+<p>Ce code constitue <strong>le point de départ</strong> de n'importe quel jeu Pyxel&nbsp;.</p>
+<div class="sl-steps" start="1">
+<ol>
+<li>Ajouter <code class="language-py highlight"><span class="nb">print</span><span class="p">(</span><span class="s2">"bonjour"</span><span class="p">)</span></code> juste après <code class="language-py highlight"><span class="n">pyxel</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="o">...</span><span class="p">)</span></code>. Que se passe-t-il&nbsp;? Où faut-il donc créer les attributs de <code class="language-py highlight"><span class="n">Jeu</span></code>&nbsp;?</li>
+</ol>
+</div>
+<h2 id="une-classe-des-centaines-dobjets">Une classe, des centaines d'objets<a class="headerlink" href="#une-classe-des-centaines-dobjets" title="Permanent link">&para;</a></h2>
+<p>On écrit maintenant la classe <code class="language-py highlight"><span class="n">Cellule</span></code>, puis on modifie <code class="language-py highlight"><span class="n">Jeu</span></code> pour créer et afficher une cellule. Les lignes ajoutées par rapport au programme minimal sont surlignées&nbsp;:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Code</label><label for="__tabbed_2_2">Rendu</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="hll"><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>  <span class="c1"># (1)!</span>
+</span></span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pyxel</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">LARGEUR_ECRAN</span> <span class="o">=</span> <span class="mi">240</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">HAUTEUR_ECRAN</span> <span class="o">=</span> <span class="mi">160</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="hll"><span class="k">class</span><span class="w"> </span><span class="nc">Cellule</span><span class="p">:</span>  <span class="c1"># (2)!</span>
+</span></span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="hll">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">masse</span><span class="p">):</span>
+</span></span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>  <span class="c1"># (3)!</span>
+</span></span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+</span></span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">masse</span> <span class="o">=</span> <span class="n">masse</span>
+</span></span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="hll">
+</span></span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="hll">    <span class="k">def</span><span class="w"> </span><span class="nf">rayon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="hll">        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">masse</span><span class="p">)</span>  <span class="c1"># (4)!</span>
+</span></span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="hll">
+</span></span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="hll">    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="hll">        <span class="n">pyxel</span><span class="o">.</span><span class="n">circ</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rayon</span><span class="p">(),</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1"># (5)!</span>
+</span></span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="k">class</span><span class="w"> </span><span class="nc">Jeu</span><span class="p">:</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>        <span class="n">pyxel</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">LARGEUR_ECRAN</span><span class="p">,</span> <span class="n">HAUTEUR_ECRAN</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Cellules"</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">cellule</span> <span class="o">=</span> <span class="n">Cellule</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># (6)!</span>
+</span></span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>        <span class="n">pyxel</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">draw</span><span class="p">)</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>        <span class="k">pass</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>        <span class="n">pyxel</span><span class="o">.</span><span class="n">cls</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">cellule</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>  <span class="c1"># (7)!</span>
+</span></span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="n">Jeu</span><span class="p">()</span>
+</span></code></pre></div>
+<ol>
+<li>
+<p>Le module <code class="language-py highlight"><span class="n">math</span></code> fournit la racine carrée <code class="language-py highlight"><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span></code>.</p>
+</li>
+<li>
+<p>La classe est un <strong>moule</strong>&nbsp;: elle décrit ce qu'est une cellule, mais n'en crée aucune.</p>
+</li>
+<li>
+<p>Chaque objet <code class="language-py highlight"><span class="n">Cellule</span></code> aura <strong>ses propres</strong> attributs <code class="language-py highlight"><span class="n">x</span></code>, <code class="language-py highlight"><span class="n">y</span></code> et <code class="language-py highlight"><span class="n">masse</span></code>.</p>
+</li>
+<li>
+<p>Le rayon se calcule à partir de la masse (voir l'encadré ci-dessous).</p>
+</li>
+<li>
+<p>Un disque de centre <code>(x, y)</code>, de rayon <code class="language-py highlight"><span class="bp">self</span><span class="o">.</span><span class="n">rayon</span><span class="p">()</span></code> et de couleur 7 (blanc).</p>
+</li>
+<li>
+<p>On crée <strong>un objet</strong> <code class="language-py highlight"><span class="n">Cellule</span></code> au centre de l'écran, de masse 100, donc de rayon 10. Il est créé <strong>avant</strong> <code class="language-py highlight"><span class="n">pyxel</span><span class="o">.</span><span class="n">run</span></code> (voir question 1).</p>
+</li>
+<li>
+<p><code class="language-py highlight"><span class="n">Jeu</span><span class="o">.</span><span class="n">draw</span></code> ne sait pas <em>comment</em> se dessine une cellule&nbsp;: elle le lui <strong>demande</strong>. Chaque objet est responsable de son propre affichage.</p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p><img alt="" class="center-img pixel-img" src="../assets/capture-cellule.png" /></p>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Pourquoi la racine carrée de la masse&nbsp;?</p>
+<p>La <strong>surface</strong> du disque <span class="arithmatex">\(\pi r^2\)</span> doit être proportionnelle à la masse <span class="arithmatex">\(m\)</span>, d'où <span class="arithmatex">\(r = \sqrt{m}\)</span>.</p>
+</div>
+<div class="sl-steps" start="2">
+<ol>
+<li>
+<p><strong>Une couleur.</strong> Ajouter à <code class="language-py highlight"><span class="n">Cellule</span></code> un attribut <code class="language-py highlight"><span class="n">couleur</span></code> (<code class="language-py highlight"><span class="n">Cellule</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">masse</span><span class="p">,</span> <span class="n">couleur</span><span class="p">)</span></code>) et l'utiliser dans <code class="language-py highlight"><span class="n">draw</span></code>. Les couleurs de Pyxel&nbsp;:</p>
+<p><img alt="" class="center-img rounded-img pixel-img" src="../assets/palette-pyxel.png" style="margin: 1.5rem auto" /></p>
+</li>
+<li>
+<p><strong>La nourriture.</strong> Ajouter à <code class="language-py highlight"><span class="n">Jeu</span></code> une liste <code class="language-py highlight"><span class="n">grains</span></code> de <code class="language-py highlight"><span class="n">NB_GRAINS</span> <span class="o">=</span> <span class="mi">300</span></code> cellules de masse 1, de position et de couleur aléatoires. Les dessiner <strong>avant</strong> la grosse cellule. Pour l'aléatoire&nbsp;: <code class="language-py highlight"><span class="n">pyxel</span><span class="o">.</span><span class="n">rndi</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code> (entier) et <code class="language-py highlight"><span class="n">pyxel</span><span class="o">.</span><span class="n">rndf</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code> (décimal).</p>
+</li>
+</ol>
+</div>
+<p><img alt="" class="center-img pixel-img" src="../assets/capture-grains.png" /></p>
+<h2 id="le-joueur-mange-les-grains">Le joueur mange les grains<a class="headerlink" href="#le-joueur-mange-les-grains" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="" class="rounded-img pixel-img" src="../assets/capture-manger.gif" /></p>
+<figcaption>
+<p>Le joueur suit la souris, mange les grains et grossit.</p>
+</figcaption>
+</figure>
+<div class="sl-steps" start="4">
+<ol>
+<li>
+<p><strong>Le joueur.</strong> Remplacer la grosse cellule par le joueur&nbsp;: une <code class="language-py highlight"><span class="n">Cellule</span></code> de masse <code class="language-py highlight"><span class="n">MASSE_DEPART</span> <span class="o">=</span> <span class="mi">10</span></code>, au centre. Afficher le curseur avec <code class="language-py highlight"><span class="n">pyxel</span><span class="o">.</span><span class="n">mouse</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span></code>.</p>
+</li>
+<li>
+<p><strong>Suivre la souris.</strong> Ajouter à <code class="language-py highlight"><span class="n">Cellule</span></code>&nbsp;:</p>
+<ul>
+<li><code class="language-py highlight"><span class="n">vitesse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>, qui renvoie <code class="language-py highlight"><span class="mi">1</span></code> (pixel par image)&nbsp;;</li>
+<li><code class="language-py highlight"><span class="n">deplacer_vers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cible_x</span><span class="p">,</span> <span class="n">cible_y</span><span class="p">)</span></code>, qui avance la cellule de <code class="language-py highlight"><span class="bp">self</span><span class="o">.</span><span class="n">vitesse</span><span class="p">()</span></code> pixels vers la cible.</li>
+</ul>
+<p>Dans <code class="language-py highlight"><span class="n">Jeu</span><span class="o">.</span><span class="n">update</span></code>, déplacer le joueur vers <code class="language-py highlight"><span class="p">(</span><span class="n">pyxel</span><span class="o">.</span><span class="n">mouse_x</span><span class="p">,</span> <span class="n">pyxel</span><span class="o">.</span><span class="n">mouse_y</span><span class="p">)</span></code>.</p>
+<details class="info">
+<summary>Comment avancer vers la cible&nbsp;?</summary>
+<div class="schema-vecteur"></div>
+<ol>
+<li>Vecteur vers la cible&nbsp;: <code class="language-py highlight"><span class="n">dx</span> <span class="o">=</span> <span class="n">cible_x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span></code> et <code class="language-py highlight"><span class="n">dy</span> <span class="o">=</span> <span class="n">cible_y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span></code>.</li>
+<li>Sa longueur&nbsp;: <span class="arithmatex">\(d = \sqrt{dx^2 + dy^2}\)</span> (Pythagore).</li>
+<li>On divise <code class="language-py highlight"><span class="n">dx</span></code> et <code class="language-py highlight"><span class="n">dy</span></code> par <span class="arithmatex">\(d\)</span>&nbsp;: même direction, longueur 1 (en bleu).</li>
+<li>On multiplie par la vitesse <span class="arithmatex">\(v\)</span> (en orange) et on l'ajoute à la position.</li>
+<li>Si <span class="arithmatex">\(d\)</span> est plus petit que <span class="arithmatex">\(v\)</span>, on se place directement sur la cible.</li>
+</ol>
+</details>
+</li>
+<li>
+<p><strong>Manger.</strong> Ajouter à <code class="language-py highlight"><span class="n">Cellule</span></code> un attribut <code class="language-py highlight"><span class="n">vivante</span></code> (<code class="language-py highlight"><span class="kc">True</span></code> au départ) et les méthodes&nbsp;:</p>
+<ul>
+<li><code class="language-py highlight"><span class="n">peut_manger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre</span><span class="p">)</span></code>&nbsp;: les deux cellules sont vivantes, <code class="language-py highlight"><span class="bp">self</span></code> est plus massive, et le centre de <code class="language-py highlight"><span class="n">autre</span></code> est dans le disque de <code class="language-py highlight"><span class="bp">self</span></code>&nbsp;;</li>
+<li><code class="language-py highlight"><span class="n">manger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre</span><span class="p">)</span></code>&nbsp;: <code class="language-py highlight"><span class="bp">self</span></code> récupère la masse de <code class="language-py highlight"><span class="n">autre</span></code>, qui n'est plus vivante.</li>
+</ul>
+<p>Dans <code class="language-py highlight"><span class="n">Jeu</span><span class="o">.</span><span class="n">update</span></code>, le joueur mange les grains qu'il peut manger.</p>
+<details class="tip">
+<summary>Indication</summary>
+<p>Pas besoin de racine carrée&nbsp;: le centre est dans le disque si <span class="arithmatex">\(dx^2 + dy^2 &lt; r^2\)</span>, et <span class="arithmatex">\(r^2\)</span> est la masse.</p>
+</details>
+</li>
+<li>
+<p><strong>Renouveler les grains.</strong> Écrire <code class="language-py highlight"><span class="n">Jeu</span><span class="o">.</span><span class="n">update_grains</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>, qui retire les grains mangés puis complète la liste jusqu'à <code class="language-py highlight"><span class="n">NB_GRAINS</span></code>. L'appeler à la fin de <code class="language-py highlight"><span class="n">Jeu</span><span class="o">.</span><span class="n">update</span></code>, et dans le constructeur pour remplir la liste vide.</p>
+<details class="danger">
+<summary>Point de vigilance&nbsp;: ne jamais supprimer pendant qu'on parcourt</summary>
+<p>Ce code est faux&nbsp;:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">for</span> <span class="n">grain</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">grains</span><span class="p">:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">joueur</span><span class="o">.</span><span class="n">peut_manger</span><span class="p">(</span><span class="n">grain</span><span class="p">):</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">joueur</span><span class="o">.</span><span class="n">manger</span><span class="p">(</span><span class="n">grain</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">grains</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">grain</span><span class="p">)</span>  <span class="c1"># NON !</span>
+</span></code></pre></div>
+<p>Après un <code class="language-py highlight"><span class="n">remove</span></code>, l'élément suivant prend la place du supprimé et la boucle le <strong>saute</strong>&nbsp;:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">nombres</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nombres</span><span class="p">:</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="gp">... </span>    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="gp">... </span>        <span class="n">nombres</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">nombres</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="go">[1, 2, 3]</span>
+</span></code></pre></div>
+<p>On <strong>marque</strong> donc les grains mangés (<code class="language-py highlight"><span class="n">vivante</span></code>) pendant la boucle, puis on construit <strong>après</strong> une nouvelle liste avec les vivants&nbsp;:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Jeu</span><span class="p">:</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">update_grains</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        <span class="n">vivants</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        <span class="k">for</span> <span class="n">grain</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">grains</span><span class="p">:</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>            <span class="k">if</span> <span class="n">grain</span><span class="o">.</span><span class="n">vivante</span><span class="p">:</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>                <span class="n">vivants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grain</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">grains</span> <span class="o">=</span> <span class="n">vivants</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        <span class="o">...</span>  <span class="c1"># compléter la liste</span>
+</span></code></pre></div>
+</details>
+</li>
+</ol>
+</div>
+<h2 id="des-adversaires-grace-a-lheritage">Des adversaires grâce à l'héritage<a class="headerlink" href="#des-adversaires-grace-a-lheritage" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="" class="rounded-img pixel-img" src="../assets/capture-bots.gif" /></p>
+<figcaption>
+<p>Les bots chassent ce qu'ils peuvent manger… y compris le joueur.</p>
+</figcaption>
+</figure>
+<p>On ajoute des adversaires, les <strong>bots</strong>. Joueur et bots sont des cellules qui ne diffèrent que par leur déplacement&nbsp;: les classes <code class="language-py highlight"><span class="n">Joueur</span></code> et <code class="language-py highlight"><span class="n">Bot</span></code> <strong>héritent</strong> de <code class="language-py highlight"><span class="n">Cellule</span></code> et <strong>redéfinissent</strong> la méthode <code class="language-py highlight"><span class="n">update</span></code>.</p>
+<details class="info">
+<summary>L'héritage ?</summary>
+<p>Écrire <code class="language-py highlight"><span class="k">class</span><span class="w"> </span><span class="nc">Joueur</span><span class="p">(</span><span class="n">Cellule</span><span class="p">):</span></code> crée une <strong>nouvelle classe</strong> <code class="language-py highlight"><span class="n">Joueur</span></code> qui <strong>hérite</strong> de <code class="language-py highlight"><span class="n">Cellule</span></code>&nbsp;: <strong>elle récupère automatiquement tous ses attributs et toutes ses méthodes, sans rien recopier.</strong> On dit que <code class="language-py highlight"><span class="n">Cellule</span></code> est la classe <strong>mère</strong> et <code class="language-py highlight"><span class="n">Joueur</span></code> la classe <strong>fille</strong>.</p>
+<p>Dans la classe fille, on peut <strong>redéfinir</strong> une méthode de la classe mère&nbsp;: c'est alors cette nouvelle version qui est utilisée pour les objets <code class="language-py highlight"><span class="n">Joueur</span></code>.</p>
+<p><strong>Exemple de classe mère</strong> :</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Animal</span><span class="p">:</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">):</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">presenter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Je suis"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="p">)</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">crier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span>
+</span></code></pre></div>
+<p><strong>Exemples de classes filles</strong> :</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Chat</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>  <span class="c1"># Chat hérite d'Animal</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">crier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># redéfinition</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Miaou"</span><span class="p">)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">class</span><span class="w"> </span><span class="nc">Chien</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>  <span class="c1"># Chien hérite d'Animal</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">crier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># redéfinition</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Wouf!"</span><span class="p">)</span>
+</span></code></pre></div>
+<p><strong>À l'usage</strong> :</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">Chat</span><span class="p">(</span><span class="s2">"Tom"</span><span class="p">)</span>  <span class="c1"># le constructeur d'Animal est utilisé</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">presenter</span><span class="p">()</span>  <span class="c1"># méthode héritée</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="go">Je suis Tom</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">crier</span><span class="p">()</span>  <span class="c1"># méthode redéfinie</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="go">Miaou</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">Chien</span><span class="p">(</span><span class="s2">"Rex"</span><span class="p">)</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">presenter</span><span class="p">()</span>  <span class="c1"># même méthode héritée</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="go">Je suis Rex</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">crier</span><span class="p">()</span>  <span class="c1"># même appel, autre comportement</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="go">Wouf!</span>
+</span></code></pre></div>
+</details>
+<pre class="mermaid"><code>%%{init: {"markdownAutoWrap": false}}%%
+classDiagram
+    Cellule &lt;|-- Joueur
+    Cellule &lt;|-- Bot
+    class Cellule {
+        x
+        y
+        masse
+        couleur
+        vivante
+        rayon()
+        vitesse()
+        peut_manger(autre)
+        manger(autre)
+        deplacer_vers(cible_x, cible_y)
+        update(jeu)
+        draw()
+    }
+    class Joueur {
+        update(jeu)
+    }
+    class Bot {
+        update(jeu)
+    }</code></pre>
+<div class="sl-steps" start="8">
+<ol>
+<li>
+<p><strong>Le joueur.</strong> Ajouter à <code class="language-py highlight"><span class="n">Cellule</span></code> une méthode <code class="language-py highlight"><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jeu</span><span class="p">)</span></code> qui ne fait rien, puis la classe <code class="language-py highlight"><span class="n">Joueur</span></code>&nbsp;:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Joueur</span><span class="p">(</span><span class="n">Cellule</span><span class="p">):</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jeu</span><span class="p">):</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">deplacer_vers</span><span class="p">(</span><span class="n">pyxel</span><span class="o">.</span><span class="n">mouse_x</span><span class="p">,</span> <span class="n">pyxel</span><span class="o">.</span><span class="n">mouse_y</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Le joueur devient un <code class="language-py highlight"><span class="n">Joueur</span></code>, et <code class="language-py highlight"><span class="n">Jeu</span><span class="o">.</span><span class="n">update</span></code> appelle <code class="language-py highlight"><span class="bp">self</span><span class="o">.</span><span class="n">joueur</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>.</p>
+</li>
+<li>
+<p><strong>Les bots.</strong> Créer une classe <code class="language-py highlight"><span class="n">Bot</span><span class="p">(</span><span class="n">Cellule</span><span class="p">)</span></code> vide (<code class="language-py highlight"><span class="k">pass</span></code>) et ajouter une dizaine de bots immobiles, de masses aléatoires, pas trop près du joueur.</p>
+</li>
+<li>
+<p><strong>Les repas.</strong> Le joueur et les bots mangent toutes les cellules plus petites qu'eux. Les bots mangés sont remplacés.</p>
+<p>Pourquoi une cellule ne peut-elle pas se manger elle-même&nbsp;?</p>
+</li>
+<li>
+<p><strong>Le bot chasseur.</strong> Redéfinir <code class="language-py highlight"><span class="n">update</span></code> dans <code class="language-py highlight"><span class="n">Bot</span></code>&nbsp;: le bot va vers la cellule la plus proche qu'il peut manger.</p>
+<details class="tip">
+<summary>Indication</summary>
+<p>C'est une recherche de minimum.</p>
+</details>
+</li>
+<li>
+<p><strong>Partie perdue.</strong> Quand le joueur est mangé, afficher « Perdu ! ». Un clic relance la partie.</p>
+<details class="tip">
+<summary>Indication</summary>
+<p><code class="language-py highlight"><span class="n">pyxel</span><span class="o">.</span><span class="n">btnp</span><span class="p">(</span><span class="n">pyxel</span><span class="o">.</span><span class="n">MOUSE_BUTTON_LEFT</span><span class="p">)</span></code> détecte le clic. Une méthode <code class="language-py highlight"><span class="n">Jeu</span><span class="o">.</span><span class="n">reset</span></code> évite de dupliquer le constructeur.</p>
+</details>
+</li>
+</ol>
+</div>
+<h2 id="un-monde-plus-grand-que-lecran">Un monde plus grand que l'écran<a class="headerlink" href="#un-monde-plus-grand-que-lecran" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="" class="rounded-img pixel-img" src="../assets/capture-monde.gif" /></p>
+<figcaption>
+<p>La caméra suit le joueur dans un monde de 400 × 400 pixels.</p>
+</figcaption>
+</figure>
+<p>L'écran ne montre plus qu'une partie d'un monde de 400 × 400 pixels. On distingue les <strong>coordonnées monde</strong> (celles des cellules) et les <strong>coordonnées écran</strong> (celles des pixels de la fenêtre).</p>
+<p>Après <code class="language-py highlight"><span class="n">pyxel</span><span class="o">.</span><span class="n">camera</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">)</span></code>, tout est dessiné décalé de <code>(-cx, -cy)</code>&nbsp;: le point <code>(cx, cy)</code> du monde apparaît en haut à gauche de l'écran.</p>
+<div class="sl-steps" start="13">
+<ol>
+<li>
+<p><strong>Agrandir le monde.</strong> Placer joueur, grains et bots dans un monde de <code class="language-py highlight"><span class="n">LARGEUR_MONDE</span> <span class="o">=</span> <span class="mi">400</span></code> sur <code class="language-py highlight"><span class="n">HAUTEUR_MONDE</span> <span class="o">=</span> <span class="mi">400</span></code>, avec 1000 grains.</p>
+</li>
+<li>
+<p><strong>La caméra.</strong> Au début de <code class="language-py highlight"><span class="n">Jeu</span><span class="o">.</span><span class="n">draw</span></code>, centrer la caméra sur le joueur, puis dessiner le contour du monde avec <code class="language-py highlight"><span class="n">pyxel</span><span class="o">.</span><span class="n">rectb</span></code>.</p>
+</li>
+<li>
+<p><strong>Le score.</strong> Afficher la masse du joueur en haut à gauche. Pourquoi appeler <code class="language-py highlight"><span class="n">pyxel</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span></code> juste avant&nbsp;?</p>
+</li>
+<li>
+<p><strong>La souris.</strong> Le joueur ne suit plus la souris&nbsp;: pourquoi&nbsp;? Corriger <code class="language-py highlight"><span class="n">Joueur</span><span class="o">.</span><span class="n">update</span></code>.</p>
+<details class="tip">
+<summary>Indication</summary>
+<p>La souris est en coordonnées écran. Le joueur est toujours au centre de l'écran.</p>
+</details>
+</li>
+<li>
+<p><strong>Rester dans le monde.</strong> Empêcher les cellules de sortir du monde.</p>
+</li>
+</ol>
+</div>
+<h2 id="a-votre-sauce">À votre sauce<a class="headerlink" href="#a-votre-sauce" title="Permanent link">&para;</a></h2>
+<p>Choisissez une ou plusieurs améliorations (ou inventez-en d'autres) et décrivez-les dans votre compte rendu.</p>
+<ul>
+<li>★ <strong>Perte de masse.</strong> Les cellules perdent lentement de la masse, par exemple ×&nbsp;<code class="language-py highlight"><span class="mf">0.9995</span></code> à chaque image.</li>
+<li>★★ <strong>Fuite.</strong> Un bot fuit les cellules assez grosses pour le manger quand elles sont proches (viser le point <code class="language-py highlight"><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">autre</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">autre</span><span class="o">.</span><span class="n">y</span><span class="p">)</span></code>).</li>
+<li>★★ <strong>Virus.</strong> Une classe <code class="language-py highlight"><span class="n">Virus</span><span class="p">(</span><span class="n">Cellule</span><span class="p">)</span></code> immobile&nbsp;: les petites cellules se cachent dessous, les grosses qui le touchent perdent la moitié de leur masse.</li>
+<li>★★★ <strong>Division.</strong> La touche <span class="keys"><kbd class="key-space">Space</kbd></span> divise la cellule du joueur en deux, l'une étant projetée vers la souris. Le joueur contrôle alors une liste de cellules.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+        
+          
+          <a href="../../fiches/sql/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: SQL &amp; BDD">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              <div class="md-ellipsis">
+                SQL & BDD
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../reines/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Le problème des dames">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              <div class="md-ellipsis">
+                Le problème des dames
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2026 Arthur Rouquan. Contenus sous CC BY 4.0, code sous licence MIT, sauf mention contraire.
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.footnote.tooltips","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copié dans le presse-papier","clipboard.copy":"Copier dans le presse-papier","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 de plus sur cette page","search.result.more.other":"# de plus sur cette page","search.result.none":"Aucun document trouvé","search.result.one":"1 document trouvé","search.result.other":"# documents trouvés","search.result.placeholder":"Taper pour démarrer la recherche","search.result.term.missing":"Non trouvé","select.version":"Sélectionner la version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.9e76c64c.min.js"></script>
+      
+      
+        <script src="../../assets/extra.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
