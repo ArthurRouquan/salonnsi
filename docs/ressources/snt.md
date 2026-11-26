@@ -10,7 +10,7 @@ title: Seconde SNT
 * :lucide-circle-check:{ .done } [TP Capytale – Premier pas en Python](https://capytale2.ac-paris.fr/web/c/557a-11939519/atr)
 * :lucide-circle-check:{ .done } [Jeu – Exécubot](https://execubot.fr)
 * :lucide-circle-check:{ .done } [TP Capytale – Répéter du code avec la boucle `#!py while`](https://capytale2.ac-paris.fr/web/c/c121-12730610/atr)
-* :lucide-circle: [TP Capytale – Le paradoxe du duc de Toscane](https://capytale2.ac-paris.fr/web/c/2500-13124590/atr)
+* :lucide-circle-check:{ .done } [TP Capytale – Le paradoxe du duc de Toscane](https://capytale2.ac-paris.fr/web/c/2500-13124590/atr)
 ///
 
 ## Mémo Python

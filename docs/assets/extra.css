@@ -566,6 +566,12 @@ mark {
     padding: calc(.8203125em - var(--code-border-width)) calc(1.25em - var(--code-border-width));
 }
 
+/* Code inline : même bordure. Ombre intérieure (une seule, sur les 4 côtés) :
+   la taille ne change pas, donc pas de décalage dans le texte. */
+.md-typeset :not(pre) > code {
+    box-shadow: inset 0 0 0 var(--code-border-width) var(--code-border-color);
+}
+
 /* Bloc de code avec titre : la bordure entoure titre + code, et le trait sous
    le titre reprend la même couleur */
 .md-typeset .highlight span.filename {
@@ -702,4 +708,33 @@ mark {
 .md-typeset .check-list li a code,
 .md-typeset .check-list li a code * {
     color: inherit;
+}
+
+/* ---------- Code dans les callouts : couleurs du callout ----------
+   --admo-color : couleur de l'icône du callout. Son fond (--admo-bg) est cette
+   couleur à 10 % sur le fond de la page. Le code part de ce fond, assombri
+   (clair) ou éclairci (sombre) comme le code l'est par rapport à la page :
+   +4 % pour le fond, +12 % pour la bordure. */
+.md-typeset :is(.admonition, details)            { --admo-color: #448aff; }
+.md-typeset :is(.admonition, details).abstract   { --admo-color: #00b0ff; }
+.md-typeset :is(.admonition, details).info       { --admo-color: #00b8d4; }
+.md-typeset :is(.admonition, details).tip        { --admo-color: #00bfa5; }
+.md-typeset :is(.admonition, details).success    { --admo-color: #00c853; }
+.md-typeset :is(.admonition, details).question   { --admo-color: #64dd17; }
+.md-typeset :is(.admonition, details).warning    { --admo-color: #ff9100; }
+.md-typeset :is(.admonition, details).failure    { --admo-color: #ff5252; }
+.md-typeset :is(.admonition, details).danger     { --admo-color: #ff1744; }
+.md-typeset :is(.admonition, details).bug        { --admo-color: #f50057; }
+.md-typeset :is(.admonition, details).example    { --admo-color: #7c4dff; }
+.md-typeset :is(.admonition, details).quote      { --admo-color: #9e9e9e; }
+
+.md-typeset :is(.admonition, details) {
+    --admo-shade: black;
+    --admo-bg: color-mix(in srgb, var(--admo-color) 10%, var(--md-default-bg-color));
+    --md-code-bg-color: color-mix(in srgb, var(--admo-bg), var(--admo-shade) 4%);
+    --code-border-color: color-mix(in srgb, var(--admo-bg), var(--admo-shade) 12%);
+}
+
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details) {
+    --admo-shade: white;
 }
